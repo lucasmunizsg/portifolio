@@ -24,7 +24,9 @@ const EducationSection: React.FC<EducationSectionProps> = ({ studies }) => {
                             {study.course}
                         </p>
                         <div className="mt-2">
-                             <span className="px-3 py-1 bg-[#1b1b1b] text-[8px] uppercase tracking-[0.2em] text-[#e9ddff] border border-white/5">
+                             <span className={`px-3 py-1 bg-[#1b1b1b] text-[8px] uppercase tracking-[0.2em] border border-white/5 ${
+                                study.status === 'Prêmio' ? 'text-[#ffd700] border-[#ffd700]/20' : 'text-[#e9ddff]'
+                            }`}>
                                 {study.status}
                             </span>
                         </div>

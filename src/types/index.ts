@@ -28,7 +28,7 @@ export interface Education {
     id: string;
     institution: string;
     course: string;
-    status: 'Concluído' | 'Em andamento' | 'Trancado';
+    status: 'Concluído' | 'Em andamento' | 'Trancado' | 'Prêmio';
     year: string;
 }
 

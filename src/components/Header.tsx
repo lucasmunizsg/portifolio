@@ -29,14 +29,11 @@ const Header: React.FC<HeaderProps> = ({ profile }) => {
                 </div>
                 
                 <div className="hidden md:flex items-center gap-12">
-                    <a className="font-label uppercase tracking-[0.2em] text-[10px] text-white font-bold border-b-2 border-white/20 pb-1" href="#work">Work</a>
-                    <a className="font-label uppercase tracking-[0.2em] text-[10px] text-zinc-500 hover:text-white transition-colors duration-500" href="#process">Process</a>
-                    <a className="font-label uppercase tracking-[0.2em] text-[10px] text-zinc-500 hover:text-white transition-colors duration-500" href="#contact">Contact</a>
+                    <a className="font-label uppercase tracking-[0.2em] text-[10px] text-zinc-500 hover:text-white transition-colors duration-500" href="#work">1. Projetos</a>
+                    <a className="font-label uppercase tracking-[0.2em] text-[10px] text-zinc-500 hover:text-white transition-colors duration-500" href="#xp">2. XP</a>
+                    <a className="font-label uppercase tracking-[0.2em] text-[10px] text-zinc-500 hover:text-white transition-colors duration-500" href="#process">3. Processo</a>
+                    <a className="font-label uppercase tracking-[0.2em] text-[10px] text-zinc-500 hover:text-white transition-colors duration-500" href="#contact">4. Contato</a>
                 </div>
-                
-                <button className="font-label uppercase tracking-[0.2em] text-[10px] bg-white text-[#1a1c1c] px-4 md:px-6 py-2 md:py-3 hover:bg-white/5 hover:text-white transition-all duration-700 active:scale-95">
-                    Hire Me
-                </button>
             </div>
         </nav>
     );

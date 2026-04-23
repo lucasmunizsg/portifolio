@@ -10,7 +10,7 @@ const SkillsAndInterests: React.FC<SkillsAndInterestsProps> = ({ skills }) => {
     const interests = useMemo(() => skills.filter(s => s.category === 'Interesse'), [skills]);
 
     return (
-        <section className="py-24 md:py-40 px-6 md:px-12 max-w-[1920px] mx-auto bg-[#131313]">
+        <section id="process" className="py-24 md:py-40 px-6 md:px-12 max-w-[1920px] mx-auto bg-[#131313]">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-24">
                 <div>
                     <div className="flex items-center gap-4 mb-12">

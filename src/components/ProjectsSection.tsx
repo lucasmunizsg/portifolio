@@ -7,7 +7,7 @@ interface ProjectsSectionProps {
 
 const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
     return (
-        <section id="process" className="relative px-6 md:px-12 py-32 max-w-[1920px] mx-auto bg-[#0e0e0e]">
+        <section id="work" className="relative px-6 md:px-12 py-32 max-w-[1920px] mx-auto bg-[#0e0e0e]">
             <div className="grid grid-cols-12 gap-8">
                 {/* Large Feature Card - First Project */}
                 {projects[0] && (

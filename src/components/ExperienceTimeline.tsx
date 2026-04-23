@@ -7,36 +7,30 @@ interface ExperienceTimelineProps {
 
 const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experiences }) => {
     return (
-        <section className="py-16 md:py-24 bg-gray-50">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-                <h2 className="text-3xl font-bold text-gray-900 mb-12">Experiência Profissional</h2>
-
-                <ol className="relative border-l border-gray-200 ml-3 md:ml-0">
-                    {experiences.map((exp) => (
-                        <li key={exp.id} className="mb-10 ml-6">
-                            <span className="absolute flex items-center justify-center w-6 h-6 bg-indigo-100 rounded-full -left-3 ring-8 ring-white">
-                                <div className="w-2.5 h-2.5 bg-indigo-600 rounded-full"></div>
-                            </span>
-
-                            <div className="p-4 bg-white rounded-lg border border-gray-200 shadow-sm sm:p-6">
-                                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
-                                    <h3 className="text-lg font-semibold text-gray-900">{exp.role}</h3>
-                                    <time className="text-sm font-normal text-gray-500 mb-1 sm:mb-0">
-                                        {exp.startDate} - {exp.endDate}
-                                    </time>
-                                </div>
-
-                                <p className="text-base font-medium text-indigo-600 mb-3 block">
-                                    {exp.company}
-                                </p>
-
-                                <p className="text-base font-normal text-gray-600 leading-relaxed">
-                                    {exp.description}
-                                </p>
-                            </div>
-                        </li>
-                    ))}
-                </ol>
+        <section className="py-24 md:py-40 px-6 md:px-12 max-w-[1920px] mx-auto bg-[#131313]">
+            <div className="flex items-center gap-4 mb-12">
+                <span className="w-12 h-[1px] bg-white/20"></span>
+                <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">Professional Journey</span>
+            </div>
+            
+            <div className="grid grid-cols-1 gap-12 md:gap-24">
+                {experiences.map((exp) => (
+                    <div key={exp.id} className="group border-t border-white/5 pt-12 flex flex-col md:grid md:grid-cols-4 gap-8">
+                        <div className="flex flex-col gap-2">
+                            <span className="font-label text-[10px] text-zinc-500 uppercase tracking-widest">{exp.startDate} — {exp.endDate}</span>
+                            <h4 className="font-display text-xl font-bold text-white uppercase tracking-tight">{exp.company}</h4>
+                        </div>
+                        
+                        <div className="md:col-span-3 flex flex-col gap-6">
+                            <h3 className="font-display text-2xl md:text-4xl font-black text-white tracking-tighter leading-none flex items-center gap-4">
+                                <span className="text-outline group-hover:text-white transition-all duration-700">{exp.role.toUpperCase()}</span>
+                            </h3>
+                            <p className="font-body text-zinc-400 text-sm md:text-lg font-light leading-relaxed max-w-2xl">
+                                {exp.description}
+                            </p>
+                        </div>
+                    </div>
+                ))}
             </div>
         </section>
     );

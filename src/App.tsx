@@ -7,23 +7,25 @@ import EducationSection from './components/EducationSection';
 import SkillsAndInterests from './components/SkillsAndInterests';
 import ResumeDownloads from './components/ResumeDownloads';
 import ContactSection from './components/ContactSection';
+import WelcomeGate from './components/WelcomeGate';
 
 function App() {
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-[#131313]">
+            <WelcomeGate />
+            
             <Header profile={profileData} />
 
-            <main className="space-y-4">
+            <main>
                 <Hero profile={profileData} />
 
                 <SkillsAndInterests skills={skillsData} />
 
                 <ProjectsSection projects={projectsData} />
 
-                <div className="md:grid md:grid-cols-2 container mx-auto gap-8">
-                    <ExperienceTimeline experiences={experiencesData} />
-                    <EducationSection studies={educationData} />
-                </div>
+                <ExperienceTimeline experiences={experiencesData} />
+                
+                <EducationSection studies={educationData} />
 
                 <ResumeDownloads versions={resumeData} />
             </main>

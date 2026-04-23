@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PRISM LAB | SENIOR FRONTEND ENGINEER</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&amp;family=Space+Grotesk:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#393939",
+                        "primary": "#ffffff",
+                        "secondary-container": "#454747",
+                        "inverse-surface": "#e2e2e2",
+                        "on-primary-fixed": "#ffffff",
+                        "on-background": "#e2e2e2",
+                        "surface-container-low": "#1b1b1b",
+                        "on-tertiary-fixed-variant": "#e9ddff",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-primary-container": "#000000",
+                        "background": "#131313",
+                        "outline": "#919191",
+                        "on-error": "#690005",
+                        "primary-fixed-dim": "#454747",
+                        "error": "#ffb4ab",
+                        "surface-container-high": "#2a2a2a",
+                        "primary-fixed": "#5d5f5f",
+                        "on-secondary": "#1a1c1c",
+                        "on-primary-fixed-variant": "#e2e2e2",
+                        "on-primary": "#1a1c1c",
+                        "surface-container-highest": "#353535",
+                        "secondary-fixed-dim": "#ababab",
+                        "surface-variant": "#353535",
+                        "on-secondary-fixed-variant": "#3a3c3c",
+                        "surface-tint": "#c6c6c7",
+                        "primary-container": "#d4d4d4",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface": "#131313",
+                        "inverse-on-surface": "#303030",
+                        "inverse-primary": "#5d5f5f",
+                        "on-secondary-container": "#e2e2e2",
+                        "error-container": "#93000a",
+                        "secondary": "#c6c6c6",
+                        "tertiary-container": "#a178ff",
+                        "tertiary-fixed": "#7212ff",
+                        "tertiary": "#e9ddff",
+                        "outline-variant": "#474747",
+                        "on-surface-variant": "#c6c6c6",
+                        "on-surface": "#e2e2e2",
+                        "on-tertiary": "#23005b",
+                        "surface-dim": "#131313",
+                        "secondary-fixed": "#c6c6c6",
+                        "on-tertiary-fixed": "#ffffff",
+                        "on-tertiary-container": "#000000",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#5700c9",
+                        "surface-container": "#1f1f1f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "display": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .text-outline {
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+            color: transparent;
+        }
+        .prism-leak {
+            background: radial-gradient(circle at 50% 50%, rgba(114, 18, 255, 0.15) 0%, transparent 70%);
+            filter: blur(80px);
+        }
+        .grid-perspective {
+            background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+            perspective: 1000px;
+            transform: rotateX(60deg) translateY(-200px);
+            mask-image: linear-gradient(to bottom, transparent, black);
+        }
+        .hero-glow {
+            text-shadow: 0 0 30px rgba(255,255,255,0.2);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-tertiary-fixed selection:text-white">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-[#131313]/80 backdrop-blur-3xl shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+<div class="flex justify-between items-center px-12 py-8 max-w-[1920px] mx-auto">
+<div class="text-2xl font-black text-white tracking-tighter">PRISM LAB</div>
+<div class="hidden md:flex items-center gap-12">
+<a class="font-['Space_Grotesk'] uppercase tracking-[0.2em] text-xs text-white font-bold border-b-2 border-white/20 pb-1" href="#">Work</a>
+<a class="font-['Space_Grotesk'] uppercase tracking-[0.2em] text-xs text-zinc-500 hover:text-white transition-colors duration-500" href="#">Process</a>
+<a class="font-['Space_Grotesk'] uppercase tracking-[0.2em] text-xs text-zinc-500 hover:text-white transition-colors duration-500" href="#">Contact</a>
+</div>
+<button class="font-['Space_Grotesk'] uppercase tracking-[0.2em] text-xs bg-primary text-on-primary px-6 py-3 hover:bg-white/5 hover:text-white transition-all duration-700 active:scale-95">Hire Me</button>
+</div>
+</nav>
+<main class="relative min-h-screen overflow-hidden">
+<!-- Background Effects -->
+<div class="absolute inset-0 pointer-events-none">
+<div class="grid-perspective absolute inset-0 h-full w-full opacity-30"></div>
+<div class="prism-leak absolute top-[-10%] right-[-5%] w-[600px] h-[600px] opacity-40"></div>
+<div class="prism-leak absolute bottom-[10%] left-[-10%] w-[800px] h-[800px] opacity-20" style="background: radial-gradient(circle, rgba(0, 242, 255, 0.1) 0%, transparent 70%);"></div>
+</div>
+<!-- Hero Content -->
+<section class="relative pt-60 pb-32 px-12 max-w-[1920px] mx-auto">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-4 mb-4">
+<span class="w-12 h-[1px] bg-white/20"></span>
+<span class="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">Available for 2024 Projects</span>
+</div>
+<h1 class="font-display font-black text-[12vw] leading-[0.85] tracking-tighter flex flex-col items-start">
+<span class="text-white hero-glow">SENIOR</span>
+<span class="text-outline hover:text-white transition-all duration-1000 cursor-default">FRONTEND</span>
+<span class="text-white hero-glow">ENGINEER</span>
+</h1>
+</div>
+<!-- Technical Metadata Strip -->
+<div class="mt-40 grid grid-cols-1 md:grid-cols-4 gap-12 border-t border-white/10 pt-12">
+<div class="flex flex-col gap-4">
+<h4 class="font-label uppercase tracking-[0.2em] text-xs text-zinc-500">Services</h4>
+<p class="font-body text-sm font-light text-on-background">Immersive UI Development<br/>Creative Webgl Experiences<br/>Performance Engineering</p>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-label uppercase tracking-[0.2em] text-xs text-zinc-500">Year</h4>
+<p class="font-body text-sm font-light text-on-background">2024 / Q3-Q4</p>
+</div>
+<div class="flex flex-col gap-4 md:col-span-2">
+<h4 class="font-label uppercase tracking-[0.2em] text-xs text-zinc-500">Current Clients</h4>
+<div class="flex flex-wrap gap-4 mt-2">
+<span class="px-3 py-1 bg-surface-container-low text-[10px] uppercase tracking-widest text-zinc-400">Nebula Systems</span>
+<span class="px-3 py-1 bg-surface-container-low text-[10px] uppercase tracking-widest text-zinc-400">Void Architecture</span>
+<span class="px-3 py-1 bg-surface-container-low text-[10px] uppercase tracking-widest text-zinc-400">Nexus Collective</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Project Grid (Bento Style) -->
+<section class="relative px-12 py-32 max-w-[1920px] mx-auto bg-surface-container-lowest">
+<div class="grid grid-cols-12 gap-8">
+<!-- Large Feature Card -->
+<div class="col-span-12 md:col-span-8 group relative aspect-video bg-surface overflow-hidden">
+<img class="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 scale-105 group-hover:scale-100" data-alt="Futuristic glowing computer hardware components in deep purple and blue light with high technical detail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJXE4s1R0hkLrsVjbznywS_DFnCr93oCXSp7_jfAsVByMrqwXqO7eQD-hfNevlSj3tQGts3X28PvqiJSjBOJnP0oQwQpHi7K3qEQXThVuME3AzuaaCK7adal7yoRUYeFFte2BbReTV-YWVde-DonkL9HyHxAwEmCa0-Et2NNledo9KB97kVjleNRylXBe-87Vr7PiDsGwoiPFEqcJ1QzqhIRLwdVaWNN6IsMwvHiblKe1gbSC8_XHago0E0OHf5Be6ec2EtG0j5PZW"/>
+<div class="absolute bottom-12 left-12">
+<span class="font-label text-[10px] text-tertiary uppercase tracking-widest mb-4 block">Case Study 01</span>
+<h3 class="font-display text-4xl font-bold text-white tracking-tight">QUANTUM INTERFACE</h3>
+</div>
+<div class="absolute top-12 right-12 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+<span class="material-symbols-outlined text-white text-4xl" data-icon="arrow_outward">arrow_outward</span>
+</div>
+</div>
+<!-- Technical Specs Card -->
+<div class="col-span-12 md:col-span-4 bg-surface-container border border-white/5 p-12 flex flex-col justify-between">
+<div class="flex flex-col gap-6">
+<span class="material-symbols-outlined text-tertiary-fixed text-3xl" data-icon="terminal">terminal</span>
+<h3 class="font-display text-2xl font-bold text-white">Stack Architecture</h3>
+<p class="font-body text-zinc-400 text-sm leading-relaxed">Engineered with high-fidelity performance at the core. Utilizing Next.js, Three.js, and custom GLSL shaders for cinematic rendering.</p>
+</div>
+<div class="flex flex-col gap-2 mt-12">
+<div class="flex justify-between items-end border-b border-white/5 pb-2">
+<span class="font-label text-[10px] text-zinc-500 uppercase tracking-widest">React Framework</span>
+<span class="font-label text-xs text-white">100%</span>
+</div>
+<div class="flex justify-between items-end border-b border-white/5 pb-2">
+<span class="font-label text-[10px] text-zinc-500 uppercase tracking-widest">WebGL / Canvas</span>
+<span class="font-label text-xs text-white">92%</span>
+</div>
+</div>
+</div>
+<!-- Small Grid Items -->
+<div class="col-span-12 md:col-span-4 group aspect-square bg-surface-container-high relative overflow-hidden">
+<img class="w-full h-full object-cover opacity-30 group-hover:opacity-60 transition-all duration-700 grayscale group-hover:grayscale-0" data-alt="Abstract cinematic light refraction through glass prism on dark background with grainy texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPZ_BWi2R6ToD3oJNNNIT_uzHadckhr6ScAA1KAtmFvYc3-EmoIpjpKzoyr3CJw04EQus1NrRzs8ndX_bCYRtTs3aQAfZ48kAhh2b-fAiL5Nwv9qGXpb15Ea7LCMZ8P3pYEAOv8Q2FrrdwFK_05LOBcIH3BGJv4tWuOPT6YF8_2SP9nJo-BzE7keGvzImTcO8l-hivhQ_sX7_aqUa_4hF4v9Wh2yWJh7pADmvZnAy5W6vq_h_UGszmtGQqauiHYmmy_dHJFk5TuDKX"/>
+<div class="absolute inset-0 p-8 flex flex-col justify-end">
+<h4 class="font-display text-xl font-bold text-white uppercase tracking-tighter">Prism UI Kit</h4>
+</div>
+</div>
+<div class="col-span-12 md:col-span-4 group aspect-square bg-surface-container-high relative overflow-hidden">
+<img class="w-full h-full object-cover opacity-30 group-hover:opacity-60 transition-all duration-700 grayscale group-hover:grayscale-0" data-alt="Atmospheric digital void with floating dust particles and soft ethereal light beam" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiuplkPQLbjFg7oBTWqOQDjNtaexucbJgJlxUbgGVyv0HacknV7lRVClDYe1y5WOqQXny06C83piA6AKS9rQPFyWqR835iQIitjLD4Y2aOdLkNr2V4tbxy0y9Odir4X4xvwSKMZdYkRjpmaLMK570HhYWQBgB0zkp3ofuVQz0SipwHS7q9eTDsCXMVTf6L4dhIRuGOpKFQzJSzc69tvHx_QG_cF-YXr2QTqCnmeL8pb-9AwhAuyPgaLaLPpyeHXM7IFJ0zx4QEOhQH"/>
+<div class="absolute inset-0 p-8 flex flex-col justify-end">
+<h4 class="font-display text-xl font-bold text-white uppercase tracking-tighter">Void Branding</h4>
+</div>
+</div>
+<div class="col-span-12 md:col-span-4 flex items-center justify-center border border-dashed border-white/10 group hover:bg-white/5 transition-colors cursor-pointer">
+<div class="flex flex-col items-center gap-4">
+<div class="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:border-tertiary transition-colors">
+<span class="material-symbols-outlined text-white group-hover:text-tertiary" data-icon="add">add</span>
+</div>
+<span class="font-label text-[10px] uppercase tracking-[0.3em] text-zinc-500">View All Archive</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Dynamic Studio Statement -->
+<section class="py-40 px-12 max-w-[1920px] mx-auto text-center">
+<h2 class="font-display text-5xl md:text-8xl font-black text-white tracking-tighter mb-12 max-w-5xl mx-auto leading-[0.95]">
+                WE DON'T JUST BUILD INTERFACES. WE DESIGN <span class="text-outline">ATMOSPHERES</span>.
+            </h2>
+<div class="flex flex-col items-center gap-8">
+<p class="font-body text-zinc-500 max-w-xl text-lg font-light leading-relaxed">
+                    Blurring the line between physical sensory experiences and digital interactions through advanced frontend engineering and creative direction.
+                </p>
+<div class="w-24 h-[1px] bg-tertiary-fixed"></div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-24 px-12 bg-[#131313] border-t border-white/5">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8 w-full max-w-[1920px] mx-auto">
+<div class="text-sm font-bold text-white">PRISM LAB</div>
+<div class="text-[10px] font-['Inter'] font-light tracking-[0.05em] uppercase text-zinc-600">
+                © 2024 PRISM LAB. ENGINEERED IN THE VOID.
+            </div>
+<div class="flex gap-8">
+<a class="text-[10px] font-['Inter'] font-light tracking-[0.05em] uppercase text-zinc-600 hover:text-white transition-colors duration-300" href="#">LinkedIn</a>
+<a class="text-[10px] font-['Inter'] font-light tracking-[0.05em] uppercase text-zinc-600 hover:text-white transition-colors duration-300" href="#">Instagram</a>
+<a class="text-[10px] font-['Inter'] font-light tracking-[0.05em] uppercase text-zinc-600 hover:text-white transition-colors duration-300" href="#">Dribbble</a>
+</div>
+</div>
+</footer>
+<!-- FAB Suppression Rule Applied: No FAB on Portfolio/Detail View -->
+</body></html>

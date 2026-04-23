@@ -1,5 +1,43 @@
 @import "tailwindcss";
 
-body {
-  @apply bg-gray-50 text-gray-900 antialiased;
+@theme {
+  --font-headline: "Space Grotesk", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-label: "Space Grotesk", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  body {
+    @apply bg-[#131313] text-[#e2e2e2] font-body selection:bg-[#7212ff] selection:text-white antialiased overflow-x-hidden;
+  }
+}
+
+@layer utilities {
+  .text-outline {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+    color: transparent;
+  }
+
+  .prism-leak {
+    background: radial-gradient(circle at 50% 50%, rgba(114, 18, 255, 0.15) 0%, transparent 70%);
+    filter: blur(80px);
+  }
+
+  .grid-perspective {
+    background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+    perspective: 1000px;
+    transform: rotateX(60deg) translateY(-200px);
+    mask-image: linear-gradient(to bottom, transparent, black);
+  }
+
+  .hero-glow {
+    text-shadow: 0 0 30px rgba(255,255,255,0.2);
+  }
 }

@@ -7,31 +7,29 @@ interface EducationSectionProps {
 
 const EducationSection: React.FC<EducationSectionProps> = ({ studies }) => {
     return (
-        <section className="py-12 bg-white">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-                <h2 className="text-2xl font-bold text-gray-900 mb-8 border-b pb-4">Educação</h2>
-
-                <ul className="space-y-6">
-                    {studies.map((study) => (
-                        <li key={study.id} className="flex flex-col sm:flex-row sm:justify-between sm:items-start group">
-                            <div>
-                                <h3 className="text-lg font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors">
-                                    {study.institution}
-                                </h3>
-                                <p className="text-gray-600">{study.course}</p>
-                                <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium mt-2
-                  ${study.status === 'Concluído' ? 'bg-green-100 text-green-800' :
-                                        study.status === 'Em andamento' ? 'bg-blue-100 text-blue-800' :
-                                            'bg-yellow-100 text-yellow-800'}`}>
-                                    {study.status}
-                                </span>
-                            </div>
-                            <time className="text-sm text-gray-500 mt-2 sm:mt-0 font-medium">
-                                {study.year}
-                            </time>
-                        </li>
-                    ))}
-                </ul>
+        <section className="py-24 md:py-40 px-6 md:px-12 max-w-[1920px] mx-auto bg-[#0e0e0e]">
+            <div className="flex items-center gap-4 mb-12">
+                <span className="w-12 h-[1px] bg-white/20"></span>
+                <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">Education</span>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
+                {studies.map((study) => (
+                    <div key={study.id} className="group flex flex-col gap-4 border-l border-white/10 pl-8">
+                        <span className="font-label text-[10px] text-zinc-500 uppercase tracking-widest">{study.year}</span>
+                        <h3 className="font-display text-2xl font-bold text-white uppercase tracking-tight group-hover:text-[#e9ddff] transition-colors">
+                            {study.institution}
+                        </h3>
+                        <p className="font-body text-zinc-400 text-sm md:text-lg font-light leading-relaxed">
+                            {study.course}
+                        </p>
+                        <div className="mt-2">
+                             <span className="px-3 py-1 bg-[#1b1b1b] text-[8px] uppercase tracking-[0.2em] text-[#e9ddff] border border-white/5">
+                                {study.status}
+                            </span>
+                        </div>
+                    </div>
+                ))}
             </div>
         </section>
     );

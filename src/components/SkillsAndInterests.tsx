@@ -10,45 +10,49 @@ const SkillsAndInterests: React.FC<SkillsAndInterestsProps> = ({ skills }) => {
     const interests = useMemo(() => skills.filter(s => s.category === 'Interesse'), [skills]);
 
     return (
-        <section className="py-16 bg-white">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-                <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Skills & Interesses</h2>
-
-                <div className="grid md:grid-cols-2 gap-12">
-                    <div>
-                        <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                            Stack Tecnológica
-                            <span className="ml-2 w-2 h-2 bg-indigo-500 rounded-full animate-pulse"></span>
-                        </h3>
-                        <div className="flex flex-wrap gap-3">
-                            {languages.map((skill) => (
-                                <span
-                                    key={skill.id}
-                                    className="bg-gray-100 text-gray-800 px-3 py-1.5 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors cursor-default"
-                                >
-                                    {skill.name}
-                                </span>
-                            ))}
-                        </div>
+        <section className="py-24 md:py-40 px-6 md:px-12 max-w-[1920px] mx-auto bg-[#131313]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-24">
+                <div>
+                    <div className="flex items-center gap-4 mb-12">
+                        <span className="w-12 h-[1px] bg-white/20"></span>
+                        <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">Tech Stack</span>
                     </div>
-
-                    <div>
-                        <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                            Interesses Pessoais
-                            <span className="ml-2 w-2 h-2 bg-pink-500 rounded-full"></span>
-                        </h3>
-                        <div className="flex flex-wrap gap-3">
-                            {interests.map((skill) => (
-                                <span
-                                    key={skill.id}
-                                    className="bg-white border border-gray-200 text-gray-600 px-3 py-1.5 rounded-lg text-sm font-medium hover:border-indigo-300 hover:text-indigo-600 transition-all cursor-default"
-                                >
-                                    {skill.name}
-                                </span>
-                            ))}
-                        </div>
+                    <div className="flex flex-wrap gap-4">
+                        {languages.map((skill) => (
+                            <div 
+                                key={skill.id}
+                                className="group relative px-6 py-4 bg-[#1b1b1b] border border-white/5 hover:border-[#7212ff]/50 transition-all duration-500"
+                            >
+                                <span className="font-label text-[10px] text-zinc-500 uppercase tracking-widest block mb-1">0{skill.id}</span>
+                                <span className="font-display text-lg font-bold text-white uppercase tracking-tight">{skill.name}</span>
+                            </div>
+                        ))}
                     </div>
                 </div>
+
+                <div>
+                    <div className="flex items-center gap-4 mb-12">
+                        <span className="w-12 h-[1px] bg-white/20"></span>
+                        <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">Focus & Interests</span>
+                    </div>
+                    <div className="flex flex-col gap-6">
+                        {interests.map((skill) => (
+                            <div key={skill.id} className="flex justify-between items-end border-b border-white/5 pb-4 group">
+                                <span className="font-display text-2xl font-bold text-white uppercase tracking-tighter group-hover:text-[#e9ddff] transition-colors">
+                                    {skill.name}
+                                </span>
+                                <span className="material-symbols-outlined text-zinc-700 group-hover:text-[#7212ff] transition-colors">done_all</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+            
+            {/* Cinematic Statement adapted from template */}
+            <div className="mt-40 text-center">
+                <h2 className="font-display text-4xl md:text-7xl font-black text-white tracking-tighter mb-12 max-w-5xl mx-auto leading-[0.95]">
+                    ENGINEERING <span className="text-outline">DIGITAL ATMOSPHERES</span> WITH PRECISION.
+                </h2>
             </div>
         </section>
     );

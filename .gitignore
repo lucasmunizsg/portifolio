@@ -36,3 +36,10 @@ coverage
 
 # Project specific
 .agent
+
+# Artefatos de ferramentas e visualização
+stitch_portfolio.html
+stitch_portfolio_screenshot.png
+
+# Documentação de tarefas temporárias
+portfolio-refactor-plan.md

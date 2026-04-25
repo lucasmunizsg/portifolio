@@ -33,10 +33,12 @@ export interface Education {
 }
 
 export interface Skill {
-    id: string;
-    name: string;
-    category: 'Linguagem' | 'Interesse';
+  id: string;
+  name: string;
+  category: 'Linguagem' | 'Interesse';
+  yearLearned: number; // Propriedade para armazenar o ano de início
 }
+
 
 export interface ResumeVersion {
     id: string;

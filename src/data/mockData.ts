@@ -108,17 +108,18 @@ export const educationData: Education[] = [
 ];
 
 export const skillsData: Skill[] = [
-    { id: "1", name: "JavaScript (ES6+)", category: "Linguagem" },
-    { id: "2", name: "TypeScript", category: "Linguagem" },
-    { id: "3", name: "Python", category: "Linguagem" },
-    { id: "4", name: "React", category: "Linguagem" },
-    { id: "5", name: "Angular", category: "Linguagem" },
-    { id: "6", name: "SQL & NoSQL", category: "Linguagem" },
-    { id: "7", name: "Integração de IA (OpenAI, Gemini)", category: "Interesse" },
-    { id: "8", name: "Testes (Jest, Cypress)", category: "Interesse" },
-    { id: "9", name: "Gestão e Metodologias Ágeis", category: "Interesse" },
-    { id: "10", name: "Comunicação e Treinamento", category: "Interesse" }
+    { id: "1", name: "JavaScript (ES6+)", category: "Linguagem", yearLearned: 2020 },
+    { id: "2", name: "TypeScript", category: "Linguagem", yearLearned: 2023 },
+    { id: "3", name: "Python", category: "Linguagem", yearLearned: 2022 },
+    { id: "4", name: "React", category: "Linguagem", yearLearned: 2022 },
+    { id: "5", name: "Angular", category: "Linguagem", yearLearned: 2023 },
+    { id: "6", name: "SQL & NoSQL", category: "Linguagem", yearLearned: 2021 },
+    { id: "7", name: "Integração de IA (OpenAI, Gemini)", category: "Interesse", yearLearned: 2023 },
+    { id: "8", name: "Testes (Jest, Cypress)", category: "Interesse", yearLearned: 2023 },
+    { id: "9", name: "Gestão e Metodologias Ágeis", category: "Interesse", yearLearned: 2018 },
+    { id: "10", name: "Comunicação e Treinamento", category: "Interesse", yearLearned: 2020 }
 ];
+
 
 export const resumeData: ResumeVersion[] = [
     {

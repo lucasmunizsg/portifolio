@@ -40,13 +40,39 @@ const ResumeDownloads: React.FC<ResumeDownloadsProps> = ({ versions }) => {
                             {version.description}
                         </p>
 
-                        <a
-                            href={version.fileUrl}
-                            download
-                            className="inline-block w-full text-center font-label uppercase tracking-[0.2em] text-[10px] bg-white text-[#1a1c1c] py-4 hover:bg-[#7212ff] hover:text-white transition-all duration-700"
+                        <form 
+                            onSubmit={(e) => {
+                                e.preventDefault();
+                                const formData = new FormData(e.currentTarget);
+                                const email = formData.get('email');
+                                if (email) {
+                                    console.log(`Lead captured: ${email}`);
+                                    // Aqui você poderia enviar para um webhook/API futuramente
+                                }
+                                
+                                // Trigger download
+                                const link = document.createElement('a');
+                                link.href = version.fileUrl;
+                                link.download = '';
+                                document.body.appendChild(link);
+                                link.click();
+                                document.body.removeChild(link);
+                            }}
+                            className="flex flex-col gap-4"
                         >
-                            Download Artifact
-                        </a>
+                            <input 
+                                type="email" 
+                                name="email"
+                                placeholder="Seu e-mail (opcional para download)"
+                                className="w-full bg-white/5 border border-white/10 px-4 py-3 text-white font-body text-xs focus:outline-none focus:border-[#7212ff] transition-colors"
+                            />
+                            <button
+                                type="submit"
+                                className="inline-block w-full text-center font-label uppercase tracking-[0.2em] text-[10px] bg-white text-[#1a1c1c] py-4 hover:bg-[#7212ff] hover:text-white transition-all duration-700"
+                            >
+                                Download Artifact
+                            </button>
+                        </form>
                     </div>
                 ))}
             </div>

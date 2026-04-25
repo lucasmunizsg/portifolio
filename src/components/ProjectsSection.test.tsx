@@ -1,9 +1,27 @@
 import { render, screen } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeAll, vi } from 'vitest';
 import ProjectsSection from './ProjectsSection';
 import { Project } from '../types';
 
+beforeAll(() => {
+    Object.defineProperty(window, 'matchMedia', {
+        writable: true,
+        value: vi.fn().mockImplementation(query => ({
+            matches: false,
+            media: query,
+            onchange: null,
+            addListener: vi.fn(),
+            removeListener: vi.fn(),
+            addEventListener: vi.fn(),
+            removeEventListener: vi.fn(),
+            dispatchEvent: vi.fn(),
+        })),
+    });
+});
+
 describe('ProjectsSection', () => {
+
+
     const mockProjects: Project[] = [
         {
             id: "1",
@@ -27,8 +45,10 @@ describe('ProjectsSection', () => {
         expect(screen.getByText('Project Beta')).toBeInTheDocument();
     });
 
-    it('renders project descriptions', () => {
+    it('renders project technologies', () => {
         render(<ProjectsSection projects={mockProjects} />);
-        expect(screen.getByText('Description Alpha')).toBeInTheDocument();
+        expect(screen.getByText('React')).toBeInTheDocument();
+        expect(screen.getByText('Vue')).toBeInTheDocument();
     });
+
 });

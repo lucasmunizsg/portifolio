@@ -13,8 +13,9 @@ html {
 
 @layer base {
   body {
-    @apply bg-[#131313] text-[#e2e2e2] font-body selection:bg-[#7212ff] selection:text-white antialiased overflow-x-hidden;
+    @apply bg-[#131313] text-[#e2e2e2] font-body leading-relaxed selection:bg-[#7212ff] selection:text-white antialiased overflow-x-hidden;
   }
+
 }
 
 @layer utilities {

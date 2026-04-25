@@ -34,6 +34,10 @@ const Hero: React.FC<HeroProps> = ({ profile }) => {
                         </span>
                     ))}
                 </h1>
+
+                <p className="mt-8 font-display text-xl md:text-3xl font-light tracking-tight text-[#e9ddff]/80">
+                    Desenvolvedor <span className="text-white">(/melhorador de ideias)</span> de Software <span className="text-white">(/ideias)</span>
+                </p>
             </div>
 
             {/* Technical Metadata Strip */}

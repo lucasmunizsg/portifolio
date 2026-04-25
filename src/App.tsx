@@ -9,7 +9,7 @@ import ResumeDownloads from './components/ResumeDownloads';
 import ContactSection from './components/ContactSection';
 import WelcomeGate from './components/WelcomeGate';
 
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 function App() {
     useEffect(() => {

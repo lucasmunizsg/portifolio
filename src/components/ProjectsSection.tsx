@@ -47,10 +47,10 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
                 <div className="flex flex-col gap-4">
                     <div className="flex items-center gap-4">
                         <span className="w-12 h-[1px] bg-[#7212ff]/50"></span>
-                        <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">Selected Works</span>
+                        <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">Trabalhos Selecionados</span>
                     </div>
                     <h2 className="font-display text-4xl md:text-6xl font-black text-white uppercase tracking-tighter">
-                        Featured <span className="text-outline">Projects</span>
+                        Projetos em <span className="text-outline">Destaque</span>
                     </h2>
                 </div>
 
@@ -59,7 +59,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
                         onClick={scrollPrev}
                         disabled={!prevBtnEnabled}
                         className={`w-12 h-12 rounded-full border border-white/10 flex items-center justify-center transition-all ${prevBtnEnabled ? 'hover:bg-[#7212ff] hover:border-[#7212ff] text-white' : 'opacity-20 text-zinc-500'}`}
-                        aria-label="Previous Project"
+                        aria-label="Projeto Anterior"
                     >
                         <span className="material-symbols-outlined">arrow_back</span>
                     </button>
@@ -67,7 +67,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
                         onClick={scrollNext}
                         disabled={!nextBtnEnabled}
                         className={`w-12 h-12 rounded-full border border-white/10 flex items-center justify-center transition-all ${nextBtnEnabled ? 'hover:bg-[#7212ff] hover:border-[#7212ff] text-white' : 'opacity-20 text-zinc-500'}`}
-                        aria-label="Next Project"
+                        aria-label="Próximo Projeto"
                     >
                         <span className="material-symbols-outlined">arrow_forward</span>
                     </button>
@@ -91,7 +91,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
                             {/* Project Info */}
                             <div className="absolute bottom-10 left-10 right-10 transform transition-transform duration-500 group-hover:-translate-y-2">
                                 <span className="font-label text-[10px] text-[#7212ff] uppercase tracking-[0.3em] mb-3 block font-bold">
-                                    Archive 0{index + 1}
+                                    Arquivo 0{index + 1}
                                 </span>
                                 <h3 className="font-display text-3xl font-black text-white tracking-tighter uppercase mb-6 leading-none">
                                     {project.title}
@@ -127,7 +127,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
                         key={index}
                         onClick={() => scrollTo(index)}
                         className={`h-1 rounded-full transition-all duration-500 ${index === selectedIndex ? 'w-12 bg-[#7212ff]' : 'w-4 bg-white/10 hover:bg-white/20'}`}
-                        aria-label={`Go to slide ${index + 1}`}
+                        aria-label={`Ir para o slide ${index + 1}`}
                     />
                 ))}
             </div>

@@ -9,12 +9,20 @@ import ResumeDownloads from './components/ResumeDownloads';
 import ContactSection from './components/ContactSection';
 import WelcomeGate from './components/WelcomeGate';
 
+import React, { useEffect } from 'react';
+
 function App() {
+    useEffect(() => {
+        const isEnglish = navigator.language.startsWith('en');
+        document.title = isEnglish ? 'Luke.Journey' : 'Journey';
+    }, []);
+
     return (
         <div className="min-h-screen bg-[#131313]">
             <WelcomeGate />
             
-            <Header profile={profileData} />
+            <Header />
+
 
             <main>
                 <Hero profile={profileData} />

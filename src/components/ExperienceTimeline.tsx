@@ -24,12 +24,11 @@ const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experiences }) 
             <div className="flex flex-col items-center text-center gap-8 mb-32">
                 <div className="flex items-center gap-4">
                     <span className="w-12 h-[1px] bg-[#7212ff]/50"></span>
-                    <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">History</span>
+                    <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">Histórico</span>
                     <span className="w-12 h-[1px] bg-[#7212ff]/50"></span>
                 </div>
                 <h2 className="font-display text-4xl md:text-8xl font-black text-white tracking-tighter uppercase leading-none">
-                    Professional <br />
-                    <span className="text-outline">Legacy</span>
+                    <span className="text-outline">Trajetória Profissional</span>
                 </h2>
             </div>
 
@@ -92,7 +91,7 @@ const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experiences }) 
                                             </div>
                                         </div>
                                         <span className="font-label text-[9px] text-zinc-600 uppercase tracking-widest">
-                                            {expandedId === exp.id ? 'Click to collapse' : 'Click to expand details'}
+                                            {expandedId === exp.id ? 'Clique para fechar' : 'Clique para ver detalhes'}
                                         </span>
                                     </div>
                                 </div>

@@ -21,7 +21,7 @@ const Hero: React.FC<HeroProps> = ({ profile }) => {
             <div className="relative z-10 flex flex-col gap-4">
                 <div className="flex items-center gap-4 mb-4">
                     <span className="w-12 h-[1px] bg-white/20"></span>
-                    <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">Available for 2024 Projects</span>
+                    <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">Disponível para Projetos 2024</span>
                 </div>
                 
                 <h1 className="font-display font-black text-[12vw] leading-[0.85] tracking-tighter flex flex-col items-start">
@@ -43,17 +43,17 @@ const Hero: React.FC<HeroProps> = ({ profile }) => {
             {/* Technical Metadata Strip */}
             <div className="relative z-10 mt-20 md:mt-40 grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 border-t border-white/10 pt-12">
                 <div className="flex flex-col gap-4">
-                    <h4 className="font-label uppercase tracking-[0.2em] text-xs text-zinc-500">About</h4>
+                    <h4 className="font-label uppercase tracking-[0.2em] text-xs text-zinc-500">Sobre</h4>
                     <p className="font-body text-sm font-light text-[#e2e2e2] leading-relaxed max-w-xs">
                         {profile.bio}
                     </p>
                 </div>
                 <div className="flex flex-col gap-4">
-                    <h4 className="font-label uppercase tracking-[0.2em] text-xs text-zinc-500">Location</h4>
-                    <p className="font-body text-sm font-light text-[#e2e2e2]">Based in Brazil / Global</p>
+                    <h4 className="font-label uppercase tracking-[0.2em] text-xs text-zinc-500">Localização</h4>
+                    <p className="font-body text-sm font-light text-[#e2e2e2]">Sediado no Brasil / Global</p>
                 </div>
                 <div className="flex flex-col gap-4 md:col-span-2">
-                    <h4 className="font-label uppercase tracking-[0.2em] text-xs text-zinc-500">Technologies</h4>
+                    <h4 className="font-label uppercase tracking-[0.2em] text-xs text-zinc-500">Tecnologias</h4>
                     <div className="flex flex-wrap gap-4 mt-2">
                         {['React', 'TypeScript', 'Tailwind CSS', 'Node.js'].map(tech => (
                             <span key={tech} className="px-3 py-1 bg-[#1b1b1b] text-[10px] uppercase tracking-widest text-zinc-400 border border-white/5">

@@ -11,10 +11,10 @@ const ResumeDownloads: React.FC<ResumeDownloadsProps> = ({ versions }) => {
             <div className="flex flex-col items-center text-center gap-8 mb-20">
                 <div className="flex items-center gap-4">
                     <span className="w-12 h-[1px] bg-white/20"></span>
-                    <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">Resources</span>
+                    <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">Recursos</span>
                 </div>
                 <h2 className="font-display text-4xl md:text-6xl font-black text-white tracking-tighter uppercase">
-                    Technical <span className="text-outline">Documentation</span>
+                    Documentação <span className="text-outline">Técnica</span>
                 </h2>
             </div>
 
@@ -70,7 +70,7 @@ const ResumeDownloads: React.FC<ResumeDownloadsProps> = ({ versions }) => {
                                 type="submit"
                                 className="inline-block w-full text-center font-label uppercase tracking-[0.2em] text-[10px] bg-white text-[#1a1c1c] py-4 hover:bg-[#7212ff] hover:text-white transition-all duration-700"
                             >
-                                Download Artifact
+                                Baixar Currículo
                             </button>
                         </form>
                     </div>

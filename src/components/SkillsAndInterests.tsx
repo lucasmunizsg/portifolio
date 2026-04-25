@@ -26,10 +26,10 @@ const SkillsAndInterests: React.FC<SkillsAndInterestsProps> = ({ skills }) => {
                     <div className="flex flex-col gap-4">
                         <div className="flex items-center gap-4">
                             <span className="w-12 h-[1px] bg-[#7212ff]/50"></span>
-                            <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">Expertise & Focus</span>
+                            <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">Especialidade & Foco</span>
                         </div>
                         <h2 className="font-display text-4xl md:text-6xl font-black text-white uppercase tracking-tighter">
-                            Stacks <span className="text-outline">& interests</span>
+                            Stacks <span className="text-outline">& Interesses</span>
                         </h2>
                     </div>
                     <p className="font-sans text-zinc-500 max-w-md text-sm md:text-base leading-relaxed">
@@ -79,7 +79,7 @@ const SkillsAndInterests: React.FC<SkillsAndInterestsProps> = ({ skills }) => {
             
             <div className="mt-40 text-center">
                 <h2 className="font-display text-4xl md:text-7xl font-black text-white tracking-tighter mb-12 max-w-5xl mx-auto leading-[0.95]">
-                    ENGINEERING <span className="text-outline">DIGITAL ATMOSPHERES</span> WITH PRECISION.
+                    ENGENHARIA DE <span className="text-outline">ATMOSFERAS DIGITAIS</span> COM PRECISÃO.
                 </h2>
             </div>
         </section>

@@ -24,8 +24,9 @@ if (typeof window !== 'undefined') {
   }
 }
 
-if (typeof global !== 'undefined') {
+if (typeof globalThis !== 'undefined') {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (global as any).matchMedia = mockMatchMedia;
+  (globalThis as any).matchMedia = mockMatchMedia;
 }
+
 

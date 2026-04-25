@@ -12,12 +12,11 @@ const EducationSection: React.FC<EducationSectionProps> = ({ studies }) => {
             <div className="flex flex-col items-center text-center gap-8 mb-32">
                 <div className="flex items-center gap-4">
                     <span className="w-12 h-[1px] bg-white/20"></span>
-                    <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">Education</span>
+                    <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">Formação</span>
                     <span className="w-12 h-[1px] bg-white/20"></span>
                 </div>
                 <h2 className="font-display text-4xl md:text-8xl font-black text-white tracking-tighter uppercase leading-none">
-                    Academic <br />
-                    <span className="text-outline">Path</span>
+                    Caminho <span className="text-outline">Acadêmico</span>
                 </h2>
             </div>
             

@@ -15,7 +15,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ profile, socials }) => 
             <div className="relative z-10 flex flex-col gap-24 w-full max-w-[1920px] mx-auto">
                 <div className="text-center">
                     <h2 className="font-display text-4xl md:text-8xl font-black text-white tracking-tighter mb-12 leading-none uppercase">
-                        Let's Design <span className="text-outline">Atmospheres</span>
+                        Vamos Desenhar <span className="text-outline">Atmosferas</span>
                     </h2>
                     <a 
                         href={`mailto:${profile.email}`}
@@ -31,7 +31,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ profile, socials }) => 
                     </div>
                     
                     <div className="text-[10px] font-body font-light tracking-[0.05em] uppercase text-zinc-600 order-3 md:order-2">
-                        © {new Date().getFullYear()} {profile.name.toUpperCase()}. ENGINEERED IN THE VOID.
+                        © {new Date().getFullYear()} {profile.name.toUpperCase()}. ENGENHARIA NO VAZIO.
                     </div>
                     
                     <div className="flex gap-8 order-2 md:order-3">

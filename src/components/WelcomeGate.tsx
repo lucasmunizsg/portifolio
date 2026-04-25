@@ -38,7 +38,7 @@ const WelcomeGate: React.FC = () => {
             {/* Scroll Indicator at bottom */}
             <div className="absolute bottom-12 left-12 flex items-center gap-4 opacity-30">
                 <span className="w-12 h-[1px] bg-white"></span>
-                <span className="font-label uppercase tracking-[0.2em] text-[8px] text-white">Scroll to explore</span>
+                <span className="font-label uppercase tracking-[0.2em] text-[8px] text-white">Role para explorar</span>
             </div>
         </section>
     );

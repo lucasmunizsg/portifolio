@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Profile } from '../types';
 
-interface HeaderProps {
-    profile: Profile;
-}
-
-const Header: React.FC<HeaderProps> = ({ profile }) => {
+const Header: React.FC = () => {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
@@ -25,7 +20,7 @@ const Header: React.FC<HeaderProps> = ({ profile }) => {
         <nav className={`fixed top-0 left-0 w-full z-50 bg-[#131313]/80 backdrop-blur-3xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all duration-700 ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
             <div className="flex justify-between items-center px-6 md:px-12 py-6 md:py-8 max-w-[1920px] mx-auto">
                 <div className="text-xl md:text-2xl font-black text-white tracking-tighter font-headline">
-                    {profile.name.toUpperCase()}
+                    JOURNEY
                 </div>
                 
                 <div className="hidden md:flex items-center gap-12">

@@ -25,7 +25,7 @@ const ResumeDownloads: React.FC<ResumeDownloadsProps> = ({ versions }) => {
                         className="group relative bg-[#131313] border border-white/5 p-8 md:p-12 hover:bg-[#1b1b1b] transition-all duration-700"
                     >
                         <div className="flex justify-between items-start mb-12">
-                            <span className="font-label text-[10px] text-[#e9ddff] uppercase tracking-[0.2em] border border-[#e9ddff]/20 px-3 py-1">
+                            <span className="font-label text-[10px] text-white uppercase tracking-[0.2em] border border-white/20 px-3 py-1">
                                 {version.language}
                             </span>
                             <span className="material-symbols-outlined text-white text-3xl opacity-20 group-hover:opacity-100 transition-opacity">
@@ -64,11 +64,11 @@ const ResumeDownloads: React.FC<ResumeDownloadsProps> = ({ versions }) => {
                                 type="email" 
                                 name="email"
                                 placeholder="Seu e-mail (opcional para download)"
-                                className="w-full bg-white/5 border border-white/10 px-4 py-3 text-white font-body text-xs focus:outline-none focus:border-[#7212ff] transition-colors"
+                                className="w-full bg-white/5 border border-white/10 px-4 py-3 text-white font-body text-xs focus:outline-none focus:neon-border transition-all"
                             />
                             <button
                                 type="submit"
-                                className="inline-block w-full text-center font-label uppercase tracking-[0.2em] text-[10px] bg-white text-[#1a1c1c] py-4 hover:bg-[#7212ff] hover:text-white transition-all duration-700"
+                                className="inline-block w-full text-center font-label uppercase tracking-[0.2em] text-[10px] bg-white text-[#1a1c1c] py-4 hover:bg-zinc-200 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-all duration-700"
                             >
                                 Baixar Currículo
                             </button>

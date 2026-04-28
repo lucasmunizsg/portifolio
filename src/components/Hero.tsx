@@ -1,58 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Profile } from '../types';
+import SplitFlap from './SplitFlap';
 
 interface HeroProps {
     profile: Profile;
 }
 
 const titles = [
-    "MELHORADOR DE IDEIAS",
-    "DESENVOLVEDOR DE IDEIAS",
-    "DESENVOLVEDOR DE SOFTWARE"
+    ["MELHORADOR DE", "IDEIAS"],
+    ["DESENVOLVEDOR DE", "IDEIAS"],
+    ["DESENVOLVEDOR DE", "SOFTWARE"]
 ];
 
 const Hero: React.FC<HeroProps> = ({ profile }) => {
-
-
     const [index, setIndex] = useState(0);
-    const [subIndex, setSubIndex] = useState(0);
-    const [reverse, setReverse] = useState(false);
 
-    // Typewriter effect logic
     useEffect(() => {
-        if (subIndex === titles[index].length + 1 && !reverse) {
-            setTimeout(() => setReverse(true), 2000);
-            return;
-        }
-
-        if (subIndex === 0 && reverse) {
-            setReverse(false);
+        const interval = setInterval(() => {
             setIndex((prev) => (prev + 1) % titles.length);
-            return;
-        }
+        }, 8000); 
 
-        const timeout = setTimeout(() => {
-            setSubIndex((prev) => prev + (reverse ? -1 : 1));
-        }, reverse ? 45 : 90);
+        return () => clearInterval(interval);
+    }, []);
 
-        return () => clearTimeout(timeout);
-    }, [subIndex, index, reverse]);
-
-    const currentText = titles[index].substring(0, subIndex);
-    const roleParts = currentText.includes('DE SOFTWARE') 
-        ? ['DESENVOLVEDOR', 'DE SOFTWARE'] 
-        : currentText.includes('DE IDEIAS')
-        ? [currentText.split(' ')[0], 'DE IDEIAS']
-        : currentText.split(' ');
-    
     return (
         <section id="work" className="relative min-h-screen overflow-hidden pt-32 md:pt-60 pb-32 px-6 md:px-12 max-w-[1920px] mx-auto">
             {/* Background Effects */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="grid-perspective absolute inset-0 h-full w-full opacity-30"></div>
                 <div className="prism-leak absolute top-[-10%] right-[-5%] w-[600px] h-[600px] opacity-40"></div>
-                <div className="prism-leak absolute bottom-[10%] left-[-10%] w-[800px] h-[800px] opacity-20" style={{ background: 'radial-gradient(circle, rgba(0, 242, 255, 0.1) 0%, transparent 70%)' }}></div>
+                <div className="prism-leak absolute bottom-[10%] left-[-10%] w-[800px] h-[800px] opacity-20" style={{ background: 'radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%)' }}></div>
             </div>
 
             <div className="relative z-10 flex flex-col gap-4">
@@ -73,29 +51,9 @@ const Hero: React.FC<HeroProps> = ({ profile }) => {
                     </motion.span>
                 </div>
                 
-                <h1 className="font-display font-black text-[13vw] md:text-[9vw] leading-[0.85] tracking-tighter flex flex-col items-start min-h-[25vw]">
-                    {roleParts.map((part, pIndex) => (
-                        <motion.span 
-                            key={`${index}-${pIndex}`}
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className={`${pIndex % 2 === 1 ? 'text-outline hover:text-white transition-all duration-1000 cursor-default' : 'text-white hero-glow'} uppercase`}
-                        >
-                            {part}
-                            {pIndex === roleParts.length - 1 && (
-                                <motion.span 
-                                    animate={{ opacity: [1, 0] }}
-                                    transition={{ duration: 0.8, repeat: Infinity }}
-                                    className="inline-block w-[0.5vw] h-[11vw] md:h-[8vw] bg-white ml-2 align-middle"
-                                />
-                            )}
-                        </motion.span>
-                    ))}
-                </h1>
-
-
-
-
+                <div className="mt-8">
+                    <SplitFlap lines={titles[index]} />
+                </div>
             </div>
 
             {/* Technical Metadata Strip */}

@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Project } from '../types';
 import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 
 interface ProjectsSectionProps {
     projects: Project[];
@@ -9,13 +10,14 @@ interface ProjectsSectionProps {
 const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
     const [emblaRef, emblaApi] = useEmblaCarousel({ 
         align: 'start',
+        loop: true, // Loop infinito para uma experiência mais fluida
         slidesToScroll: 1,
-        duration: 40, // Mais lento e fluido
+        duration: 40,
         breakpoints: {
             '(min-width: 768px)': { slidesToScroll: 2 },
             '(min-width: 1280px)': { slidesToScroll: 3 }
         }
-    });
+    }, [Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true })]);
 
     const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
     const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
@@ -46,7 +48,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
             <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
                 <div className="flex flex-col gap-4">
                     <div className="flex items-center gap-4">
-                        <span className="w-12 h-[1px] bg-[#7212ff]/50"></span>
+                        <span className="w-12 h-[1px] bg-white/30"></span>
                         <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">Trabalhos Selecionados</span>
                     </div>
                     <h2 className="font-display text-4xl md:text-6xl font-black text-white uppercase tracking-tighter">
@@ -58,7 +60,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
                     <button 
                         onClick={scrollPrev}
                         disabled={!prevBtnEnabled}
-                        className={`w-12 h-12 rounded-full border border-white/10 flex items-center justify-center transition-all ${prevBtnEnabled ? 'hover:bg-[#7212ff] hover:border-[#7212ff] text-white' : 'opacity-20 text-zinc-500'}`}
+                        className={`w-12 h-12 rounded-full border border-white/10 flex items-center justify-center transition-all ${prevBtnEnabled ? 'hover:bg-white hover:border-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]' : 'opacity-20 text-zinc-500'}`}
                         aria-label="Projeto Anterior"
                     >
                         <span className="material-symbols-outlined">arrow_back</span>
@@ -66,7 +68,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
                     <button 
                         onClick={scrollNext}
                         disabled={!nextBtnEnabled}
-                        className={`w-12 h-12 rounded-full border border-white/10 flex items-center justify-center transition-all ${nextBtnEnabled ? 'hover:bg-[#7212ff] hover:border-[#7212ff] text-white' : 'opacity-20 text-zinc-500'}`}
+                        className={`w-12 h-12 rounded-full border border-white/10 flex items-center justify-center transition-all ${nextBtnEnabled ? 'hover:bg-white hover:border-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]' : 'opacity-20 text-zinc-500'}`}
                         aria-label="Próximo Projeto"
                     >
                         <span className="material-symbols-outlined">arrow_forward</span>
@@ -90,7 +92,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
                             
                             {/* Project Info */}
                             <div className="absolute bottom-10 left-10 right-10 transform transition-transform duration-500 group-hover:-translate-y-2">
-                                <span className="font-label text-[10px] text-[#7212ff] uppercase tracking-[0.3em] mb-3 block font-bold">
+                                <span className="font-label text-[10px] neon-text uppercase tracking-[0.3em] mb-3 block font-bold">
                                     Arquivo 0{index + 1}
                                 </span>
                                 <h3 className="font-display text-3xl font-black text-white tracking-tighter uppercase mb-6 leading-none">
@@ -111,7 +113,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
                                 href={project.repoUrl} 
                                 target="_blank" 
                                 rel="noopener noreferrer"
-                                className="absolute top-10 right-10 w-12 h-12 rounded-full bg-white/10 backdrop-blur-xl border border-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 hover:bg-[#7212ff] hover:border-[#7212ff] hover:rotate-45"
+                                className="absolute top-10 right-10 w-12 h-12 rounded-full bg-white/10 backdrop-blur-xl border border-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 hover:neon-border hover:rotate-45"
                             >
                                 <span className="material-symbols-outlined text-white text-xl">arrow_outward</span>
                             </a>
@@ -126,7 +128,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
                     <button
                         key={index}
                         onClick={() => scrollTo(index)}
-                        className={`h-1 rounded-full transition-all duration-500 ${index === selectedIndex ? 'w-12 bg-[#7212ff]' : 'w-4 bg-white/10 hover:bg-white/20'}`}
+                        className={`h-1 rounded-full transition-all duration-500 ${index === selectedIndex ? 'w-12 bg-white shadow-[0_0_10px_rgba(255,255,255,0.4)]' : 'w-4 bg-white/10 hover:bg-white/20'}`}
                         aria-label={`Ir para o slide ${index + 1}`}
                     />
                 ))}

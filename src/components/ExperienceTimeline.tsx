@@ -23,9 +23,9 @@ const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experiences }) 
         <section id="xp" className="py-24 md:py-40 px-6 md:px-12 bg-[#0e0e0e] overflow-hidden relative">
             <div className="flex flex-col items-center text-center gap-8 mb-32">
                 <div className="flex items-center gap-4">
-                    <span className="w-12 h-[1px] bg-[#7212ff]/50"></span>
+                    <span className="w-12 h-[1px] bg-white/30"></span>
                     <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">Histórico</span>
-                    <span className="w-12 h-[1px] bg-[#7212ff]/50"></span>
+                    <span className="w-12 h-[1px] bg-white/30"></span>
                 </div>
                 <h2 className="font-display text-4xl md:text-8xl font-black text-white tracking-tighter uppercase leading-none">
                     <span className="text-outline">Trajetória Profissional</span>
@@ -34,7 +34,7 @@ const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experiences }) 
 
             <div className="relative max-w-5xl mx-auto">
                 {/* Timeline Line with Glow */}
-                <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-[#7212ff]/30 to-transparent transform md:-translate-x-1/2"></div>
+                <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-white/30 to-transparent transform md:-translate-x-1/2"></div>
 
                 <div className="flex flex-col gap-24 relative">
                     {sortedExperiences.map((exp, index) => (
@@ -43,22 +43,22 @@ const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experiences }) 
                             className={`group relative flex flex-col w-full ${index % 2 === 0 ? 'md:items-start' : 'md:items-end'}`}
                         >
                             {/* Dot on Timeline */}
-                            <div className="absolute left-[-6px] md:left-1/2 top-0 w-3 h-3 bg-[#7212ff] rounded-full transform md:-translate-x-1/2 border-4 border-[#0e0e0e] group-hover:scale-150 transition-transform duration-500 z-30 shadow-[0_0_15px_rgba(114,18,255,0.5)]"></div>
+                             <div className="absolute left-[-6px] md:left-1/2 top-0 w-3 h-3 bg-white rounded-full transform md:-translate-x-1/2 border-4 border-[#0e0e0e] group-hover:scale-150 transition-transform duration-500 z-30 shadow-[0_0_15px_rgba(255,255,255,0.4)]"></div>
 
                             <div 
                                 onClick={() => toggleExpand(exp.id)}
-                                className={`w-full md:w-[46%] cursor-pointer p-10 bg-[#131313] border border-white/5 hover:border-[#7212ff]/30 transition-all duration-700 relative overflow-hidden
+                                 className={`w-full md:w-[46%] cursor-pointer p-10 bg-[#131313] border border-white/5 hover:neon-border transition-all duration-700 relative overflow-hidden
                                     ${index % 2 === 0 ? 'md:text-left' : 'md:text-left'}`}
                             >
                                 {/* Decorative Index */}
-                                <span className="absolute -top-4 -right-4 font-display text-6xl font-black text-white/[0.02] pointer-events-none group-hover:text-[#7212ff]/[0.05] transition-colors">
+                                 <span className="absolute -top-4 -right-4 font-display text-6xl font-black text-white/[0.02] pointer-events-none group-hover:text-white/[0.05] transition-colors">
                                     0{sortedExperiences.length - index}
                                 </span>
 
                                 <div className="flex flex-col gap-6 relative z-10">
                                     <div className="flex flex-col gap-2">
                                         <div className="flex items-center gap-3">
-                                            <span className="font-label text-[10px] text-[#7212ff] uppercase tracking-[0.2em] font-bold">
+                                             <span className="font-label text-[10px] neon-text uppercase tracking-[0.2em] font-bold">
                                                 {exp.startDate} — {exp.endDate}
                                             </span>
                                         </div>
@@ -75,7 +75,7 @@ const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experiences }) 
                                         <ul className="flex flex-col gap-4">
                                             {exp.description.split('. ').filter(t => t.trim()).map((task, i) => (
                                                 <li key={i} className="flex items-start gap-4 group/item">
-                                                    <span className="w-1.5 h-[1px] bg-[#7212ff] mt-2.5 flex-shrink-0 group-hover/item:w-4 transition-all duration-300"></span>
+                                                     <span className="w-1.5 h-[1px] bg-white shadow-[0_0_5px_rgba(255,255,255,0.4)] mt-2.5 flex-shrink-0 group-hover/item:w-4 transition-all duration-300"></span>
                                                     <p className="font-sans text-zinc-400 text-sm md:text-base font-light leading-relaxed">
                                                         {task.endsWith('.') ? task : `${task}.`}
                                                     </p>
@@ -86,9 +86,9 @@ const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experiences }) 
 
                                     <div className="pt-8 flex items-center gap-4 border-t border-white/5 mt-4">
                                         <div className="flex -space-x-2">
-                                            <div className="w-6 h-6 rounded-full bg-[#7212ff]/20 border border-[#7212ff]/30 flex items-center justify-center">
-                                                <span className="material-symbols-outlined text-[10px] text-[#7212ff]">verified</span>
-                                            </div>
+                                             <div className="w-6 h-6 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
+                                                 <span className="material-symbols-outlined text-[10px] text-white">verified</span>
+                                             </div>
                                         </div>
                                         <span className="font-label text-[9px] text-zinc-600 uppercase tracking-widest">
                                             {expandedId === exp.id ? 'Clique para fechar' : 'Clique para ver detalhes'}
@@ -97,7 +97,7 @@ const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experiences }) 
                                 </div>
 
                                 {/* Hover Border Accent */}
-                                <div className="absolute left-0 top-0 w-[2px] h-0 bg-[#7212ff] group-hover:h-full transition-all duration-700"></div>
+                                 <div className="absolute left-0 top-0 w-[2px] h-0 bg-white shadow-[0_0_10px_rgba(255,255,255,0.4)] group-hover:h-full transition-all duration-700"></div>
                             </div>
                         </div>
                     ))}

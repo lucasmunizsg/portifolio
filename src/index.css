@@ -5,6 +5,10 @@
   --font-display: "Space Grotesk", sans-serif;
   --font-body: "Inter", sans-serif;
   --font-label: "Space Grotesk", sans-serif;
+  
+  --color-accent: #ffffff;
+  --color-accent-glow: rgba(255, 255, 255, 0.3);
+  --color-accent-muted: rgba(255, 255, 255, 0.1);
 }
 
 html {
@@ -13,9 +17,8 @@ html {
 
 @layer base {
   body {
-    @apply bg-[#131313] text-[#e2e2e2] font-body leading-relaxed selection:bg-[#7212ff] selection:text-white antialiased overflow-x-hidden;
+    @apply bg-[#131313] text-[#e2e2e2] font-body leading-relaxed selection:bg-white selection:text-black antialiased overflow-x-hidden;
   }
-
 }
 
 @layer utilities {
@@ -25,7 +28,7 @@ html {
   }
 
   .prism-leak {
-    background: radial-gradient(circle at 50% 50%, rgba(114, 18, 255, 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
     filter: blur(80px);
   }
 
@@ -40,5 +43,15 @@ html {
 
   .hero-glow {
     text-shadow: 0 0 30px rgba(255,255,255,0.2);
+  }
+
+  .neon-border {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 10px var(--color-accent-glow);
+  }
+
+  .neon-text {
+    color: var(--color-accent);
+    text-shadow: 0 0 8px var(--color-accent-glow);
   }
 }

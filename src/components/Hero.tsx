@@ -1,13 +1,50 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Profile } from '../types';
 
 interface HeroProps {
     profile: Profile;
 }
 
+const titles = [
+    "MELHORADOR DE IDEIAS",
+    "DESENVOLVEDOR DE IDEIAS",
+    "DESENVOLVEDOR DE SOFTWARE"
+];
+
 const Hero: React.FC<HeroProps> = ({ profile }) => {
-    // Split the role into parts for the cinematic layout
-    const roleParts = profile.role.toUpperCase().split(' ');
+
+
+    const [index, setIndex] = useState(0);
+    const [subIndex, setSubIndex] = useState(0);
+    const [reverse, setReverse] = useState(false);
+
+    // Typewriter effect logic
+    useEffect(() => {
+        if (subIndex === titles[index].length + 1 && !reverse) {
+            setTimeout(() => setReverse(true), 2000);
+            return;
+        }
+
+        if (subIndex === 0 && reverse) {
+            setReverse(false);
+            setIndex((prev) => (prev + 1) % titles.length);
+            return;
+        }
+
+        const timeout = setTimeout(() => {
+            setSubIndex((prev) => prev + (reverse ? -1 : 1));
+        }, reverse ? 45 : 90);
+
+        return () => clearTimeout(timeout);
+    }, [subIndex, index, reverse]);
+
+    const currentText = titles[index].substring(0, subIndex);
+    const roleParts = currentText.includes('DE SOFTWARE') 
+        ? ['DESENVOLVEDOR', 'DE SOFTWARE'] 
+        : currentText.includes('DE IDEIAS')
+        ? [currentText.split(' ')[0], 'DE IDEIAS']
+        : currentText.split(' ');
     
     return (
         <section id="work" className="relative min-h-screen overflow-hidden pt-32 md:pt-60 pb-32 px-6 md:px-12 max-w-[1920px] mx-auto">
@@ -20,24 +57,45 @@ const Hero: React.FC<HeroProps> = ({ profile }) => {
 
             <div className="relative z-10 flex flex-col gap-4">
                 <div className="flex items-center gap-4 mb-4">
-                    <span className="w-12 h-[1px] bg-white/20"></span>
-                    <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">Disponível para Projetos 2024</span>
+                    <motion.span 
+                        initial={{ width: 0 }}
+                        whileInView={{ width: 48 }}
+                        transition={{ duration: 1, ease: "easeOut" }}
+                        className="h-[1px] bg-white/20"
+                    ></motion.span>
+                    <motion.span 
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 1, delay: 0.5 }}
+                        className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500"
+                    >
+                        Disponível para Projetos 2024
+                    </motion.span>
                 </div>
                 
-                <h1 className="font-display font-black text-[12vw] leading-[0.85] tracking-tighter flex flex-col items-start">
-                    {roleParts.map((part, index) => (
-                        <span 
-                            key={index} 
-                            className={`${index % 2 === 1 ? 'text-outline hover:text-white transition-all duration-1000 cursor-default' : 'text-white hero-glow'}`}
+                <h1 className="font-display font-black text-[13vw] md:text-[9vw] leading-[0.85] tracking-tighter flex flex-col items-start min-h-[25vw]">
+                    {roleParts.map((part, pIndex) => (
+                        <motion.span 
+                            key={`${index}-${pIndex}`}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className={`${pIndex % 2 === 1 ? 'text-outline hover:text-white transition-all duration-1000 cursor-default' : 'text-white hero-glow'} uppercase`}
                         >
                             {part}
-                        </span>
+                            {pIndex === roleParts.length - 1 && (
+                                <motion.span 
+                                    animate={{ opacity: [1, 0] }}
+                                    transition={{ duration: 0.8, repeat: Infinity }}
+                                    className="inline-block w-[0.5vw] h-[11vw] md:h-[8vw] bg-white ml-2 align-middle"
+                                />
+                            )}
+                        </motion.span>
                     ))}
                 </h1>
 
-                <p className="mt-8 font-display text-xl md:text-3xl font-light tracking-tight text-[#e9ddff]/80">
-                    Desenvolvedor <span className="text-white">(/melhorador de ideias)</span> de Software <span className="text-white">(/ideias)</span>
-                </p>
+
+
+
             </div>
 
             {/* Technical Metadata Strip */}

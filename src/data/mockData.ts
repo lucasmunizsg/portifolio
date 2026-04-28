@@ -2,7 +2,8 @@ import { Profile, Project, Experience, Education, Skill, ResumeVersion, SocialLi
 
 export const profileData: Profile = {
     name: "Lucas Muniz",
-    role: "Desenvolvedor Front-End",
+    role: "Desenvolvedor de Software",
+
     bio: "Desenvolvedor Front-End e analista de tecnologia sediado em Alagoas. Combino pensamento analítico e visão de negócio para criar soluções modernas integradas com Inteligência Artificial, unindo React, Angular e Python para resolver problemas complexos e gerar valor real.",
     email: "lucas@example.com"
 };

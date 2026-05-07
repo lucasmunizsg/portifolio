@@ -1,28 +1,48 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Profile } from '../types';
-import SplitFlap from './SplitFlap';
 
 interface HeroProps {
     profile: Profile;
 }
 
 const titles = [
-    ["MELHORADOR DE", "IDEIAS"],
-    ["DESENVOLVEDOR DE", "IDEIAS"],
-    ["DESENVOLVEDOR DE", "SOFTWARE"]
+    "MELHORADOR DE IDEIAS",
+    "DESENVOLVEDOR DE IDEIAS",
+    "DESENVOLVEDOR DE SOFTWARE"
 ];
 
 const Hero: React.FC<HeroProps> = ({ profile }) => {
     const [index, setIndex] = useState(0);
+    const [subIndex, setSubIndex] = useState(0);
+    const [reverse, setReverse] = useState(false);
 
+    // Typewriter effect logic
     useEffect(() => {
-        const interval = setInterval(() => {
-            setIndex((prev) => (prev + 1) % titles.length);
-        }, 8000); 
+        if (subIndex === titles[index].length + 1 && !reverse) {
+            setTimeout(() => setReverse(true), 2000);
+            return;
+        }
 
-        return () => clearInterval(interval);
-    }, []);
+        if (subIndex === 0 && reverse) {
+            setReverse(false);
+            setIndex((prev) => (prev + 1) % titles.length);
+            return;
+        }
+
+        const timeout = setTimeout(() => {
+            setSubIndex((prev) => prev + (reverse ? -1 : 1));
+        }, reverse ? 45 : 90);
+
+        return () => clearTimeout(timeout);
+    }, [subIndex, index, reverse]);
+
+    const currentText = titles[index].substring(0, subIndex);
+    const roleParts = currentText.includes('DE SOFTWARE') 
+        ? ['DESENVOLVEDOR', 'DE SOFTWARE'] 
+        : currentText.includes('DE IDEIAS')
+        ? [currentText.split(' ')[0], 'DE IDEIAS']
+        : currentText.split(' ');
 
     return (
         <section id="work" className="relative min-h-screen overflow-hidden pt-32 md:pt-60 pb-32 px-6 md:px-12 max-w-[1920px] mx-auto">
@@ -47,13 +67,29 @@ const Hero: React.FC<HeroProps> = ({ profile }) => {
                         transition={{ duration: 1, delay: 0.5 }}
                         className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500"
                     >
-                        Disponível para Projetos 2024
+                        Disponível para Projetos
                     </motion.span>
                 </div>
                 
-                <div className="mt-8">
-                    <SplitFlap lines={titles[index]} />
-                </div>
+                <h1 className="font-display font-black text-[13vw] md:text-[9vw] leading-[0.85] tracking-tighter flex flex-col items-start min-h-[25vw]">
+                    {roleParts.map((part, pIndex) => (
+                        <motion.span 
+                            key={`${index}-${pIndex}`}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className={`${pIndex % 2 === 1 ? 'text-outline hover:text-white transition-all duration-1000 cursor-default' : 'text-white hero-glow'} uppercase`}
+                        >
+                            {part}
+                            {pIndex === roleParts.length - 1 && (
+                                <motion.span 
+                                    animate={{ opacity: [1, 0] }}
+                                    transition={{ duration: 0.8, repeat: Infinity }}
+                                    className="inline-block w-[0.5vw] h-[11vw] md:h-[8vw] bg-white ml-2 align-middle"
+                                />
+                            )}
+                        </motion.span>
+                    ))}
+                </h1>
             </div>
 
             {/* Technical Metadata Strip */}

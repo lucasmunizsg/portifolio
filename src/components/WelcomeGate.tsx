@@ -24,21 +24,13 @@ const WelcomeGate: React.FC = () => {
                     VAMOS INICIAR <br />
                     <span className="text-outline">A JORNADA</span>
                 </h1>
-                
-                <div className="flex flex-col items-center gap-4 animate-pulse">
-                    <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">
-                        Aperte em qualquer lugar para iniciar
-                    </span>
-                    <span className="material-symbols-outlined text-white text-2xl">
-                        expand_more
-                    </span>
-                </div>
             </div>
 
-            {/* Scroll Indicator at bottom */}
-            <div className="absolute bottom-12 left-12 flex items-center gap-4 opacity-30">
-                <span className="w-12 h-[1px] bg-white"></span>
-                <span className="font-label uppercase tracking-[0.2em] text-[8px] text-white">Role para explorar</span>
+            {/* Discrete scroll indicator arrow at the bottom border */}
+            <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center opacity-40 animate-bounce">
+                <span className="material-symbols-outlined text-white text-3xl">
+                    expand_more
+                </span>
             </div>
         </section>
     );

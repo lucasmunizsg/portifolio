@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Project } from '../types';
 
-const wordVariantsRedSingleBlink = {
+const wordVariantsRedSingleBlink: Variants = {
     hidden: { 
         opacity: 0,
         textShadow: "0 0 0px rgba(239,68,68,0)"
@@ -24,7 +24,7 @@ const wordVariantsRedSingleBlink = {
             duration: 0.6,
             delay: index * 0.35, // Sequência de acendimento
             times: [0, 0.3, 0.6, 1],
-            ease: "easeInOut",
+            ease: "easeInOut" as const,
         }
     })
 };

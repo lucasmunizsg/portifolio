@@ -1,9 +1,9 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Education } from '../types';
 import EducationTimeline from './EducationTimeline';
 
-const wordVariantsCyanSingleBlink = {
+const wordVariantsCyanSingleBlink: Variants = {
     hidden: { 
         opacity: 0,
         textShadow: "0 0 0px rgba(34,211,238,0)"
@@ -25,7 +25,7 @@ const wordVariantsCyanSingleBlink = {
             duration: 0.6,
             delay: index * 0.35, // Sequência de acendimento
             times: [0, 0.3, 0.6, 1],
-            ease: "easeInOut",
+            ease: "easeInOut" as const,
         }
     })
 };

@@ -1,7 +1,7 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
-const wordVariants = {
+const wordVariants: Variants = {
     hidden: { 
         opacity: 0,
         textShadow: "0 0 0px rgba(255,255,255,0)"
@@ -27,7 +27,7 @@ const wordVariants = {
             duration: 0.8,
             delay: index * 0.35, // Sequência de acendimento (stagger)
             times: [0, 0.2, 0.4, 0.6, 0.8, 1],
-            ease: "easeInOut",
+            ease: "easeInOut" as const,
         }
     })
 };

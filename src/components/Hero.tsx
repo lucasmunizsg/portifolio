@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Profile } from '../types';
 
 interface HeroProps {
@@ -7,45 +7,46 @@ interface HeroProps {
 }
 
 const titles = [
-    "MELHORADOR DE IDEIAS",
-    "DESENVOLVEDOR DE IDEIAS",
-    "DESENVOLVEDOR DE SOFTWARE"
+    ["DESENVOLVEDOR", "DE SOFTWARE"],
+    ["MELHORADOR", "DE SOFTWARE"],
+    ["MELHORADOR", "DE IDEIAS"],
+    ["DESENVOLVEDOR", "DE IDEIAS"]
 ];
 
 const Hero: React.FC<HeroProps> = ({ profile }) => {
     const [index, setIndex] = useState(0);
-    const [subIndex, setSubIndex] = useState(0);
-    const [reverse, setReverse] = useState(false);
+    const lastScrollTime = React.useRef(0);
+    const containerRef = React.useRef<HTMLDivElement>(null);
 
-    // Typewriter effect logic
     useEffect(() => {
-        if (subIndex === titles[index].length + 1 && !reverse) {
-            setTimeout(() => setReverse(true), 2000);
-            return;
-        }
+        const container = containerRef.current;
+        if (!container) return;
 
-        if (subIndex === 0 && reverse) {
-            setReverse(false);
-            setIndex((prev) => (prev + 1) % titles.length);
-            return;
-        }
+        const handleWheel = (e: WheelEvent) => {
+            // Previne a rolagem padrão da página enquanto o mouse está sob o contêiner de textos
+            e.preventDefault();
+            const now = Date.now();
+            if (now - lastScrollTime.current < 500) return; // Cooldown de 500ms
 
-        const timeout = setTimeout(() => {
-            setSubIndex((prev) => prev + (reverse ? -1 : 1));
-        }, reverse ? 45 : 90);
+            if (e.deltaY > 0) {
+                // Scroll para baixo -> próximo título
+                setIndex((prev) => (prev + 1) % titles.length);
+                lastScrollTime.current = now;
+            } else if (e.deltaY < 0) {
+                // Scroll para cima -> título anterior
+                setIndex((prev) => (prev - 1 + titles.length) % titles.length);
+                lastScrollTime.current = now;
+            }
+        };
 
-        return () => clearTimeout(timeout);
-    }, [subIndex, index, reverse]);
-
-    const currentText = titles[index].substring(0, subIndex);
-    const roleParts = currentText.includes('DE SOFTWARE') 
-        ? ['DESENVOLVEDOR', 'DE SOFTWARE'] 
-        : currentText.includes('DE IDEIAS')
-        ? [currentText.split(' ')[0], 'DE IDEIAS']
-        : currentText.split(' ');
+        container.addEventListener('wheel', handleWheel, { passive: false });
+        return () => {
+            container.removeEventListener('wheel', handleWheel);
+        };
+    }, []);
 
     return (
-        <section id="work" className="relative min-h-screen overflow-hidden pt-32 md:pt-60 pb-32 px-6 md:px-12 max-w-[1920px] mx-auto">
+        <section id="hero" className="relative min-h-screen overflow-hidden pt-32 md:pt-60 pb-32 px-6 md:px-12 max-w-[1920px] mx-auto">
             {/* Background Effects */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="grid-perspective absolute inset-0 h-full w-full opacity-30"></div>
@@ -53,15 +54,15 @@ const Hero: React.FC<HeroProps> = ({ profile }) => {
                 <div className="prism-leak absolute bottom-[10%] left-[-10%] w-[800px] h-[800px] opacity-20" style={{ background: 'radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%)' }}></div>
             </div>
 
-            <div className="relative z-10 flex flex-col gap-4">
-                <div className="flex items-center gap-4 mb-4">
-                    <motion.span 
+            <div className="relative z-10 flex flex-col gap-4 w-full">
+                <div className="flex items-center gap-4 mb-4 justify-start">
+                    <motion.span
                         initial={{ width: 0 }}
                         whileInView={{ width: 48 }}
                         transition={{ duration: 1, ease: "easeOut" }}
                         className="h-[1px] bg-white/20"
                     ></motion.span>
-                    <motion.span 
+                    <motion.span
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 1, delay: 0.5 }}
@@ -70,26 +71,58 @@ const Hero: React.FC<HeroProps> = ({ profile }) => {
                         Disponível para Projetos
                     </motion.span>
                 </div>
-                
-                <h1 className="font-display font-black text-[13vw] md:text-[9vw] leading-[0.85] tracking-tighter flex flex-col items-start min-h-[25vw]">
-                    {roleParts.map((part, pIndex) => (
-                        <motion.span 
-                            key={`${index}-${pIndex}`}
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className={`${pIndex % 2 === 1 ? 'text-outline hover:text-white transition-all duration-1000 cursor-default' : 'text-white hero-glow'} uppercase`}
+
+                <div
+                    ref={containerRef}
+                    onClick={() => setIndex((prev) => (prev + 1) % titles.length)}
+                    className="relative min-h-[22vw] md:min-h-[17vw] overflow-hidden mt-4 w-full flex flex-col items-center justify-center cursor-pointer md:cursor-ns-resize"
+                >
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={index}
+                            initial={{ y: "40%", opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            exit={{ y: "-40%", opacity: 0 }}
+                            transition={{
+                                type: "spring",
+                                stiffness: 180,
+                                damping: 22,
+                            }}
+                            className="flex flex-col items-center text-center w-full"
                         >
-                            {part}
-                            {pIndex === roleParts.length - 1 && (
-                                <motion.span 
-                                    animate={{ opacity: [1, 0] }}
-                                    transition={{ duration: 0.8, repeat: Infinity }}
-                                    className="inline-block w-[0.5vw] h-[11vw] md:h-[8vw] bg-white ml-2 align-middle"
-                                />
-                            )}
-                        </motion.span>
-                    ))}
-                </h1>
+                            {titles[index].map((line, lineIndex) => (
+                                <span
+                                    key={lineIndex}
+                                    className={`font-display font-black text-[8vw] leading-[0.95] tracking-tighter uppercase ${lineIndex === 1
+                                            ? 'text-outline hover:text-white transition-all duration-1000 cursor-default'
+                                            : 'text-white hero-glow'
+                                        }`}
+                                >
+                                    {line}
+                                </span>
+                            ))}
+                        </motion.div>
+                    </AnimatePresence>
+                </div>
+
+                {/* Subtle progress indicator */}
+                <div className="flex flex-col items-center gap-4 mt-6">
+                    {/* Navigation Dots */}
+                    <div className="flex gap-2 justify-center">
+                        {titles.map((_, i) => (
+                            <button
+                                key={i}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setIndex(i);
+                                }}
+                                className={`h-[2px] transition-all duration-500 rounded-full ${i === index ? 'w-8 bg-white' : 'w-2 bg-white/20 hover:bg-white/40'
+                                    }`}
+                                aria-label={`Ir para slide ${i + 1}`}
+                            />
+                        ))}
+                    </div>
+                </div>
             </div>
 
             {/* Technical Metadata Strip */}

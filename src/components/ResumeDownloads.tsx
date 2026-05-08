@@ -1,6 +1,33 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { ResumeVersion } from '../types';
 
+const wordVariantsSingleBlink = {
+    hidden: { 
+        opacity: 0,
+        textShadow: "0 0 0px rgba(255,255,255,0)"
+    },
+    visible: (index: number) => ({
+        opacity: [
+            0,     // Começa apagado
+            0.9,   // Pisca 1 (Acende)
+            0.15,  // Pisca 1 (Apaga)
+            1,     // Estabiliza totalmente aceso
+        ],
+        textShadow: [
+            "0 0 0px rgba(255,255,255,0)",
+            "0 0 15px rgba(255,255,255,0.6)",
+            "0 0 2px rgba(255,255,255,0.1)",
+            "0 0 12px rgba(255,255,255,0.4)"
+        ],
+        transition: {
+            duration: 0.6,
+            delay: index * 0.35, // Sequência de acendimento
+            times: [0, 0.3, 0.6, 1],
+            ease: "easeInOut",
+        }
+    })
+};
 interface ResumeDownloadsProps {
     versions: ResumeVersion[];
 }
@@ -12,10 +39,32 @@ const ResumeDownloads: React.FC<ResumeDownloadsProps> = ({ versions }) => {
                 <div className="flex items-center gap-4">
                     <span className="w-12 h-[1px] bg-white/20"></span>
                     <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">Recursos</span>
+                    <span className="w-12 h-[1px] bg-white/20"></span>
                 </div>
-                <h2 className="font-display text-4xl md:text-6xl font-black text-white tracking-tighter uppercase">
-                    Documentação <span className="text-outline">Técnica</span>
-                </h2>
+                {/* 
+                  Implementação do efeito de acendimento neon único (single blink).
+                  O texto é desmembrado em palavras para que a animação (delay staggered) 
+                  acenda cada palavra de forma isolada e sequencial quando entrar em foco.
+                */}
+                <motion.h2 
+                    className="font-display text-4xl md:text-6xl font-black uppercase tracking-tighter flex flex-wrap justify-center gap-[0.3em]"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-10%" }}
+                >
+                    {['DOCUMENTAÇÃO', 'TÉCNICA'].map((word, i) => (
+                        <div key={i} className="relative inline-block">
+                            <span className="text-outline opacity-20">{word}</span>
+                            <motion.span
+                                variants={wordVariantsSingleBlink}
+                                custom={i}
+                                className="absolute inset-0 text-white pointer-events-none"
+                            >
+                                {word}
+                            </motion.span>
+                        </div>
+                    ))}
+                </motion.h2>
             </div>
 
             <div className="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto">

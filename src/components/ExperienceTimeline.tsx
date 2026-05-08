@@ -3,6 +3,34 @@ import { motion, useInView } from 'framer-motion';
 import { Experience } from '../types';
 import BeamLine from './BeamLine';
 
+const wordVariantsCyanSingleBlink = {
+    hidden: { 
+        opacity: 0,
+        textShadow: "0 0 0px rgba(34,211,238,0)"
+    },
+    visible: (index: number) => ({
+        opacity: [
+            0,     // Começa apagado
+            0.9,   // Pisca 1 (Acende)
+            0.15,  // Pisca 1 (Apaga)
+            1,     // Estabiliza totalmente aceso
+        ],
+        textShadow: [
+            "0 0 0px rgba(34,211,238,0)",
+            "0 0 15px rgba(34,211,238,0.6)",
+            "0 0 2px rgba(34,211,238,0.1)",
+            "0 0 12px rgba(34,211,238,0.4)"
+        ],
+        transition: {
+            duration: 0.6,
+            delay: index * 0.35, // Sequência de acendimento
+            times: [0, 0.3, 0.6, 1],
+            ease: "easeInOut",
+        }
+    })
+};
+
+
 interface ExperienceTimelineProps {
     experiences: Experience[];
 }
@@ -139,15 +167,34 @@ const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experiences }) 
 
     return (
         <section id="xp" className="py-24 md:py-40 px-6 md:px-12 bg-[#0e0e0e] overflow-hidden relative">
-            <div className="flex flex-col items-center text-center gap-8 mb-32">
+            <div className="flex flex-col items-start text-left gap-8 mb-32">
                 <div className="flex items-center gap-4">
                     <span className="w-12 h-[1px] bg-cyan-400/30"></span>
                     <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">Histórico</span>
-                    <span className="w-12 h-[1px] bg-cyan-400/30"></span>
                 </div>
-                <h2 className="font-display text-4xl md:text-8xl font-black text-white tracking-tighter uppercase leading-none">
-                    <span className="text-outline">Trajetória Profissional</span>
-                </h2>
+                {/* 
+                  Animação de piscada única (single blink) na cor ciano (cyan-400),
+                  ativada assim que a seção entra no campo de visão do usuário.
+                */}
+                <motion.h2 
+                    className="font-display text-4xl md:text-6xl font-black uppercase tracking-tighter flex flex-wrap gap-[0.3em] leading-none"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-10%" }}
+                >
+                    {['TRAJETÓRIA', 'PROFISSIONAL'].map((word, i) => (
+                        <div key={i} className="relative inline-block">
+                            <span className="text-outline opacity-20">{word}</span>
+                            <motion.span
+                                variants={wordVariantsCyanSingleBlink}
+                                custom={i}
+                                className="absolute inset-0 text-cyan-400 pointer-events-none"
+                            >
+                                {word}
+                            </motion.span>
+                        </div>
+                    ))}
+                </motion.h2>
             </div>
 
             <div className="relative max-w-5xl mx-auto" ref={containerRef}>

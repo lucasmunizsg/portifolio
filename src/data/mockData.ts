@@ -126,9 +126,16 @@ export const resumeData: ResumeVersion[] = [
     {
         id: "1",
         title: "Currículo Completo (PT-BR)",
-        description: "Versão detalhada com todas as experiências e projetos.",
+        description: "Versão detalhada contendo todas as experiências, tecnologias e histórico acadêmico.",
         fileUrl: "/assets/docs/resume-pt.pdf",
         language: "PT-BR"
+    },
+    {
+        id: "2",
+        title: "Full Resume (EN-US)",
+        description: "Detailed version covering all professional experiences, technologies, and academic background.",
+        fileUrl: "/assets/docs/resume-en.pdf",
+        language: "EN"
     }
 ];
 

@@ -60,12 +60,12 @@ const Header: React.FC = () => {
 
     return (
         <nav className={`fixed top-0 left-0 w-full z-50 bg-[#131313]/80 backdrop-blur-3xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all duration-700 ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
-            <div className="flex justify-between items-center px-6 md:px-12 py-6 md:py-8 max-w-[1920px] mx-auto">
-                <a href="#hero" className="flex gap-1 group/logo cursor-pointer">
+            <div className="flex justify-between items-center px-4 md:px-12 py-5 md:py-8 max-w-[1920px] mx-auto">
+                <a href="#hero" className="flex gap-0.5 sm:gap-1 group/logo cursor-pointer shrink-0">
                     {logoLetters.map((item, index) => (
                         <div 
                             key={index} 
-                            className="relative w-6 h-8 md:w-7 md:h-10 bg-[#161616] border border-white/5 group-hover/logo:border-white/20 rounded-[2px] overflow-hidden flex flex-col items-center justify-start transition-all duration-300 shadow-inner group-hover/logo:shadow-[0_0_8px_rgba(255,255,255,0.15)]"
+                            className="relative w-[18px] h-[26px] sm:w-6 sm:h-8 md:w-7 md:h-10 bg-[#161616] border border-white/5 group-hover/logo:border-white/20 rounded-[2px] overflow-hidden flex flex-col items-center justify-start transition-all duration-300 shadow-inner group-hover/logo:shadow-[0_0_8px_rgba(255,255,255,0.15)]"
                         >
                             <div className="absolute inset-x-0 top-1/2 h-[1px] bg-black/60 z-20" />
                             
@@ -79,7 +79,7 @@ const Header: React.FC = () => {
                                 {item.roll.map((char, i) => (
                                     <span 
                                         key={i} 
-                                        className="font-display font-black text-xs md:text-sm text-white/90 leading-none h-8 md:h-10 flex items-center justify-center shrink-0 z-10 group-hover/logo:text-white transition-colors"
+                                        className="font-display font-black text-[9px] sm:text-xs md:text-sm text-white/90 leading-none h-[26px] sm:h-8 md:h-10 flex items-center justify-center shrink-0 z-10 group-hover/logo:text-white transition-colors"
                                     >
                                         {char}
                                     </span>
@@ -95,11 +95,12 @@ const Header: React.FC = () => {
                 {/* 
                   Links da Navbar com efeitos dinâmicos de cor neon e brilho específicos para cada seção.
                   Efeito ativado ao passar o mouse (hover), ao clicar, ou automaticamente durante a rolagem (scroll tracker).
+                  Totalmente responsivo: visível tanto no mobile (compacto) quanto no desktop.
                 */}
-                <div className="hidden md:flex items-center gap-12">
+                <div className="flex items-center gap-2.5 sm:gap-6 md:gap-12 ml-auto md:ml-0 pl-2 sm:pl-0">
                     {/* Stacks - Tema Branco/Prata Neon */}
                     <a 
-                        className={`font-label uppercase tracking-[0.2em] text-[10px] transition-all duration-300 ${
+                        className={`font-label uppercase tracking-[0.1em] sm:tracking-[0.2em] text-[8px] sm:text-[9px] md:text-[10px] transition-all duration-300 ${
                             activeSection === 'process' 
                                 ? 'text-white font-bold drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]' 
                                 : 'text-zinc-500 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]'
@@ -111,7 +112,7 @@ const Header: React.FC = () => {
 
                     {/* Projetos - Tema Vermelho Neon */}
                     <a 
-                        className={`font-label uppercase tracking-[0.2em] text-[10px] transition-all duration-300 ${
+                        className={`font-label uppercase tracking-[0.1em] sm:tracking-[0.2em] text-[8px] sm:text-[9px] md:text-[10px] transition-all duration-300 ${
                             activeSection === 'work' 
                                 ? 'text-red-500 font-bold drop-shadow-[0_0_8px_rgba(239,68,68,0.9)]' 
                                 : 'text-zinc-500 hover:text-red-500 hover:drop-shadow-[0_0_8px_rgba(239,68,68,0.9)]'
@@ -123,7 +124,7 @@ const Header: React.FC = () => {
 
                     {/* XP - Tema Ciano Neon */}
                     <a 
-                        className={`font-label uppercase tracking-[0.2em] text-[10px] transition-all duration-300 ${
+                        className={`font-label uppercase tracking-[0.1em] sm:tracking-[0.2em] text-[8px] sm:text-[9px] md:text-[10px] transition-all duration-300 ${
                             activeSection === 'xp' 
                                 ? 'text-cyan-400 font-bold drop-shadow-[0_0_8px_rgba(34,211,238,0.9)]' 
                                 : 'text-zinc-500 hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.9)]'
@@ -135,7 +136,7 @@ const Header: React.FC = () => {
 
                     {/* Contato - Tema Branco/Prata Neon */}
                     <a 
-                        className={`font-label uppercase tracking-[0.2em] text-[10px] transition-all duration-300 ${
+                        className={`font-label uppercase tracking-[0.1em] sm:tracking-[0.2em] text-[8px] sm:text-[9px] md:text-[10px] transition-all duration-300 ${
                             activeSection === 'contact' 
                                 ? 'text-white font-bold drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]' 
                                 : 'text-zinc-500 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]'

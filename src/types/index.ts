@@ -3,6 +3,7 @@ export interface Profile {
     role: string;
     bio: string;
     email: string;
+    phone?: string;
 }
 
 export interface Project {

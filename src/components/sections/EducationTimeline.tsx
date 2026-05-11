@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Education } from '../types';
-import BeamLine from './BeamLine';
+import { Education } from '../../types';
+import BeamLine from '../BeamLine';
 
 interface EducationTimelineProps {
     education: Education[];

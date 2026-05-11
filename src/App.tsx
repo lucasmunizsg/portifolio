@@ -1,12 +1,12 @@
 import { profileData, projectsData, experiencesData, educationData, skillsData, resumeData, socialData } from './data/mockData';
 import Header from './components/Header';
-import Hero from './components/Hero';
-import ProjectsSection from './components/ProjectsSection';
-import ExperienceTimeline from './components/ExperienceTimeline';
-import EducationSection from './components/EducationSection';
-import SkillsAndInterests from './components/SkillsAndInterests';
-import ResumeDownloads from './components/ResumeDownloads';
-import ContactSection from './components/ContactSection';
+import Hero from './components/sections/Hero';
+import ProjectsSection from './components/sections/ProjectsSection';
+import ExperienceTimeline from './components/sections/ExperienceTimeline';
+import EducationSection from './components/sections/EducationSection';
+import SkillsAndInterests from './components/sections/SkillsAndInterests';
+import ResumeDownloads from './components/sections/ResumeDownloads';
+import ContactSection from './components/sections/ContactSection';
 import WelcomeGate from './components/WelcomeGate';
 
 import { useEffect } from 'react';

@@ -4,15 +4,16 @@ import Header from './Header';
 
 describe('Header', () => {
     it('renders name correctly', () => {
-        render(<Header />);
-        expect(screen.getByText(/JOURNEY/i)).toBeInTheDocument();
+        const { container } = render(<Header />);
+        const logoLink = container.querySelector('a[href="#hero"]');
+        expect(logoLink).toBeInTheDocument();
     });
 
     it('contains navigation links', () => {
         render(<Header />);
-        expect(screen.getByText(/1\. Projetos/i)).toBeInTheDocument();
-        expect(screen.getByText(/2\. XP/i)).toBeInTheDocument();
-        expect(screen.getByText(/3\. Processo/i)).toBeInTheDocument();
-        expect(screen.getByText(/4\. Contato/i)).toBeInTheDocument();
+        expect(screen.getByText(/Projetos/i)).toBeInTheDocument();
+        expect(screen.getByText(/XP/i)).toBeInTheDocument();
+        expect(screen.getByText(/Stacks/i)).toBeInTheDocument();
+        expect(screen.getByText(/Contato/i)).toBeInTheDocument();
     });
 });

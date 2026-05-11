@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Profile } from '../types';
+import { Profile } from '../../types';
 
 interface HeroProps {
     profile: Profile;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
-import { ResumeVersion } from '../types';
+import { ResumeVersion } from '../../types';
 
 const wordVariantsSingleBlink: Variants = {
     hidden: { 

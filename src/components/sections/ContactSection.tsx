@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
-import { Profile, SocialLink } from '../types';
+import { Profile, SocialLink } from '../../types';
 
 const wordVariantsSingleBlink: Variants = {
     hidden: { 

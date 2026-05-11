@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion, useInView, Variants } from 'framer-motion';
-import { Experience } from '../types';
-import BeamLine from './BeamLine';
+import { Experience } from '../../types';
+import BeamLine from '../BeamLine';
 
 const wordVariantsCyanSingleBlink: Variants = {
     hidden: { 

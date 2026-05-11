@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { motion, Variants } from 'framer-motion';
-import { Skill } from '../types';
+import { Skill } from '../../types';
 
 const wordVariantsSingleBlink: Variants = {
     hidden: { 

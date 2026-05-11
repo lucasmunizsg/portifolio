@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
-import { Education } from '../types';
+import { Education } from '../../types';
 import EducationTimeline from './EducationTimeline';
 
 const wordVariantsCyanSingleBlink: Variants = {

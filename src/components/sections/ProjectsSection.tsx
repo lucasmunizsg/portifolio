@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, Variants } from 'framer-motion';
-import { Project } from '../types';
+import { Project } from '../../types';
 
 const wordVariantsRedSingleBlink: Variants = {
     hidden: { 

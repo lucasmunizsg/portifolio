@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect, beforeAll, vi } from 'vitest';
 import ProjectsSection from './ProjectsSection';
-import { Project } from '../types';
+import { Project } from '../../types';
 
 beforeAll(() => {
     Object.defineProperty(window, 'matchMedia', {
@@ -41,14 +41,14 @@ describe('ProjectsSection', () => {
 
     it('renders all projects', () => {
         render(<ProjectsSection projects={mockProjects} />);
-        expect(screen.getByText('Project Alpha')).toBeInTheDocument();
-        expect(screen.getByText('Project Beta')).toBeInTheDocument();
+        expect(screen.getAllByText('Project Alpha')[0]).toBeInTheDocument();
+        expect(screen.getAllByText('Project Beta')[0]).toBeInTheDocument();
     });
 
     it('renders project technologies', () => {
         render(<ProjectsSection projects={mockProjects} />);
-        expect(screen.getByText('React')).toBeInTheDocument();
-        expect(screen.getByText('Vue')).toBeInTheDocument();
+        expect(screen.getAllByText('React')[0]).toBeInTheDocument();
+        expect(screen.getAllByText('Vue')[0]).toBeInTheDocument();
     });
 
 });

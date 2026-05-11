@@ -1,11 +1,12 @@
 import { Profile, Project, Experience, Education, Skill, ResumeVersion, SocialLink } from '../types';
+import { LINKS } from '../config/links';
 
 export const profileData: Profile = {
     name: "Lucas Muniz",
     role: "Desenvolvedor de Software",
 
     bio: "Desenvolvedor Front-End e analista de tecnologia sediado em Alagoas. Combino pensamento analítico e visão de negócio para criar soluções modernas integradas com Inteligência Artificial, unindo React, Angular e Python para resolver problemas complexos e gerar valor real.",
-    email: "lucas@example.com"
+    email: LINKS.email
 };
 
 export const projectsData: Project[] = [
@@ -14,7 +15,7 @@ export const projectsData: Project[] = [
         title: "Plataforma Aulas",
         description: "Sistema de gestão para professores autônomos integrado com IA.",
         technologies: ["TypeScript", "Tailwind", "PostgreSQL", "Gemini API"],
-        repoUrl: "https://github.com/lucas",
+        repoUrl: LINKS.github,
         liveUrl: "",
         imageUrl: "/img1.png"
     },
@@ -23,7 +24,7 @@ export const projectsData: Project[] = [
         title: "Walle",
         description: "Gestão financeira pessoal com metas e assistente de IA integrado.",
         technologies: ["React", "TypeScript", "IA"],
-        repoUrl: "https://github.com/lucas",
+        repoUrl: LINKS.github,
         imageUrl: "/img2.png"
     },
     {
@@ -31,14 +32,14 @@ export const projectsData: Project[] = [
         title: "Assistente Agropecuário",
         description: "Gestão de recursos e propostas para o setor agrícola com fluxos de trabalho e IA.",
         technologies: ["React", "Workflows", "IA"],
-        repoUrl: "https://github.com/lucas"
+        repoUrl: LINKS.github
     },
     {
         id: "4",
         title: "ETL com IA e Python",
         description: "Automação para criar prompts personalizados sobre investimentos via APIs da OpenAI e Deep IA.",
         technologies: ["Python", "OpenAI", "Deep IA"],
-        repoUrl: "https://github.com/lucas"
+        repoUrl: LINKS.github
     }
 ];
 
@@ -127,19 +128,19 @@ export const resumeData: ResumeVersion[] = [
         id: "1",
         title: "Currículo Completo (PT-BR)",
         description: "Versão detalhada contendo todas as experiências, tecnologias e histórico acadêmico.",
-        fileUrl: "/assets/docs/resume-pt.pdf",
+        fileUrl: LINKS.resumes.pt,
         language: "PT-BR"
     },
     {
         id: "2",
         title: "Full Resume (EN-US)",
         description: "Detailed version covering all professional experiences, technologies, and academic background.",
-        fileUrl: "/assets/docs/resume-en.pdf",
+        fileUrl: LINKS.resumes.en,
         language: "EN"
     }
 ];
 
 export const socialData: SocialLink[] = [
-    { id: "1", platform: "GitHub", url: "https://github.com/lucas", iconName: "github" },
-    { id: "2", platform: "LinkedIn", url: "https://linkedin.com/in/lucas", iconName: "linkedin" }
+    { id: "1", platform: "GitHub", url: LINKS.github, iconName: "github" },
+    { id: "2", platform: "LinkedIn", url: LINKS.linkedin, iconName: "linkedin" }
 ];

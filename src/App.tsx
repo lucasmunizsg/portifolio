@@ -35,10 +35,22 @@ function App() {
                 
                 <EducationSection studies={educationData} />
 
-                <ResumeDownloads versions={resumeData} />
-            </main>
+                {/* Seção Unificada de Contato & Recursos (Downloads) */}
+                <div id="contact" className="bg-[#0b0b0b] border-t border-white/5 relative overflow-hidden">
+                    <ResumeDownloads versions={resumeData} />
+                    <ContactSection profile={profileData} socials={socialData} />
 
-            <ContactSection profile={profileData} socials={socialData} />
+                    {/* Rodapé Absoluto de Direitos Autorais */}
+                    <footer className="w-full max-w-[1920px] mx-auto px-6 md:px-12 pb-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 z-10 relative">
+                        <div className="text-sm font-bold text-white font-headline tracking-tighter">
+                            {profileData.name.toUpperCase()}
+                        </div>
+                        <div className="text-[10px] font-body font-light tracking-[0.05em] uppercase text-zinc-600">
+                            © {new Date().getFullYear()} {profileData.name.toUpperCase()}. ENGENHARIA NO PROCESSO.
+                        </div>
+                    </footer>
+                </div>
+            </main>
         </div>
     );
 }

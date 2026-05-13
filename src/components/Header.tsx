@@ -16,7 +16,7 @@ const Header: React.FC = () => {
     const [activeSection, setActiveSection] = useState<string>('');
 
     useEffect(() => {
-        const sections = ['process', 'work', 'xp', 'contact'];
+        const sections = ['process', 'work', 'xp', 'education', 'contact'];
 
         const handleScroll = () => {
             // Controle de visibilidade da Navbar fixa ao rolar a página
@@ -61,7 +61,7 @@ const Header: React.FC = () => {
     return (
         <nav className={`fixed top-0 left-0 w-full z-50 bg-[#131313]/80 backdrop-blur-3xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all duration-700 ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
             <div className="flex justify-between items-center px-4 md:px-12 py-5 md:py-8 max-w-[1920px] mx-auto">
-                <a href="#hero" className="flex gap-0.5 sm:gap-1 group/logo cursor-pointer shrink-0">
+                <a href="#welcome" className="flex gap-0.5 sm:gap-1 group/logo cursor-pointer shrink-0">
                     {logoLetters.map((item, index) => (
                         <div 
                             key={index} 
@@ -125,7 +125,7 @@ const Header: React.FC = () => {
                     {/* XP - Tema Ciano Neon */}
                     <a 
                         className={`font-label uppercase tracking-[0.1em] sm:tracking-[0.2em] text-[8px] sm:text-[9px] md:text-[10px] transition-all duration-300 ${
-                            activeSection === 'xp' 
+                            activeSection === 'xp' || activeSection === 'education'
                                 ? 'text-cyan-400 font-bold drop-shadow-[0_0_8px_rgba(34,211,238,0.9)]' 
                                 : 'text-zinc-500 hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.9)]'
                         }`} 

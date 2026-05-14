@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 const logoLetters = [
     { char: "J", roll: ["J", "M", "R", "Y", "J"] },
@@ -11,6 +12,7 @@ const logoLetters = [
 ];
 
 const Header: React.FC = () => {
+    const { t } = useLanguage();
     const [isVisible, setIsVisible] = useState(false);
     const [isAutoplayRolling, setIsAutoplayRolling] = useState(false);
     const [activeSection, setActiveSection] = useState<string>('');
@@ -92,13 +94,8 @@ const Header: React.FC = () => {
                     ))}
                 </a>
                 
-                {/* 
-                  Links da Navbar com efeitos dinâmicos de cor neon e brilho específicos para cada seção.
-                  Efeito ativado ao passar o mouse (hover), ao clicar, ou automaticamente durante a rolagem (scroll tracker).
-                  Totalmente responsivo: visível tanto no mobile (compacto) quanto no desktop.
-                */}
                 <div className="flex items-center gap-2.5 sm:gap-6 md:gap-12 ml-auto md:ml-0 pl-2 sm:pl-0">
-                    {/* Stacks - Tema Branco/Prata Neon */}
+                    {/* Stacks */}
                     <a 
                         className={`font-label uppercase tracking-[0.1em] sm:tracking-[0.2em] text-[8px] sm:text-[9px] md:text-[10px] transition-all duration-300 ${
                             activeSection === 'process' 
@@ -107,10 +104,10 @@ const Header: React.FC = () => {
                         }`} 
                         href="#process"
                     >
-                        Stacks
+                        {t('nav.skills')}
                     </a>
 
-                    {/* Projetos - Tema Vermelho Neon */}
+                    {/* Projetos */}
                     <a 
                         className={`font-label uppercase tracking-[0.1em] sm:tracking-[0.2em] text-[8px] sm:text-[9px] md:text-[10px] transition-all duration-300 ${
                             activeSection === 'work' 
@@ -119,10 +116,10 @@ const Header: React.FC = () => {
                         }`} 
                         href="#work"
                     >
-                        Projetos
+                        {t('nav.projects')}
                     </a>
 
-                    {/* XP - Tema Ciano Neon */}
+                    {/* XP */}
                     <a 
                         className={`font-label uppercase tracking-[0.1em] sm:tracking-[0.2em] text-[8px] sm:text-[9px] md:text-[10px] transition-all duration-300 ${
                             activeSection === 'xp' || activeSection === 'education'
@@ -131,10 +128,10 @@ const Header: React.FC = () => {
                         }`} 
                         href="#xp"
                     >
-                        XP
+                        {t('nav.experience')}
                     </a>
 
-                    {/* Contato - Tema Branco/Prata Neon */}
+                    {/* Contato */}
                     <a 
                         className={`font-label uppercase tracking-[0.1em] sm:tracking-[0.2em] text-[8px] sm:text-[9px] md:text-[10px] transition-all duration-300 ${
                             activeSection === 'contact' 
@@ -143,7 +140,7 @@ const Header: React.FC = () => {
                         }`} 
                         href="#contact"
                     >
-                        Contato
+                        {t('nav.contact')}
                     </a>
                 </div>
             </div>

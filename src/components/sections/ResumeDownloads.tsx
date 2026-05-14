@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { ResumeVersion } from '../../types';
+import { useLanguage } from '../../context/LanguageContext';
 
 const wordVariantsSingleBlink: Variants = {
     hidden: { 
@@ -31,7 +32,10 @@ const wordVariantsSingleBlink: Variants = {
 
 interface ResumeDownloadsProps {
     versions: ResumeVersion[];
-}const ResumeDownloads: React.FC<ResumeDownloadsProps> = ({ versions }) => {
+}
+
+const ResumeDownloads: React.FC<ResumeDownloadsProps> = ({ versions }) => {
+    const { t } = useLanguage();
     const [activeModal, setActiveModal] = useState<'TECH' | null>(null);
     const [emails, setEmails] = useState<{ [key: string]: string }>({});
 
@@ -68,12 +72,12 @@ interface ResumeDownloadsProps {
     };
 
     return (
-        <section className="pt-24 pb-12 md:pt-32 md:pb-16 px-6 md:px-12 max-w-[1920px] mx-auto bg-transparent">
+        <section className="pt-24 pb-4 md:pt-32 md:pb-6 px-6 md:px-12 max-w-[1920px] mx-auto bg-transparent">
             {/* Section Header */}
             <div className="flex flex-col items-center text-center gap-8 mb-20">
                 <div className="flex items-center gap-4">
                     <span className="w-12 h-[1px] bg-white/20"></span>
-                    <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">Recursos</span>
+                    <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">{t('resumes.subtitle')}</span>
                     <span className="w-12 h-[1px] bg-white/20"></span>
                 </div>
                 
@@ -83,7 +87,7 @@ interface ResumeDownloadsProps {
                     whileInView="visible"
                     viewport={{ once: true, margin: "-10%" }}
                 >
-                    {['DOCUMENTAÇÃO', 'TÉCNICA'].map((word, i) => (
+                    {(t('resumes.title') as string[]).map((word, i) => (
                         <div key={i} className="relative inline-block">
                             <span className="text-outline opacity-20">{word}</span>
                             <motion.span
@@ -102,7 +106,6 @@ interface ResumeDownloadsProps {
             <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
                 {/* Resume Cards from mockData */}
                 {versions.map((version) => {
-                    const isPt = version.language === 'PT-BR';
                     const currentEmail = emails[version.language] || '';
 
                     return (
@@ -116,7 +119,7 @@ interface ResumeDownloadsProps {
                             <div>
                                 <div className="flex justify-between items-start mb-8">
                                     <span className="font-label text-[9px] text-white/80 uppercase tracking-[0.25em] border border-white/10 px-3 py-1 bg-white/[0.02]">
-                                        {isPt ? 'Currículo' : 'Resume'} • {version.language}
+                                        {t('resumes.resumeLabel')} • {version.language}
                                     </span>
                                     <span className="material-symbols-outlined text-white/20 text-2xl group-hover:text-white transition-colors">
                                         description
@@ -141,13 +144,13 @@ interface ResumeDownloadsProps {
                                 <div className="relative">
                                     <input 
                                         type="email" 
-                                        placeholder={isPt ? "Seu e-mail (opcional)" : "Your email (optional)"}
+                                        placeholder={t('resumes.emailPlaceholder')}
                                         value={currentEmail}
                                         onChange={(e) => handleEmailChange(version.language, e.target.value)}
                                         className="w-full bg-white/[0.02] border border-white/5 hover:border-white/10 px-4 py-3 text-white font-body text-xs focus:outline-none focus:border-white/20 focus:bg-white/[0.04] transition-all"
                                     />
                                     <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[8px] text-zinc-500 font-label uppercase tracking-widest pointer-events-none">
-                                        {isPt ? 'Opcional' : 'Optional'}
+                                        {t('resumes.optional')}
                                     </span>
                                 </div>
                                 <button
@@ -155,7 +158,7 @@ interface ResumeDownloadsProps {
                                     className="w-full text-center font-label uppercase tracking-[0.2em] text-[10px] bg-white text-[#131313] py-3.5 hover:bg-zinc-200 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-all duration-300 cursor-pointer font-bold flex items-center justify-center gap-2"
                                 >
                                     <span className="material-symbols-outlined text-sm">download</span>
-                                    {isPt ? 'Baixar PDF' : 'Download PDF'}
+                                    {t('resumes.downloadButton')}
                                 </button>
                             </form>
                         </div>
@@ -178,10 +181,10 @@ interface ResumeDownloadsProps {
                         </div>
 
                         <h3 className="font-display text-xl font-bold text-white uppercase tracking-tight mb-4">
-                            Ficha Técnica
+                            {t('resumes.techSummary.title')}
                         </h3>
                         <p className="font-body text-xs text-zinc-400 font-light leading-relaxed mb-8 min-h-[48px]">
-                            Painel interativo contendo padrões de arquitetura, metodologias ágeis, proficiências e métricas obtidas.
+                            {t('resumes.techSummary.description')}
                         </p>
                     </div>
 
@@ -190,7 +193,7 @@ interface ResumeDownloadsProps {
                         className="w-full text-center font-label uppercase tracking-[0.2em] text-[10px] bg-white text-[#131313] py-4 hover:bg-zinc-200 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-all duration-300 mt-auto cursor-pointer font-bold flex items-center justify-center gap-2"
                     >
                         <span className="material-symbols-outlined text-sm">visibility</span>
-                        Ver Ficha Técnica
+                        {t('resumes.techSummary.viewButton')}
                     </button>
                 </div>
             </div>
@@ -214,18 +217,18 @@ interface ResumeDownloadsProps {
                         >
                             {/* Close button Top Right */}
                             <button 
-                                onClick={() => setActiveModal(null)}
-                                className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors cursor-pointer w-10 h-10 flex items-center justify-center border border-white/5 hover:border-white/20"
-                                aria-label="Fechar modal"
+                                 onClick={() => setActiveModal(null)}
+                                 className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors cursor-pointer w-10 h-10 flex items-center justify-center border border-white/5 hover:border-white/20"
+                                 aria-label="Fechar modal"
                             >
-                                <span className="material-symbols-outlined text-xl">close</span>
+                                 <span className="material-symbols-outlined text-xl">close</span>
                             </button>
 
                             {/* Modal Header Actions */}
                             <div className="flex flex-wrap items-center justify-between gap-6 pb-8 border-b border-white/10 mb-8 pr-12">
                                 <div>
                                     <h4 className="font-display text-2xl font-black text-white uppercase tracking-tight">
-                                        Ficha Técnica do Engenheiro
+                                        {t('resumes.techSummary.modalTitle')}
                                     </h4>
                                     <p className="font-body text-xs text-zinc-500 uppercase tracking-widest mt-1">
                                         engineering datasheet // v2026.1
@@ -239,7 +242,7 @@ interface ResumeDownloadsProps {
                                     {/* Skill Bars Proficiencies */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white/[0.02] border border-white/5 p-6 md:p-8">
                                         <div>
-                                            <h5 className="font-display text-white text-xs uppercase tracking-widest mb-6">Proficiência de Stack Principal</h5>
+                                            <h5 className="font-display text-white text-xs uppercase tracking-widest mb-6">{t('resumes.techSummary.stackProficiency')}</h5>
                                             
                                             <div className="flex flex-col gap-4">
                                                 <div>
@@ -285,7 +288,7 @@ interface ResumeDownloadsProps {
                                         </div>
 
                                         <div>
-                                            <h5 className="font-display text-white text-xs uppercase tracking-widest mb-6">Métricas & Impacto em Projetos</h5>
+                                            <h5 className="font-display text-white text-xs uppercase tracking-widest mb-6">{t('resumes.techSummary.metricsImpact')}</h5>
                                             
                                             <div className="grid grid-cols-2 gap-4">
                                                 <div className="border border-white/5 bg-white/[0.01] p-4 flex flex-col justify-between h-24">
@@ -314,7 +317,7 @@ interface ResumeDownloadsProps {
                                         <div className="border border-white/5 p-6 bg-white/[0.01] flex flex-col gap-3">
                                             <div className="flex items-center gap-3">
                                                 <span className="material-symbols-outlined text-white text-xl">grid_view</span>
-                                                <h6 className="font-display text-white text-xs uppercase tracking-widest font-bold">Arquitetura de Software</h6>
+                                                <h6 className="font-display text-white text-xs uppercase tracking-widest font-bold">{t('resumes.techSummary.architecture')}</h6>
                                             </div>
                                             <ul className="text-xs text-zinc-400 flex flex-col gap-2 list-disc pl-4 font-light leading-relaxed">
                                                 <li><strong>Clean Architecture / DDD:</strong> Rigorosa separação de responsabilidades. Domínio isolado sem dependências de frameworks.</li>
@@ -327,7 +330,7 @@ interface ResumeDownloadsProps {
                                         <div className="border border-white/5 p-6 bg-white/[0.01] flex flex-col gap-3">
                                             <div className="flex items-center gap-3">
                                                 <span className="material-symbols-outlined text-white text-xl">verified</span>
-                                                <h6 className="font-display text-white text-xs uppercase tracking-widest font-bold">Práticas & Qualidade</h6>
+                                                <h6 className="font-display text-white text-xs uppercase tracking-widest font-bold">{t('resumes.techSummary.quality')}</h6>
                                             </div>
                                             <ul className="text-xs text-zinc-400 flex flex-col gap-2 list-disc pl-4 font-light leading-relaxed">
                                                 <li><strong>TDD (Test-Driven Development):</strong> Red-Green-Refactor como pilar central de integridade lógica (Jest, RTL, Vitest).</li>
@@ -340,7 +343,7 @@ interface ResumeDownloadsProps {
                                         <div className="border border-white/5 p-6 bg-white/[0.01] flex flex-col gap-3">
                                             <div className="flex items-center gap-3">
                                                 <span className="material-symbols-outlined text-white text-xl">psychology</span>
-                                                <h6 className="font-display text-white text-xs uppercase tracking-widest font-bold">Especialidades de IA & Dados</h6>
+                                                <h6 className="font-display text-white text-xs uppercase tracking-widest font-bold">{t('resumes.techSummary.specialties')}</h6>
                                             </div>
                                             <ul className="text-xs text-zinc-400 flex flex-col gap-2 list-disc pl-4 font-light leading-relaxed">
                                                 <li><strong>Agentes de IA e Pipelines:</strong> Integração fluida de APIs generativas (OpenAI, Gemini) com controle refinado de prompts contextuais.</li>
@@ -355,7 +358,7 @@ interface ResumeDownloadsProps {
                                             onClick={() => setActiveModal(null)}
                                             className="font-label uppercase tracking-widest text-[10px] text-black bg-white px-8 py-3.5 hover:bg-zinc-200 transition-all cursor-pointer font-bold"
                                         >
-                                            Fechar Ficha Técnica
+                                            {t('resumes.techSummary.closeButton')}
                                         </button>
                                     </div>
                                 </div>

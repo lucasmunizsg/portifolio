@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { motion, Variants } from 'framer-motion';
 import { Skill } from '../../types';
+import { useLanguage } from '../../context/LanguageContext';
 
 const wordVariantsSingleBlink: Variants = {
     hidden: { 
@@ -33,6 +34,7 @@ interface SkillsAndInterestsProps {
 }
 
 const SkillsAndInterests: React.FC<SkillsAndInterestsProps> = ({ skills }) => {
+    const { t } = useLanguage();
     const currentYear = new Date().getFullYear();
 
     const sortedSkills = useMemo(() =>
@@ -42,8 +44,9 @@ const SkillsAndInterests: React.FC<SkillsAndInterestsProps> = ({ skills }) => {
 
     const calculateExp = (year: number) => {
         const diff = currentYear - year;
-        if (diff === 0) return 'Recentemente';
-        return `${diff} ${diff === 1 ? 'ano' : 'anos'} de exp`;
+        if (diff === 0) return t('skills.expRecent');
+        const unit = diff === 1 ? t('skills.expYear') : t('skills.expYears');
+        return `${diff} ${unit}`;
     };
 
     return (
@@ -53,7 +56,7 @@ const SkillsAndInterests: React.FC<SkillsAndInterestsProps> = ({ skills }) => {
                     <div className="flex flex-col gap-4">
                         <div className="flex items-center gap-4">
                             <span className="w-12 h-[1px] bg-white/30"></span>
-                            <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">Especialidade & Foco</span>
+                            <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">{t('skills.subtitle')}</span>
                         </div>
                         <motion.h2 
                             className="font-display text-4xl md:text-6xl font-black uppercase tracking-tighter text-left flex flex-wrap gap-[0.3em]"
@@ -61,8 +64,8 @@ const SkillsAndInterests: React.FC<SkillsAndInterestsProps> = ({ skills }) => {
                             whileInView="visible"
                             viewport={{ once: true, margin: "-10%" }}
                         >
-                            {['STACKS', 'E', 'INTERESSES'].map((word, i) => (
-                                <div key={word} className="relative inline-block">
+                            {(t('skills.title') as string[]).map((word, i) => (
+                                <div key={word + i} className="relative inline-block">
                                     <span className="text-outline opacity-20">{word}</span>
                                     <motion.span
                                         variants={wordVariantsSingleBlink}
@@ -82,20 +85,20 @@ const SkillsAndInterests: React.FC<SkillsAndInterestsProps> = ({ skills }) => {
                         <div
                             key={skill.id}
                             className={`group relative p-8 transition-all duration-500 border border-white/5 overflow-hidden
-                                ${skill.category === 'Linguagem'
+                                ${skill.category === 'Linguagem' || skill.category === 'Language'
                                     ? 'bg-[#1b1b1b] hover:neon-border'
                                     : 'bg-[#161616] hover:border-zinc-700'}`}
                         >
                             {/* Background Decoration */}
                             <div className="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-30 transition-opacity">
                                 <span className="material-symbols-outlined text-4xl text-white">
-                                    {skill.category === 'Linguagem' ? 'code' : 'bolt'}
+                                    {skill.category === 'Linguagem' || skill.category === 'Language' ? 'code' : 'bolt'}
                                 </span>
                             </div>
 
                             <div className="relative z-10">
                                 <div className="flex items-center gap-2 mb-4">
-                                    <span className={`w-1.5 h-1.5 rounded-full ${skill.category === 'Linguagem' ? 'bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]' : 'bg-zinc-500'}`}></span>
+                                    <span className={`w-1.5 h-1.5 rounded-full ${skill.category === 'Linguagem' || skill.category === 'Language' ? 'bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]' : 'bg-zinc-500'}`}></span>
                                     <span className="font-label text-[10px] text-zinc-500 uppercase tracking-widest">
                                         {calculateExp(skill.yearLearned)}
                                     </span>
@@ -118,24 +121,19 @@ const SkillsAndInterests: React.FC<SkillsAndInterestsProps> = ({ skills }) => {
 
                 <div className="mt-8 flex justify-end">
                     <p className="font-sans text-zinc-500 max-w-md text-sm md:text-base leading-relaxed text-right">
-                        Uma visão dinâmica das tecnologias que domino e dos meus focos atuais de pesquisa e desenvolvimento.
+                        {t('skills.description')}
                     </p>
                 </div>
             </div>
 
             <div className="mt-40 text-center">
-                {/* 
-                  Implementação do efeito de acendimento neon único (single blink).
-                  O texto é desmembrado em palavras para que a animação (delay staggered) 
-                  acenda cada palavra de forma isolada e sequencial quando entrar em foco.
-                */}
                 <motion.h2 
                     className="font-display text-4xl md:text-6xl font-black uppercase tracking-tighter mb-12 max-w-5xl mx-auto leading-[0.95] flex flex-wrap justify-center gap-[0.3em]"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-10%" }}
                 >
-                    {['ENGENHARIA', 'DE', 'ATMOSFERAS', 'DIGITAIS', 'COM', 'PRECISÃO.'].map((word, i) => (
+                    {(t('skills.footerTitle') as string[]).map((word, i) => (
                         <div key={i} className="relative inline-block">
                             <span className="text-outline opacity-20">{word}</span>
                             <motion.span

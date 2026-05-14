@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Education } from '../../types';
 import BeamLine from '../BeamLine';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface EducationTimelineProps {
     education: Education[];
@@ -13,6 +14,7 @@ const EducationItem: React.FC<{
     isActive: boolean;
     onClick: () => void;
 }> = ({ study, index, isActive, onClick }) => {
+    const { t } = useLanguage();
     const itemRef = useRef<HTMLDivElement>(null);
     const isInView = useInView(itemRef, { margin: "-50% 0px", once: false });
 
@@ -63,9 +65,9 @@ const EducationItem: React.FC<{
                                 {study.year}
                             </span>
                             <span className={`px-2 py-0.5 text-[8px] uppercase tracking-[0.2em] border ${
-                                study.status === 'Prêmio' ? 'text-[#ffd700] border-[#ffd700]/20 bg-[#ffd700]/5' : 'text-zinc-500 border-white/10 bg-white/5'
+                                study.status === 'Prêmio' || study.status === 'Award' ? 'text-[#ffd700] border-[#ffd700]/20 bg-[#ffd700]/5' : 'text-zinc-500 border-white/10 bg-white/5'
                             }`}>
-                                {study.status}
+                                {study.status === 'Prêmio' || study.status === 'Award' ? t('education.award') : study.status}
                             </span>
                         </div>
                         <h3 className="font-display text-2xl md:text-3xl font-black text-white tracking-tighter uppercase leading-none group-hover:text-emerald-50 transition-all duration-500">

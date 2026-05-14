@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, Variants } from 'framer-motion';
 import { Project } from '../../types';
+import { useLanguage } from '../../context/LanguageContext';
 
 const wordVariantsRedSingleBlink: Variants = {
     hidden: { 
@@ -34,6 +35,7 @@ interface ProjectsSectionProps {
 }
 
 const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
+    const { t } = useLanguage();
     const [activeId, setActiveId] = useState<string | null>(null);
     const [isPaused, setIsPaused] = useState(false);
 
@@ -136,7 +138,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
                     isActive ? '-translate-y-2' : 'group-hover:-translate-y-2'
                 }`}>
                     <span className="font-label text-[10px] text-red-400 uppercase tracking-[0.3em] mb-3 block font-bold" style={{ textShadow: '0 0 10px rgba(239,68,68,0.8)' }}>
-                        Arquivo 0{index + 1}
+                        {t('projects.fileLabel')} 0{index + 1}
                     </span>
                     <h3 className="font-display text-3xl font-black text-white tracking-tighter uppercase mb-6 leading-none group-hover:text-red-50 transition-colors">
                         {project.title}
@@ -174,7 +176,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
                 <div className="flex flex-col gap-4">
                     <div className="flex items-center gap-4">
                         <span className="w-12 h-[1px] bg-red-500/40"></span>
-                        <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">Trabalhos Selecionados</span>
+                        <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">{t('projects.subtitle')}</span>
                     </div>
                     {/* 
                       Animação Neon de piscada única (single blink) na cor vermelha (red-500).
@@ -186,7 +188,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
                         whileInView="visible"
                         viewport={{ once: true, margin: "-10%" }}
                     >
-                        {['PROJETOS', 'EM', 'DESTAQUE'].map((word, i) => (
+                        {(t('projects.title') as string[]).map((word, i) => (
                             <div key={i} className="relative inline-block">
                                 <span className="text-outline opacity-20">{word}</span>
                                 <motion.span

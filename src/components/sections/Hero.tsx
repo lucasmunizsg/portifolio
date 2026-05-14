@@ -1,27 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Profile } from '../../types';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface HeroProps {
     profile: Profile;
 }
 
-const titles = [
-    ["DESENVOLVEDOR", "DE SOFTWARE"],
-    ["MELHORADOR", "DE SOFTWARE"],
-    ["MELHORADOR", "DE IDEIAS"],
-    ["DESENVOLVEDOR", "DE IDEIAS"]
-];
-
-const word1Options = ["DESENVOLVEDOR", "MELHORADOR"];
-const word2Options = ["DE SOFTWARE", "DE IDEIAS"];
-
 const Hero: React.FC<HeroProps> = ({ profile }) => {
+    const { t } = useLanguage();
     const [word1Index, setWord1Index] = useState(0);
     const [word2Index, setWord2Index] = useState(0);
     const lastScrollTime = React.useRef(0);
     const containerRef = React.useRef<HTMLDivElement>(null);
     const hoveredPartRef = React.useRef<'first' | 'second' | null>(null);
+
+    const word1Options = t('hero.word1Options') as string[];
+    const word2Options = t('hero.word2Options') as string[];
 
     // Mapeamento inverso para manter as bolinhas de progresso sincronizadas
     const getActiveDotIndex = () => {
@@ -55,10 +50,9 @@ const Hero: React.FC<HeroProps> = ({ profile }) => {
         if (!container) return;
 
         const handleWheel = (e: WheelEvent) => {
-            // Previne a rolagem padrão da página enquanto o mouse está sob o contêiner de textos
             e.preventDefault();
             const now = Date.now();
-            if (now - lastScrollTime.current < 500) return; // Cooldown de 500ms
+            if (now - lastScrollTime.current < 500) return;
 
             const isDown = e.deltaY > 0;
 
@@ -69,7 +63,6 @@ const Hero: React.FC<HeroProps> = ({ profile }) => {
                 setWord2Index((prev) => (isDown ? (prev + 1) % word2Options.length : (prev - 1 + word2Options.length) % word2Options.length));
                 lastScrollTime.current = now;
             } else {
-                // Caso o mouse não esteja diretamente em cima de uma palavra, rotaciona a combinação inteira
                 const nextCombination = isDown ? (currentIndex + 1) % 4 : (currentIndex - 1 + 4) % 4;
                 selectCombination(nextCombination);
                 lastScrollTime.current = now;
@@ -80,7 +73,7 @@ const Hero: React.FC<HeroProps> = ({ profile }) => {
         return () => {
             container.removeEventListener('wheel', handleWheel);
         };
-    }, [currentIndex]);
+    }, [currentIndex, word1Options.length, word2Options.length]);
 
     return (
         <section id="hero" className="relative min-h-screen overflow-hidden pt-32 md:pt-60 pb-32 px-6 md:px-12 max-w-[1920px] mx-auto">
@@ -105,7 +98,7 @@ const Hero: React.FC<HeroProps> = ({ profile }) => {
                         transition={{ duration: 1, delay: 0.5 }}
                         className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500"
                     >
-                        Disponível para Projetos como:
+                        {t('hero.available')}
                     </motion.span>
                 </div>
 
@@ -118,7 +111,7 @@ const Hero: React.FC<HeroProps> = ({ profile }) => {
                     className="relative min-h-[22vw] md:min-h-[17vw] overflow-hidden mt-4 w-full flex flex-col items-center justify-center cursor-pointer md:cursor-ns-resize select-none"
                 >
                     <div className="flex flex-col items-center text-center w-full">
-                        {/* Primeira Linha (Primeira Palavra) */}
+                        {/* Primeira Linha */}
                         <div 
                             onClick={(e) => {
                                 e.stopPropagation();
@@ -130,7 +123,7 @@ const Hero: React.FC<HeroProps> = ({ profile }) => {
                         >
                             <AnimatePresence mode="wait">
                                 <motion.span
-                                    key={word1Index}
+                                    key={word1Index + word1Options[word1Index]}
                                     initial={{ y: "40%", opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
                                     exit={{ y: "-40%", opacity: 0 }}
@@ -146,7 +139,7 @@ const Hero: React.FC<HeroProps> = ({ profile }) => {
                             </AnimatePresence>
                         </div>
 
-                        {/* Segunda Linha (Segunda Palavra/Frase) */}
+                        {/* Segunda Linha */}
                         <div 
                             onClick={(e) => {
                                 e.stopPropagation();
@@ -158,7 +151,7 @@ const Hero: React.FC<HeroProps> = ({ profile }) => {
                         >
                             <AnimatePresence mode="wait">
                                 <motion.span
-                                    key={word2Index}
+                                    key={word2Index + word2Options[word2Index]}
                                     initial={{ y: "40%", opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
                                     exit={{ y: "-40%", opacity: 0 }}
@@ -178,9 +171,8 @@ const Hero: React.FC<HeroProps> = ({ profile }) => {
 
                 {/* Subtle progress indicator */}
                 <div className="flex flex-col items-center gap-4 mt-6">
-                    {/* Navigation Dots */}
                     <div className="flex gap-2 justify-center">
-                        {titles.map((_, i) => (
+                        {[0, 1, 2, 3].map((i) => (
                             <button
                                 key={i}
                                 onClick={(e) => {
@@ -189,7 +181,7 @@ const Hero: React.FC<HeroProps> = ({ profile }) => {
                                 }}
                                 className={`h-[2px] transition-all duration-500 rounded-full ${i === currentIndex ? 'w-8 bg-white' : 'w-2 bg-white/20 hover:bg-white/40'
                                     }`}
-                                aria-label={`Ir para slide ${i + 1}`}
+                                aria-label={`Go to slide ${i + 1}`}
                             />
                         ))}
                     </div>
@@ -199,17 +191,17 @@ const Hero: React.FC<HeroProps> = ({ profile }) => {
             {/* Technical Metadata Strip */}
             <div className="relative z-10 mt-20 md:mt-40 grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 border-t border-white/10 pt-12">
                 <div className="flex flex-col gap-4">
-                    <h4 className="font-label uppercase tracking-[0.2em] text-xs text-zinc-500">Sobre</h4>
+                    <h4 className="font-label uppercase tracking-[0.2em] text-xs text-zinc-500">{t('hero.labels.about')}</h4>
                     <p className="font-body text-sm font-light text-[#e2e2e2] leading-relaxed max-w-xs">
                         {profile.bio}
                     </p>
                 </div>
                 <div className="flex flex-col gap-4">
-                    <h4 className="font-label uppercase tracking-[0.2em] text-xs text-zinc-500">Localização</h4>
-                    <p className="font-body text-sm font-light text-[#e2e2e2]">Sediado no Brasil / Global</p>
+                    <h4 className="font-label uppercase tracking-[0.2em] text-xs text-zinc-500">{t('hero.labels.location')}</h4>
+                    <p className="font-body text-sm font-light text-[#e2e2e2]">{t('hero.labels.locationValue')}</p>
                 </div>
                 <div className="flex flex-col gap-4 md:col-span-2">
-                    <h4 className="font-label uppercase tracking-[0.2em] text-xs text-zinc-500">Tecnologias</h4>
+                    <h4 className="font-label uppercase tracking-[0.2em] text-xs text-zinc-500">{t('hero.labels.tech')}</h4>
                     <div className="flex flex-wrap gap-4 mt-2">
                         {['React', 'TypeScript', 'Tailwind CSS', 'Node.js'].map(tech => (
                             <span key={tech} className="px-3 py-1 bg-[#1b1b1b] text-[10px] uppercase tracking-widest text-zinc-400 border border-white/5">

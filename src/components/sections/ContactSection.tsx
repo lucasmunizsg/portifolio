@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { Profile, SocialLink } from '../../types';
+import { useLanguage } from '../../context/LanguageContext';
 
 const wordVariantsSingleBlink: Variants = {
     hidden: {
@@ -35,8 +36,9 @@ interface ContactSectionProps {
 }
 
 const ContactSection: React.FC<ContactSectionProps> = ({ profile, socials }) => {
+    const { t } = useLanguage();
     return (
-        <section className="w-full pt-8 pb-20 md:pt-10 md:pb-24 px-6 md:px-12 bg-transparent overflow-hidden relative">
+        <section className="w-full pt-4 pb-20 md:pt-6 md:pb-24 px-6 md:px-12 bg-transparent overflow-hidden relative">
             {/* Subtle prism leak for the footer */}
             <div className="prism-leak absolute bottom-[-20%] right-[-10%] w-[400px] h-[400px] opacity-10"></div>
 
@@ -53,7 +55,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ profile, socials }) => 
                         whileInView="visible"
                         viewport={{ once: true, margin: "-10%" }}
                     >
-                        {['FAÇA', 'PARTE', 'DESSA', 'JORNADA'].map((word, i) => (
+                        {(t('contact.title') as string[]).map((word, i) => (
                             <div key={i} className="relative inline-block">
                                 <span className="text-outline opacity-20">{word}</span>
                                 <motion.span

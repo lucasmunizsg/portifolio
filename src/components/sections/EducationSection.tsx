@@ -2,6 +2,7 @@ import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { Education } from '../../types';
 import EducationTimeline from './EducationTimeline';
+import { useLanguage } from '../../context/LanguageContext';
 
 const wordVariantsEmeraldSingleBlink: Variants = {
     hidden: { 
@@ -35,12 +36,13 @@ interface EducationSectionProps {
 }
 
 const EducationSection: React.FC<EducationSectionProps> = ({ studies }) => {
+    const { t } = useLanguage();
     return (
         <section id="education" className="py-24 md:py-40 px-6 md:px-12 max-w-[1920px] mx-auto bg-[#0e0e0e]">
             <div className="flex flex-col items-start text-left gap-8 mb-32">
                 <div className="flex items-center gap-4">
                     <span className="w-12 h-[1px] bg-emerald-400/30"></span>
-                    <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">Formação</span>
+                    <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">{t('education.subtitle')}</span>
                 </div>
                 {/* 
                   Animação de piscada única (single blink) na cor esmeralda (emerald-400) correspondente a Formação Acadêmica,
@@ -52,7 +54,7 @@ const EducationSection: React.FC<EducationSectionProps> = ({ studies }) => {
                     whileInView="visible"
                     viewport={{ once: true, margin: "-10%" }}
                 >
-                    {['CAMINHO', 'ACADÊMICO'].map((word, i) => (
+                    {(t('education.title') as string[]).map((word, i) => (
                         <div key={i} className="relative inline-block">
                             <span className="text-outline opacity-20">{word}</span>
                             <motion.span

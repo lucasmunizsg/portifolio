@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { motion, useInView, Variants } from 'framer-motion';
 import { Experience } from '../../types';
 import BeamLine from '../BeamLine';
+import { useLanguage } from '../../context/LanguageContext';
 
 const wordVariantsCyanSingleBlink: Variants = {
     hidden: { 
@@ -42,6 +43,7 @@ const ExperienceItem: React.FC<{
     isExpanded: boolean;
     onToggle: () => void;
 }> = ({ exp, index, total, isExpanded, onToggle }) => {
+    const { t } = useLanguage();
     const itemRef = useRef<HTMLDivElement>(null);
     const isInView = useInView(itemRef, { margin: "-50% 0px", once: false });
 
@@ -138,7 +140,7 @@ const ExperienceItem: React.FC<{
                                     : 'text-zinc-600 group-hover:text-cyan-300'
                             }`}
                         >
-                            {isExpanded ? 'Fechar' : 'Detalhes'}
+                            {isExpanded ? t('experience.close') : t('experience.details')}
                         </span>
                     </div>
                 </div>
@@ -151,6 +153,7 @@ const ExperienceItem: React.FC<{
 };
 
 const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experiences }) => {
+    const { t } = useLanguage();
     const [expandedId, setExpandedId] = useState<string | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -159,8 +162,11 @@ const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experiences }) 
     };
 
     const sortedExperiences = [...experiences].sort((a, b) => {
-        if (a.startDate === 'Atual' || b.startDate === 'Atual') {
-            return a.startDate === 'Atual' ? -1 : 1;
+        const isPresentA = a.endDate === 'Atual' || a.endDate === 'Present';
+        const isPresentB = b.endDate === 'Atual' || b.endDate === 'Present';
+        
+        if (isPresentA || isPresentB) {
+            return isPresentA ? -1 : 1;
         }
         return b.startDate.localeCompare(a.startDate);
     });
@@ -170,7 +176,7 @@ const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experiences }) 
             <div className="flex flex-col items-start text-left gap-8 mb-32">
                 <div className="flex items-center gap-4">
                     <span className="w-12 h-[1px] bg-cyan-400/30"></span>
-                    <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">Histórico</span>
+                    <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">{t('experience.subtitle')}</span>
                 </div>
                 {/* 
                   Animação de piscada única (single blink) na cor ciano (cyan-400),
@@ -182,7 +188,7 @@ const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experiences }) 
                     whileInView="visible"
                     viewport={{ once: true, margin: "-10%" }}
                 >
-                    {['TRAJETÓRIA', 'PROFISSIONAL'].map((word, i) => (
+                    {(t('experience.title') as string[]).map((word, i) => (
                         <div key={i} className="relative inline-block">
                             <span className="text-outline opacity-20">{word}</span>
                             <motion.span

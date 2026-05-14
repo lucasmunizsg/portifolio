@@ -1,5 +1,6 @@
 import React from 'react';
-import { motion, Variants } from 'framer-motion';
+import { motion, Variants, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 
 const wordVariants: Variants = {
     hidden: { 
@@ -25,7 +26,7 @@ const wordVariants: Variants = {
         ],
         transition: {
             duration: 0.8,
-            delay: 1.55 + index * 0.45, // Sincronizado com a desaceleração sutil do feixe mais lento de 1.6s
+            delay: 0.4 + index * 0.4, // Inicia mais cedo agora que o feixe de luz foi removido
             times: [0, 0.2, 0.4, 0.6, 0.8, 1],
             ease: "easeInOut" as const,
         }
@@ -33,12 +34,22 @@ const wordVariants: Variants = {
 };
 
 const WelcomeGate: React.FC = () => {
+    const { language, setLanguage, t } = useLanguage();
+    
     const startJounery = () => {
         const heroSection = document.getElementById('hero');
         if (heroSection) {
             heroSection.scrollIntoView({ behavior: 'smooth' });
         }
     };
+
+    const toggleLanguage = (e: React.MouseEvent) => {
+        e.stopPropagation(); // Evita que o clique no botão acione o scroll
+        setLanguage(language === 'pt' ? 'en' : 'pt');
+    };
+
+    const welcomeLine1 = t('welcome.line1');
+    const welcomeLine2 = t('welcome.line2');
 
     return (
         <section 
@@ -97,100 +108,95 @@ const WelcomeGate: React.FC = () => {
                 />
             </div>
 
-            {/* 2. Frosted Glass Mask / Overlay (Keeping background black with glass blur) */}
-            <div className="absolute inset-0 bg-black/85 backdrop-blur-[60px] md:backdrop-blur-[120px] border-b border-white/5 z-[5]" />
+            {/* 2. Frosted Glass Overlay */}
+            <div className="absolute inset-0 bg-white/[0.02] backdrop-blur-[80px] md:backdrop-blur-[140px] border-b border-white/10 z-[5]" />
 
             {/* 3. Extra Background Effects like Grid */}
             <div className="absolute inset-0 pointer-events-none z-[6]">
                 <div className="grid-perspective absolute inset-0 h-full w-full opacity-10"></div>
             </div>
 
+            <div className="relative z-10 text-center flex flex-col items-center gap-12 px-6 select-none w-full max-w-5xl">
+                
+                {/* Language Toggle Button */}
+                <motion.button
+                    onClick={toggleLanguage}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1, duration: 0.6 }}
+                    className="group relative flex items-center gap-3 px-6 py-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 z-20 overflow-hidden"
+                >
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                    <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-zinc-400 group-hover:text-white transition-colors">
+                        {t('welcome.switchLanguage')}
+                    </span>
+                    <span className="material-symbols-outlined text-sm text-zinc-500 group-hover:text-white group-hover:rotate-180 transition-all duration-500">
+                        language
+                    </span>
+                </motion.button>
 
-            <div className="relative z-10 text-center flex flex-col gap-8 px-6 select-none w-full max-w-5xl">
                 <h1 className="font-display font-black text-[8vw] leading-none tracking-tighter uppercase flex flex-col items-center gap-[2vw]">
                     {/* Linha 1 */}
                     <div className="relative w-full flex flex-wrap justify-center gap-x-[2vw] py-2">
-                        {/* Line 1 Beam: Sweeps from left and slows down to gently touch "VAMOS" */}
-                        <motion.div
-                            className="absolute h-[2px] bg-gradient-to-r from-transparent via-white to-transparent z-[15] pointer-events-none"
-                            style={{ 
-                                top: "50%",
-                                transform: "translateY(-50%)",
-                                boxShadow: "0 0 15px rgba(255,255,255,0.7), 0 0 5px rgba(255,255,255,0.3)" 
-                            }}
-                            initial={{ left: "-30%", width: "25%", opacity: 0 }}
-                            animate={{ 
-                                left: ["-30%", "-5%", "22%"],
-                                opacity: [0, 0.8, 0]
-                            }}
-                            transition={{ 
-                                duration: 1.6, 
-                                times: [0, 0.4, 1],
-                                ease: [0.16, 1, 0.3, 1], // Desaceleração suave e cinematográfica (ultra-smooth easeOut)
-                                delay: 0.1
-                            }}
-                        />
-
-                        <div className="relative inline-block">
-                            <span className="text-outline opacity-20">VAMOS</span>
-                            <motion.span 
-                                variants={wordVariants}
-                                custom={0}
-                                initial="hidden"
-                                animate="visible"
-                                className="absolute inset-0 text-white pointer-events-none"
+                        <AnimatePresence mode="wait">
+                            <motion.div 
+                                key={language + "-line1"}
+                                className="flex gap-x-[2vw]"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.4 }}
                             >
-                                VAMOS
-                            </motion.span>
-                        </div>
-
-                        <div className="relative inline-block">
-                            <span className="text-outline opacity-20">INICIAR</span>
-                            <motion.span 
-                                variants={wordVariants}
-                                custom={1}
-                                initial="hidden"
-                                animate="visible"
-                                className="absolute inset-0 text-white pointer-events-none"
-                            >
-                                INICIAR
-                            </motion.span>
-                        </div>
+                                {welcomeLine1.map((word: string, i: number) => (
+                                    <div key={word + i} className="relative inline-block">
+                                        <span className="text-outline opacity-20">{word}</span>
+                                        <motion.span 
+                                            variants={wordVariants}
+                                            custom={i}
+                                            initial="hidden"
+                                            animate="visible"
+                                            className="absolute inset-0 text-white pointer-events-none"
+                                        >
+                                            {word}
+                                        </motion.span>
+                                    </div>
+                                ))}
+                            </motion.div>
+                        </AnimatePresence>
                     </div>
 
                     {/* Linha 2 */}
                     <div className="relative w-full flex flex-wrap justify-center gap-x-[2vw] py-2">
-
-                        <div className="relative inline-block">
-                            <span className="text-outline opacity-20">A</span>
-                            <motion.span 
-                                variants={wordVariants}
-                                custom={2}
-                                initial="hidden"
-                                animate="visible"
-                                className="absolute inset-0 text-white pointer-events-none"
+                        <AnimatePresence mode="wait">
+                            <motion.div 
+                                key={language + "-line2"}
+                                className="flex gap-x-[2vw]"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.4, delay: 0.2 }}
                             >
-                                A
-                            </motion.span>
-                        </div>
-
-                        <div className="relative inline-block">
-                            <span className="text-outline opacity-20">JORNADA</span>
-                            <motion.span 
-                                variants={wordVariants}
-                                custom={3}
-                                initial="hidden"
-                                animate="visible"
-                                className="absolute inset-0 text-white pointer-events-none"
-                            >
-                                JORNADA
-                            </motion.span>
-                        </div>
+                                {welcomeLine2.map((word: string, i: number) => (
+                                    <div key={word + i} className="relative inline-block">
+                                        <span className="text-outline opacity-20">{word}</span>
+                                        <motion.span 
+                                            variants={wordVariants}
+                                            custom={i + 2}
+                                            initial="hidden"
+                                            animate="visible"
+                                            className="absolute inset-0 text-white pointer-events-none"
+                                        >
+                                            {word}
+                                        </motion.span>
+                                    </div>
+                                ))}
+                            </motion.div>
+                        </AnimatePresence>
                     </div>
                 </h1>
             </div>
 
-            {/* Discrete scroll indicator arrow at the bottom border */}
+            {/* Discrete scroll indicator */}
             <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center opacity-40 animate-bounce">
                 <span className="material-symbols-outlined text-white text-3xl">
                     expand_more

@@ -4,7 +4,7 @@ export const translations = {
       line1: ["VAMOS", "INICIAR"],
       line2: ["A", "JORNADA"],
       cta: "EXPLORAR",
-      switchLanguage: "Mudar para Inglês"
+      switchLanguage: "Switch to English"
     },
     nav: {
       home: "Início",
@@ -73,7 +73,9 @@ export const translations = {
     },
     skills: {
       subtitle: "Especialidade & Foco",
-      title: ["STACKS", "E", "INTERESSES"],
+      title: ["HABILIDADES", "E", "INTERESSES"],
+      habilidades: "Habilidades",
+      interesses: "Interesses",
       expRecent: "Recentemente",
       expYears: "anos de exp",
       expYear: "ano de exp",
@@ -91,7 +93,7 @@ export const translations = {
       line1: ["LET'S", "START"],
       line2: ["THE", "JOURNEY"],
       cta: "EXPLORE",
-      switchLanguage: "Switch to Portuguese"
+      switchLanguage: "Mudar para Português"
     },
     nav: {
       home: "Home",
@@ -160,7 +162,9 @@ export const translations = {
     },
     skills: {
       subtitle: "Expertise & Focus",
-      title: ["STACKS", "AND", "INTERESTS"],
+      title: ["SKILLS", "AND", "INTERESTS"],
+      habilidades: "Skills",
+      interesses: "Interests",
       expRecent: "Recently",
       expYears: "years of exp",
       expYear: "year of exp",

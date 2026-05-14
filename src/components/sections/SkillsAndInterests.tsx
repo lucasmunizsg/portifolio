@@ -4,7 +4,7 @@ import { Skill } from '../../types';
 import { useLanguage } from '../../context/LanguageContext';
 
 const wordVariantsSingleBlink: Variants = {
-    hidden: { 
+    hidden: {
         opacity: 0,
         textShadow: "0 0 0px rgba(255,255,255,0)"
     },
@@ -42,12 +42,59 @@ const SkillsAndInterests: React.FC<SkillsAndInterestsProps> = ({ skills }) => {
         [skills]
     );
 
+    const habilidades = useMemo(() => 
+        sortedSkills.filter(s => (s.category as any) === 'Linguagem' || (s.category as any) === 'Language'),
+        [sortedSkills]
+    );
+
+    const interesses = useMemo(() => 
+        sortedSkills.filter(s => (s.category as any) === 'Interesse' || (s.category as any) === 'Interest'),
+        [sortedSkills]
+    );
+
     const calculateExp = (year: number) => {
         const diff = currentYear - year;
         if (diff === 0) return t('skills.expRecent');
         const unit = diff === 1 ? t('skills.expYear') : t('skills.expYears');
         return `${diff} ${unit}`;
     };
+
+    const SkillCard = ({ skill }: { skill: Skill }) => (
+        <div
+            key={skill.id}
+            className={`group relative p-8 transition-all duration-500 border border-white/5 overflow-hidden
+                ${(skill.category as any) === 'Linguagem' || (skill.category as any) === 'Language'
+                    ? 'bg-[#1b1b1b] hover:neon-border'
+                    : 'bg-[#161616] hover:border-zinc-700'}`}
+        >
+            {/* Background Decoration */}
+            <div className="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-30 transition-opacity">
+                <span className="material-symbols-outlined text-4xl text-white">
+                    {(skill.category as any) === 'Linguagem' || (skill.category as any) === 'Language' ? 'code' : 'bolt'}
+                </span>
+            </div>
+
+            <div className="relative z-10">
+                <div className="flex items-center gap-2 mb-4">
+                    <span className={`w-1.5 h-1.5 rounded-full ${(skill.category as any) === 'Linguagem' || (skill.category as any) === 'Language' ? 'bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]' : 'bg-zinc-500'}`}></span>
+                    <span className="font-label text-[10px] text-zinc-500 uppercase tracking-widest">
+                        {calculateExp(skill.yearLearned)}
+                    </span>
+                </div>
+
+                <h3 className="font-display text-xl md:text-2xl font-bold text-white uppercase tracking-tight mb-2 group-hover:neon-text transition-all">
+                    {skill.name}
+                </h3>
+
+                <span className="font-label text-[9px] text-zinc-600 uppercase tracking-[0.2em]">
+                    {skill.category}
+                </span>
+            </div>
+
+            {/* Hover Reveal Line */}
+            <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-white shadow-[0_0_10px_rgba(255,255,255,0.4)] group-hover:w-full transition-all duration-700"></div>
+        </div>
+    );
 
     return (
         <section id="process" className="py-24 md:py-40 px-6 md:px-12 max-w-[1920px] mx-auto bg-[#131313]">
@@ -80,44 +127,37 @@ const SkillsAndInterests: React.FC<SkillsAndInterestsProps> = ({ skills }) => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                    {sortedSkills.map((skill) => (
-                        <div
-                            key={skill.id}
-                            className={`group relative p-8 transition-all duration-500 border border-white/5 overflow-hidden
-                                ${ (skill.category as any) === 'Linguagem' || (skill.category as any) === 'Language'
-                                    ? 'bg-[#1b1b1b] hover:neon-border'
-                                    : 'bg-[#161616] hover:border-zinc-700'}`}
-                        >
-                            {/* Background Decoration */}
-                            <div className="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-30 transition-opacity">
-                                <span className="material-symbols-outlined text-4xl text-white">
-                                    {(skill.category as any) === 'Linguagem' || (skill.category as any) === 'Language' ? 'code' : 'bolt'}
-                                </span>
-                            </div>
-
-                            <div className="relative z-10">
-                                <div className="flex items-center gap-2 mb-4">
-                                    <span className={`w-1.5 h-1.5 rounded-full ${(skill.category as any) === 'Linguagem' || (skill.category as any) === 'Language' ? 'bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]' : 'bg-zinc-500'}`}></span>
-                                    <span className="font-label text-[10px] text-zinc-500 uppercase tracking-widest">
-                                        {calculateExp(skill.yearLearned)}
-                                    </span>
-                                </div>
-
-                                <h3 className="font-display text-xl md:text-2xl font-bold text-white uppercase tracking-tight mb-2 group-hover:neon-text transition-all">
-                                    {skill.name}
-                                </h3>
-
-                                <span className="font-label text-[9px] text-zinc-600 uppercase tracking-[0.2em]">
-                                    {skill.category}
-                                </span>
-                            </div>
-
-                            {/* Hover Reveal Line */}
-                            <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-white shadow-[0_0_10px_rgba(255,255,255,0.4)] group-hover:w-full transition-all duration-700"></div>
-                        </div>
-                    ))}
+                {/* Habilidades Section */}
+                <div className="flex flex-col gap-8">
+                    <div className="flex items-center gap-4">
+                        <h3 className="font-display text-xl font-bold text-white/40 uppercase tracking-[0.2em]">
+                            {t('skills.habilidades')}
+                        </h3>
+                        <div className="h-[1px] flex-grow bg-white/5"></div>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                        {habilidades.map((skill) => (
+                            <SkillCard key={skill.id} skill={skill} />
+                        ))}
+                    </div>
                 </div>
+
+                {/* Interesses Section */}
+                {interesses.length > 0 && (
+                    <div className="flex flex-col gap-8 mt-8">
+                        <div className="flex items-center gap-4">
+                            <h3 className="font-display text-xl font-bold text-white/40 uppercase tracking-[0.2em]">
+                                {t('skills.interesses')}
+                            </h3>
+                            <div className="h-[1px] flex-grow bg-white/5"></div>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                            {interesses.map((skill) => (
+                                <SkillCard key={skill.id} skill={skill} />
+                            ))}
+                        </div>
+                    </div>
+                )}
 
                 <div className="mt-8 flex justify-end">
                     <p className="font-sans text-zinc-500 max-w-md text-sm md:text-base leading-relaxed text-right">

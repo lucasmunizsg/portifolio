@@ -14,7 +14,7 @@ import { useEffect } from 'react';
 import { useLanguage } from './context/LanguageContext';
 
 function App() {
-    const { language } = useLanguage();
+    const { language, t } = useLanguage();
 
     useEffect(() => {
         document.title = language === 'en' ? 'Luke.Journey | Portfolio' : 'Lucas Muniz | Portfólio';

@@ -21,7 +21,7 @@ export interface Experience {
     company: string;
     role: string;
     startDate: string;
-    endDate: string | 'Atual';
+    endDate: string | 'Atual' | 'Present';
     description: string;
 }
 
@@ -29,14 +29,14 @@ export interface Education {
     id: string;
     institution: string;
     course: string;
-    status: 'Concluído' | 'Em andamento' | 'Trancado' | 'Prêmio';
+    status: 'Concluído' | 'Em andamento' | 'Trancado' | 'Prêmio' | 'Completed' | 'In progress' | 'Award';
     year: string;
 }
 
 export interface Skill {
   id: string;
   name: string;
-  category: 'Linguagem' | 'Interesse';
+  category: 'Linguagem' | 'Interesse' | 'Language' | 'Interest';
   yearLearned: number; // Propriedade para armazenar o ano de início
 }
 

@@ -85,20 +85,20 @@ const SkillsAndInterests: React.FC<SkillsAndInterestsProps> = ({ skills }) => {
                         <div
                             key={skill.id}
                             className={`group relative p-8 transition-all duration-500 border border-white/5 overflow-hidden
-                                ${skill.category === 'Linguagem' || skill.category === 'Language'
+                                ${ (skill.category as any) === 'Linguagem' || (skill.category as any) === 'Language'
                                     ? 'bg-[#1b1b1b] hover:neon-border'
                                     : 'bg-[#161616] hover:border-zinc-700'}`}
                         >
                             {/* Background Decoration */}
                             <div className="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-30 transition-opacity">
                                 <span className="material-symbols-outlined text-4xl text-white">
-                                    {skill.category === 'Linguagem' || skill.category === 'Language' ? 'code' : 'bolt'}
+                                    {(skill.category as any) === 'Linguagem' || (skill.category as any) === 'Language' ? 'code' : 'bolt'}
                                 </span>
                             </div>
 
                             <div className="relative z-10">
                                 <div className="flex items-center gap-2 mb-4">
-                                    <span className={`w-1.5 h-1.5 rounded-full ${skill.category === 'Linguagem' || skill.category === 'Language' ? 'bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]' : 'bg-zinc-500'}`}></span>
+                                    <span className={`w-1.5 h-1.5 rounded-full ${(skill.category as any) === 'Linguagem' || (skill.category as any) === 'Language' ? 'bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]' : 'bg-zinc-500'}`}></span>
                                     <span className="font-label text-[10px] text-zinc-500 uppercase tracking-widest">
                                         {calculateExp(skill.yearLearned)}
                                     </span>

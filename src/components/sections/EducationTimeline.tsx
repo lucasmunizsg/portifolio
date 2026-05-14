@@ -65,9 +65,9 @@ const EducationItem: React.FC<{
                                 {study.year}
                             </span>
                             <span className={`px-2 py-0.5 text-[8px] uppercase tracking-[0.2em] border ${
-                                study.status === 'Prêmio' || study.status === 'Award' ? 'text-[#ffd700] border-[#ffd700]/20 bg-[#ffd700]/5' : 'text-zinc-500 border-white/10 bg-white/5'
+                                (study.status as any) === 'Prêmio' || (study.status as any) === 'Award' ? 'text-[#ffd700] border-[#ffd700]/20 bg-[#ffd700]/5' : 'text-zinc-500 border-white/10 bg-white/5'
                             }`}>
-                                {study.status === 'Prêmio' || study.status === 'Award' ? t('education.award') : study.status}
+                                {(study.status as any) === 'Prêmio' || (study.status as any) === 'Award' ? t('education.award') : study.status}
                             </span>
                         </div>
                         <h3 className="font-display text-2xl md:text-3xl font-black text-white tracking-tighter uppercase leading-none group-hover:text-emerald-50 transition-all duration-500">

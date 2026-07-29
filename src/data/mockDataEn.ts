@@ -13,32 +13,74 @@ export const projectsDataEn: Project[] = [
     {
         id: "1",
         title: "Lessons Platform",
-        description: "Management system for independent teachers integrated with AI.",
-        technologies: ["TypeScript", "Tailwind", "PostgreSQL", "Gemini API"],
+        description: "Management system for independent teachers integrated with AI. (In production)",
+        technologies: ["TypeScript", "Tailwind", "PostgreSQL", "Firebase", "Claude", "Gemini API"],
         repoUrl: LINKS.github,
         liveUrl: "",
         imageUrl: "/img1.png"
     },
     {
         id: "2",
+        title: "Bidding",
+        description: "System for managing bidding processes between companies and public agencies, centralizing the information bidders need to track their active bids. (In production)",
+        technologies: ["TypeScript", "Tailwind", "PostgreSQL", "Firebase", "Gemini API"],
+        repoUrl: LINKS.github
+    },
+    {
+        id: "3",
         title: "Walle",
-        description: "Personal financial management with goals and integrated AI assistant.",
-        technologies: ["React", "TypeScript", "AI"],
+        description: "Personal financial management with goals, an AI assistant, and workspaces, with general availability planned. (In production)",
+        technologies: ["TypeScript", "Tailwind", "PostgreSQL", "Firebase", "Claude", "Gemini API"],
         repoUrl: LINKS.github,
         imageUrl: "/img2.png"
     },
     {
-        id: "3",
+        id: "4",
         title: "Agricultural Assistant",
-        description: "Resource management and proposals for the agricultural sector with workflows and AI.",
-        technologies: ["React", "Workflows", "AI"],
+        description: "Resource and proposal management for agricultural-sector companies, with an AI assistant and workflows. (In production)",
+        technologies: ["TypeScript", "Tailwind", "PostgreSQL", "Firebase", "Claude"],
         repoUrl: LINKS.github
     },
     {
-        id: "4",
+        id: "5",
+        title: "Pixels Art",
+        description: "Game to change the colors of a square.",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        repoUrl: LINKS.github
+    },
+    {
+        id: "6",
+        title: "Unit Test",
+        description: "Unit tests written for a pre-existing codebase.",
+        technologies: ["JavaScript"],
+        repoUrl: LINKS.github
+    },
+    {
+        id: "7",
+        title: "Shopping Cart",
+        description: "E-commerce page with options to add and remove products from the cart, consuming the Mercado Livre API.",
+        technologies: ["JavaScript", "Mercado Livre API"],
+        repoUrl: LINKS.github
+    },
+    {
+        id: "8",
+        title: "PowerBI Analyst",
+        description: "Dynamic dashboard for detailed analysis of a spreadsheet.",
+        technologies: ["Power BI"],
+        repoUrl: LINKS.github
+    },
+    {
+        id: "9",
         title: "ETL with AI and Python",
         description: "Automation to create personalized investment prompts via OpenAI and Deep IA APIs.",
         technologies: ["Python", "OpenAI", "Deep IA"],
+        repoUrl: LINKS.github
+    },
+    {
+        id: "10",
+        title: "Buzzfeed Quiz",
+        description: "Buzzfeed clone built with Angular, exploring dynamic components.",
+        technologies: ["Angular"],
         repoUrl: LINKS.github
     }
 ];
@@ -50,7 +92,7 @@ export const experiencesDataEn: Experience[] = [
         role: "Front-End Developer",
         startDate: "03/2025",
         endDate: "Present",
-        description: "Focus on network infrastructure, maintenance, and hardware upgrades in the city of Penedo-AL."
+        description: "Responsible for network and computer infrastructure (maintenance and upgrades) in Penedo-AL."
     },
     {
         id: "2",
@@ -58,7 +100,7 @@ export const experiencesDataEn: Experience[] = [
         role: "Front-End Developer",
         startDate: "05/2024",
         endDate: "02/2025",
-        description: "Development and improvements in internal development systems, working remotely."
+        description: "Improvements to internal development systems, working remotely."
     },
     {
         id: "3",
@@ -66,15 +108,23 @@ export const experiencesDataEn: Experience[] = [
         role: "Systems Support Analyst",
         startDate: "10/2020",
         endDate: "04/2022",
-        description: "Remote support for ERP/POS systems, hardware maintenance, and training for new employees and clients."
+        description: "Remote support for ERP and POS systems, computer maintenance and repair in Penedo-AL."
     },
     {
         id: "4",
-        company: "Conterrânea Soluções/Projetos",
-        role: "Commercial and Agricultural Sector",
-        startDate: "2018",
-        endDate: "2020",
-        description: "Acting with commercial negotiations, account management, digital marketing, agricultural credit analysis, and team leadership."
+        company: "Conterrânea",
+        role: "Commercial and Finance Sector",
+        startDate: "04/2019",
+        endDate: "08/2020",
+        description: "Commercial negotiations, account management, social media and organic sales marketing, finance and payments, customer service in Penedo-AL."
+    },
+    {
+        id: "5",
+        company: "Conterrânea",
+        role: "Agricultural Credit Analyst",
+        startDate: "09/2018",
+        endDate: "04/2019",
+        description: "Agricultural credit analysis alongside Banco do Brasil and Banco do Nordeste, in Arapiraca-AL."
     }
 ];
 
@@ -82,44 +132,81 @@ export const educationDataEn: Education[] = [
     {
         id: "1",
         institution: "Harvard University",
-        course: "CS50: Computer Science",
+        course: "CS50: Introduction to Computer Science",
         status: "In progress",
         year: "Current"
     },
     {
         id: "2",
-        institution: "OneBitCode & Trybe",
-        course: "Web Development (Front-End & Computer Science)",
-        status: "Completed",
-        year: "2023"
+        institution: "TBA",
+        course: "English Course (Oxford Method)",
+        status: "In progress",
+        year: "Current"
     },
     {
         id: "3",
+        institution: "OneBit Code",
+        course: "Front-End Web Development",
+        status: "In progress",
+        year: "Current"
+    },
+    {
+        id: "4",
         institution: "DIO",
-        course: "Specializations: Angular and Data Science with Python",
+        course: "Front-End Development Bootcamp with Angular",
+        status: "Completed",
+        year: "2024"
+    },
+    {
+        id: "5",
+        institution: "Santander Bootcamp",
+        course: "Winner - 4th Data Science with Python Bootcamp (AI Project)",
+        status: "Award",
+        year: "2023"
+    },
+    {
+        id: "6",
+        institution: "DIO",
+        course: "Data Science with Python Bootcamp",
         status: "Completed",
         year: "2023"
     },
     {
-        id: "4",
-        institution: "Santander Bootcamp",
-        course: "Winner - Data Science with Python (AI Project)",
-        status: "Award",
-        year: "2024"
+        id: "7",
+        institution: "Trybe",
+        course: "Web Development Fundamentals",
+        status: "Completed",
+        year: "2023"
+    },
+    {
+        id: "8",
+        institution: "Microlins",
+        course: "Computer Science Course",
+        status: "Completed",
+        year: "2018"
     }
 ];
 
 export const skillsDataEn: Skill[] = [
-    { id: "1", name: "JavaScript (ES6+)", category: "Language", yearLearned: 2020 },
-    { id: "2", name: "TypeScript", category: "Language", yearLearned: 2023 },
-    { id: "3", name: "Python", category: "Language", yearLearned: 2022 },
-    { id: "4", name: "React", category: "Language", yearLearned: 2022 },
-    { id: "5", name: "Angular", category: "Language", yearLearned: 2023 },
-    { id: "6", name: "SQL & NoSQL", category: "Language", yearLearned: 2021 },
-    { id: "7", name: "AI Integration (OpenAI, Gemini)", category: "Interest", yearLearned: 2023 },
-    { id: "8", name: "Testing (Jest, Cypress)", category: "Interest", yearLearned: 2023 },
-    { id: "9", name: "Agile Management & Methodologies", category: "Interest", yearLearned: 2018 },
-    { id: "10", name: "Communication & Training", category: "Interest", yearLearned: 2020 }
+    { id: "1", name: "HTML", category: "Language", yearLearned: 2019 },
+    { id: "2", name: "CSS", category: "Language", yearLearned: 2019 },
+    { id: "3", name: "JavaScript (ES6+)", category: "Language", yearLearned: 2020 },
+    { id: "4", name: "DOM", category: "Language", yearLearned: 2020 },
+    { id: "5", name: "TypeScript", category: "Language", yearLearned: 2023 },
+    { id: "6", name: "MySQL", category: "Language", yearLearned: 2021 },
+    { id: "7", name: "React", category: "Language", yearLearned: 2022 },
+    { id: "8", name: "Angular", category: "Language", yearLearned: 2023 },
+    { id: "9", name: "Redux", category: "Language", yearLearned: 2023 },
+    { id: "10", name: "SQL & NoSQL", category: "Language", yearLearned: 2021 },
+    { id: "11", name: "Git", category: "Language", yearLearned: 2020 },
+    { id: "12", name: "Python", category: "Language", yearLearned: 2022 },
+    { id: "13", name: "OOP (Basic)", category: "Language", yearLearned: 2022 },
+    { id: "14", name: "Testing (UnitTest, Cypress)", category: "Interest", yearLearned: 2023 },
+    { id: "15", name: "Intro to Machine Learning", category: "Interest", yearLearned: 2023 },
+    { id: "16", name: "Computer Science", category: "Interest", yearLearned: 2024 },
+    { id: "17", name: "Agile Methodologies", category: "Interest", yearLearned: 2018 },
+    { id: "18", name: "Power BI", category: "Interest", yearLearned: 2023 },
+    { id: "19", name: "English (In progress)", category: "Interest", yearLearned: 2025 }
 ];
 
 export const resumeDataEn: ResumeVersion[] = [

@@ -5,7 +5,7 @@ export const profileData: Profile = {
     name: "Lucas Muniz",
     role: "Desenvolvedor de Software",
 
-    bio: "Desenvolvedor Front-End e analista de tecnologia sediado em Alagoas. Combino pensamento analítico e visão de negócio para criar soluções modernas integradas com Inteligência Artificial, unindo React, Angular e Python para resolver problemas complexos e gerar valor real.",
+    bio: "Desenvolvedor de Software e analista de tecnologia sediado em Alagoas. Combino pensamento analítico e visão de negócio para criar soluções modernas integradas com Inteligência Artificial, unindo React, Angular e Python para resolver problemas complexos e gerar valor real.",
     email: LINKS.email,
     phone: LINKS.phone
 };
@@ -90,7 +90,7 @@ export const experiencesData: Experience[] = [
     {
         id: "1",
         company: "ACRESC",
-        role: "Desenvolvedor Front-End",
+        role: "Desenvolvedor de Software",
         startDate: "03/2025",
         endDate: "Atual",
         description: "Responsável pela infraestrutura de rede e computadores (manutenção e upgrades) em Penedo-AL."
@@ -98,7 +98,7 @@ export const experiencesData: Experience[] = [
     {
         id: "2",
         company: "Freelancer",
-        role: "Desenvolvedor Front-End",
+        role: "Desenvolvedor de Software",
         startDate: "05/2024",
         endDate: "02/2025",
         description: "Melhorias em sistemas internos de desenvolvimento, atuação remota."

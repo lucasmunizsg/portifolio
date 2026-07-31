@@ -4,7 +4,7 @@ import { LINKS } from '../config/links';
 export const profileDataEn: Profile = {
     name: "Lucas Muniz",
     role: "Software Developer",
-    bio: "Front-End Developer and technology analyst based in Alagoas. I combine analytical thinking and business vision to create modern solutions integrated with Artificial Intelligence, bringing together React, Angular, and Python to solve complex problems and generate real value.",
+    bio: "Software Developer and technology analyst based in Alagoas. I combine analytical thinking and business vision to create modern solutions integrated with Artificial Intelligence, bringing together React, Angular, and Python to solve complex problems and generate real value.",
     email: LINKS.email,
     phone: LINKS.phone
 };
@@ -89,7 +89,7 @@ export const experiencesDataEn: Experience[] = [
     {
         id: "1",
         company: "ACRESC",
-        role: "Front-End Developer",
+        role: "Software Developer",
         startDate: "03/2025",
         endDate: "Present",
         description: "Responsible for network and computer infrastructure (maintenance and upgrades) in Penedo-AL."
@@ -97,7 +97,7 @@ export const experiencesDataEn: Experience[] = [
     {
         id: "2",
         company: "Freelancer",
-        role: "Front-End Developer",
+        role: "Software Developer",
         startDate: "05/2024",
         endDate: "02/2025",
         description: "Improvements to internal development systems, working remotely."

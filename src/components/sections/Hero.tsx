@@ -189,25 +189,21 @@ const Hero: React.FC<HeroProps> = ({ profile }) => {
             </div>
 
             {/* Technical Metadata Strip */}
-            <div className="relative z-10 mt-20 md:mt-40 grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 border-t border-white/10 pt-12">
-                <div className="flex flex-col gap-4">
+            <div className="relative z-10 mt-20 md:mt-40 flex flex-col items-center gap-12 border-t border-white/10 pt-12">
+                <div className="flex flex-col items-center gap-4 text-center">
                     <h4 className="font-label uppercase tracking-[0.2em] text-xs text-zinc-500">{t('hero.labels.about')}</h4>
-                    <p className="font-body text-sm font-light text-[#e2e2e2] leading-relaxed max-w-xs">
+                    <p className="font-body text-sm font-light text-[#e2e2e2] leading-relaxed max-w-3xl">
                         {profile.bio}
                     </p>
                 </div>
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col items-center gap-4 text-center">
                     <h4 className="font-label uppercase tracking-[0.2em] text-xs text-zinc-500">{t('hero.labels.location')}</h4>
-                    <p className="font-body text-sm font-light text-[#e2e2e2]">{t('hero.labels.locationValue')}</p>
-                </div>
-                <div className="flex flex-col gap-4 md:col-span-2">
-                    <h4 className="font-label uppercase tracking-[0.2em] text-xs text-zinc-500">{t('hero.labels.tech')}</h4>
-                    <div className="flex flex-wrap gap-4 mt-2">
-                        {['React', 'TypeScript', 'Tailwind CSS', 'Node.js'].map(tech => (
-                            <span key={tech} className="px-3 py-1 bg-[#1b1b1b] text-[10px] uppercase tracking-widest text-zinc-400 border border-white/5">
-                                {tech}
-                            </span>
-                        ))}
+                    <div className="flex items-center gap-2">
+                        {/* Silhueta simplificada do contorno do estado de Alagoas */}
+                        <svg viewBox="0 0 100 120" className="w-4 h-5 fill-[#e2e2e2]" aria-hidden="true">
+                            <path d="M38 2 L52 4 L58 14 L54 22 L64 26 L72 34 L78 44 L84 52 L92 58 L96 66 L90 74 L94 82 L88 90 L78 94 L70 88 L62 92 L54 86 L46 90 L38 84 L32 88 L24 80 L28 70 L20 62 L24 52 L16 44 L22 34 L18 24 L28 18 L26 8 Z" />
+                        </svg>
+                        <p className="font-body text-sm font-light text-[#e2e2e2]">{t('hero.labels.locationValue')}</p>
                     </div>
                 </div>
             </div>

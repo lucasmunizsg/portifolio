@@ -35,29 +35,27 @@ interface SkillsAndInterestsProps {
 
 const SkillsAndInterests: React.FC<SkillsAndInterestsProps> = ({ skills }) => {
     const { t } = useLanguage();
-    const currentYear = new Date().getFullYear();
 
     const sortedSkills = useMemo(() =>
         [...skills].sort((a, b) => b.yearLearned - a.yearLearned),
         [skills]
     );
 
-    const habilidades = useMemo(() => 
+    const habilidades = useMemo(() =>
         sortedSkills.filter(s => (s.category as any) === 'Linguagem' || (s.category as any) === 'Language'),
         [sortedSkills]
     );
 
-    const interesses = useMemo(() => 
+    const interesses = useMemo(() =>
         sortedSkills.filter(s => (s.category as any) === 'Interesse' || (s.category as any) === 'Interest'),
         [sortedSkills]
     );
 
-    const calculateExp = (year: number) => {
-        const diff = currentYear - year;
-        if (diff === 0) return t('skills.expRecent');
-        const unit = diff === 1 ? t('skills.expYear') : t('skills.expYears');
-        return `${diff} ${unit}`;
-    };
+    // Categoria "Progresso": habilidades ainda em evolução (ex: POO Inicial)
+    const progresso = useMemo(() =>
+        sortedSkills.filter(s => (s.category as any) === 'Progresso' || (s.category as any) === 'Progress'),
+        [sortedSkills]
+    );
 
     const SkillCard = ({ skill }: { skill: Skill }) => (
         <div
@@ -77,8 +75,9 @@ const SkillsAndInterests: React.FC<SkillsAndInterestsProps> = ({ skills }) => {
             <div className="relative z-10">
                 <div className="flex items-center gap-2 mb-4">
                     <span className={`w-1.5 h-1.5 rounded-full ${(skill.category as any) === 'Linguagem' || (skill.category as any) === 'Language' ? 'bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]' : 'bg-zinc-500'}`}></span>
+                    {/* Tempo de uso fixo no lugar do antigo cálculo de "X anos de exp" */}
                     <span className="font-label text-[10px] text-zinc-500 uppercase tracking-widest">
-                        {calculateExp(skill.yearLearned)}
+                        {skill.usageTime}
                     </span>
                 </div>
 
@@ -159,11 +158,22 @@ const SkillsAndInterests: React.FC<SkillsAndInterestsProps> = ({ skills }) => {
                     </div>
                 )}
 
-                <div className="mt-8 flex justify-end">
-                    <p className="font-sans text-zinc-500 max-w-md text-sm md:text-base leading-relaxed text-right">
-                        {t('skills.description')}
-                    </p>
-                </div>
+                {/* Progresso Section: habilidades ainda em evolução (ex: POO Inicial) */}
+                {progresso.length > 0 && (
+                    <div className="flex flex-col gap-8 mt-8">
+                        <div className="flex items-center gap-4">
+                            <h3 className="font-display text-xl font-bold text-white/40 uppercase tracking-[0.2em]">
+                                {t('skills.progresso')}
+                            </h3>
+                            <div className="h-[1px] flex-grow bg-white/5"></div>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                            {progresso.map((skill) => (
+                                <SkillCard key={skill.id} skill={skill} />
+                            ))}
+                        </div>
+                    </div>
+                )}
             </div>
 
             <div className="mt-40 text-center">

@@ -5,7 +5,7 @@ export const profileData: Profile = {
     name: "Lucas Muniz",
     role: "Desenvolvedor de Software",
 
-    bio: "Desenvolvedor Front-End e analista de tecnologia sediado em Alagoas. Combino pensamento analítico e visão de negócio para criar soluções modernas integradas com Inteligência Artificial, unindo React, Angular e Python para resolver problemas complexos e gerar valor real.",
+    bio: "Desenvolvedor de Software, analista de Infraestrutura de Rede e Computadores. Combino pensamento analítico e visão de negócio para criar soluções modernas usando ferramentas atuais, buscando sempre a melhor solução para cada negócio, visando assim resolver problemas complexos e gerar valor real.",
     email: LINKS.email,
     phone: LINKS.phone
 };
@@ -15,6 +15,7 @@ export const projectsData: Project[] = [
         id: "1",
         title: "Plataforma Aulas",
         description: "Sistema de gestão para professores autônomos integrado com IA. (Em produção)",
+        summary: "",
         technologies: ["TypeScript", "Tailwind", "PostgreSQL", "Firebase", "Claude", "Gemini API"],
         repoUrl: LINKS.github,
         liveUrl: "",
@@ -24,6 +25,7 @@ export const projectsData: Project[] = [
         id: "2",
         title: "Bidding",
         description: "Sistema para gerenciamento de licitações entre empresas e órgãos públicos, centralizando as informações para os licitantes acompanharem suas licitações ativas. (Em produção)",
+        summary: "",
         technologies: ["TypeScript", "Tailwind", "PostgreSQL", "Firebase", "Gemini API"],
         repoUrl: LINKS.github
     },
@@ -31,6 +33,7 @@ export const projectsData: Project[] = [
         id: "3",
         title: "Walle",
         description: "Gestão financeira pessoal com metas, assistente de IA e workspaces, com disponibilidade geral futura. (Em produção)",
+        summary: "",
         technologies: ["TypeScript", "Tailwind", "PostgreSQL", "Firebase", "Claude", "Gemini API"],
         repoUrl: LINKS.github,
         imageUrl: "/img2.png"
@@ -39,6 +42,7 @@ export const projectsData: Project[] = [
         id: "4",
         title: "Assistente Agropecuário",
         description: "Gestão de recursos e propostas para empresas do setor agropecuário, com assistente de IA e fluxos de trabalho. (Em produção)",
+        summary: "",
         technologies: ["TypeScript", "Tailwind", "PostgreSQL", "Firebase", "Claude"],
         repoUrl: LINKS.github
     },
@@ -46,6 +50,7 @@ export const projectsData: Project[] = [
         id: "5",
         title: "Pixels Art",
         description: "Jogo para alterar as cores de um quadrado.",
+        summary: "",
         technologies: ["HTML", "CSS", "JavaScript"],
         repoUrl: LINKS.github
     },
@@ -53,6 +58,7 @@ export const projectsData: Project[] = [
         id: "6",
         title: "Unit Test",
         description: "Criação de testes unitários para um código já pré-estabelecido.",
+        summary: "",
         technologies: ["JavaScript"],
         repoUrl: LINKS.github
     },
@@ -60,6 +66,7 @@ export const projectsData: Project[] = [
         id: "7",
         title: "Shopping Cart",
         description: "Página de e-commerce com opções de adicionar e remover produtos do carrinho, consumindo a API do Mercado Livre.",
+        summary: "",
         technologies: ["JavaScript", "API Mercado Livre"],
         repoUrl: LINKS.github
     },
@@ -67,6 +74,7 @@ export const projectsData: Project[] = [
         id: "8",
         title: "PowerBI Analyst",
         description: "Dashboard dinâmico voltado para a análise detalhada de uma planilha.",
+        summary: "",
         technologies: ["Power BI"],
         repoUrl: LINKS.github
     },
@@ -74,6 +82,7 @@ export const projectsData: Project[] = [
         id: "9",
         title: "ETL com IA e Python",
         description: "Automação para criar prompts personalizados sobre investimentos via APIs da OpenAI e Deep IA.",
+        summary: "",
         technologies: ["Python", "OpenAI", "Deep IA"],
         repoUrl: LINKS.github
     },
@@ -81,6 +90,7 @@ export const projectsData: Project[] = [
         id: "10",
         title: "Buzzfeed Quiz",
         description: "Clone do Buzzfeed com Angular, explorando funcionalidades e componentes dinâmicos.",
+        summary: "",
         technologies: ["Angular"],
         repoUrl: LINKS.github
     }
@@ -90,7 +100,7 @@ export const experiencesData: Experience[] = [
     {
         id: "1",
         company: "ACRESC",
-        role: "Desenvolvedor Front-End",
+        role: "Analista de Infraestrutura de Rede e Computadores",
         startDate: "03/2025",
         endDate: "Atual",
         description: "Responsável pela infraestrutura de rede e computadores (manutenção e upgrades) em Penedo-AL."
@@ -98,7 +108,7 @@ export const experiencesData: Experience[] = [
     {
         id: "2",
         company: "Freelancer",
-        role: "Desenvolvedor Front-End",
+        role: "Desenvolvedor de Software",
         startDate: "05/2024",
         endDate: "02/2025",
         description: "Melhorias em sistemas internos de desenvolvimento, atuação remota."
@@ -188,26 +198,28 @@ export const educationData: Education[] = [
     }
 ];
 
+// Texto padrão de tempo de uso (excepcionalmente maior para HTML e CSS, ver abaixo)
 export const skillsData: Skill[] = [
-    { id: "1", name: "HTML", category: "Linguagem", yearLearned: 2019 },
-    { id: "2", name: "CSS", category: "Linguagem", yearLearned: 2019 },
-    { id: "3", name: "JavaScript (ES6+)", category: "Linguagem", yearLearned: 2020 },
-    { id: "4", name: "DOM", category: "Linguagem", yearLearned: 2020 },
-    { id: "5", name: "TypeScript", category: "Linguagem", yearLearned: 2023 },
-    { id: "6", name: "MySQL", category: "Linguagem", yearLearned: 2021 },
-    { id: "7", name: "React", category: "Linguagem", yearLearned: 2022 },
-    { id: "8", name: "Angular", category: "Linguagem", yearLearned: 2023 },
-    { id: "9", name: "Redux", category: "Linguagem", yearLearned: 2023 },
-    { id: "10", name: "SQL & NoSQL", category: "Linguagem", yearLearned: 2021 },
-    { id: "11", name: "Git", category: "Linguagem", yearLearned: 2020 },
-    { id: "12", name: "Python", category: "Linguagem", yearLearned: 2022 },
-    { id: "13", name: "POO (Inicial)", category: "Linguagem", yearLearned: 2022 },
-    { id: "14", name: "Testes (UnitTest, Cypress)", category: "Interesse", yearLearned: 2023 },
-    { id: "15", name: "Introdução a Machine Learning", category: "Interesse", yearLearned: 2023 },
-    { id: "16", name: "Computer Science", category: "Interesse", yearLearned: 2024 },
-    { id: "17", name: "Metodologias Ágeis", category: "Interesse", yearLearned: 2018 },
-    { id: "18", name: "Power BI", category: "Interesse", yearLearned: 2023 },
-    { id: "19", name: "Inglês (Em andamento)", category: "Interesse", yearLearned: 2025 }
+    { id: "1", name: "HTML", category: "Linguagem", yearLearned: 2019, usageTime: "+ de 5 anos de uso" },
+    { id: "2", name: "CSS", category: "Linguagem", yearLearned: 2019, usageTime: "+ de 5 anos de uso" },
+    { id: "3", name: "JavaScript (ES6+)", category: "Linguagem", yearLearned: 2020, usageTime: "+ de 2 anos de uso" },
+    { id: "4", name: "DOM", category: "Linguagem", yearLearned: 2020, usageTime: "+ de 2 anos de uso" },
+    { id: "5", name: "TypeScript", category: "Linguagem", yearLearned: 2023, usageTime: "+ de 2 anos de uso" },
+    { id: "6", name: "MySQL", category: "Linguagem", yearLearned: 2021, usageTime: "+ de 2 anos de uso" },
+    { id: "7", name: "React", category: "Linguagem", yearLearned: 2022, usageTime: "+ de 2 anos de uso" },
+    { id: "8", name: "Angular", category: "Linguagem", yearLearned: 2023, usageTime: "+ de 2 anos de uso" },
+    { id: "9", name: "Redux", category: "Linguagem", yearLearned: 2023, usageTime: "+ de 2 anos de uso" },
+    { id: "10", name: "SQL & NoSQL", category: "Linguagem", yearLearned: 2021, usageTime: "+ de 2 anos de uso" },
+    { id: "11", name: "Git", category: "Linguagem", yearLearned: 2020, usageTime: "+ de 2 anos de uso" },
+    { id: "12", name: "Python", category: "Linguagem", yearLearned: 2022, usageTime: "+ de 2 anos de uso" },
+    // Movido para a categoria "Progresso": habilidade ainda em evolução
+    { id: "13", name: "POO (Inicial)", category: "Progresso", yearLearned: 2022, usageTime: "+ de 2 anos de uso" },
+    { id: "14", name: "Testes (UnitTest, Cypress)", category: "Interesse", yearLearned: 2023, usageTime: "+ de 2 anos de uso" },
+    { id: "15", name: "Introdução a Machine Learning", category: "Interesse", yearLearned: 2023, usageTime: "+ de 2 anos de uso" },
+    { id: "16", name: "Computer Science", category: "Interesse", yearLearned: 2024, usageTime: "+ de 2 anos de uso" },
+    { id: "17", name: "Metodologias Ágeis", category: "Interesse", yearLearned: 2018, usageTime: "+ de 2 anos de uso" },
+    { id: "18", name: "Power BI", category: "Interesse", yearLearned: 2023, usageTime: "+ de 2 anos de uso" },
+    { id: "19", name: "Inglês (Em andamento)", category: "Interesse", yearLearned: 2025, usageTime: "+ de 2 anos de uso" }
 ];
 
 

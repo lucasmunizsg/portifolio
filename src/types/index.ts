@@ -10,6 +10,8 @@ export interface Project {
     id: string;
     title: string;
     description: string;
+    // Resumo breve exibido no hover central do card (preenchido posteriormente pelo usuário)
+    summary?: string;
     technologies: string[];
     repoUrl: string;
     liveUrl?: string;
@@ -36,8 +38,11 @@ export interface Education {
 export interface Skill {
   id: string;
   name: string;
-  category: 'Linguagem' | 'Interesse' | 'Language' | 'Interest';
+  // Categoria "Progresso"/"Progress" agrupa habilidades ainda em evolução (ex: POO Inicial)
+  category: 'Linguagem' | 'Interesse' | 'Progresso' | 'Language' | 'Interest' | 'Progress';
   yearLearned: number; // Propriedade para armazenar o ano de início
+  // Texto de tempo de uso exibido no mini card (substitui o antigo cálculo de "X anos de exp")
+  usageTime: string;
 }
 
 

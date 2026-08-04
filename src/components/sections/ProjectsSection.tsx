@@ -128,27 +128,36 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
                     alt={project.title} 
                 />
                 
-                {/* Overlay Gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/40 to-transparent transition-opacity ${
-                    isActive ? 'opacity-80' : 'opacity-90 group-hover:opacity-70'
+                {/* Overlay gradiente: escurece topo e base para legibilidade do título e das tecnologias fixas */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/10 to-black/85 pointer-events-none"></div>
+
+                {/* Escurecimento extra ao centro no hover/ativo, para destacar o resumo do projeto */}
+                <div className={`absolute inset-0 bg-black/60 transition-opacity duration-500 pointer-events-none ${
+                    isActive ? 'opacity-100' : 'opacity-0'
                 }`}></div>
-                
-                {/* Project Info */}
-                <div className={`absolute bottom-10 left-10 right-10 transform transition-transform duration-500 z-10 ${
-                    isActive ? '-translate-y-2' : 'group-hover:-translate-y-2'
-                }`}>
+
+                {/* Estrutura Superior: título e rótulo do arquivo, sempre visíveis no topo do card */}
+                <div className="absolute top-10 left-10 right-16 z-10">
                     <span className="font-label text-[10px] text-red-400 uppercase tracking-[0.3em] mb-3 block font-bold" style={{ textShadow: '0 0 10px rgba(239,68,68,0.8)' }}>
                         {t('projects.fileLabel')} 0{index + 1}
                     </span>
-                    <h3 className="font-display text-3xl font-black text-white tracking-tighter uppercase mb-6 leading-none group-hover:text-red-50 transition-colors">
+                    <h3 className="font-display text-2xl md:text-3xl font-black text-white tracking-tighter uppercase leading-none group-hover:text-red-50 transition-colors">
                         {project.title}
                     </h3>
-                    
-                    <div className={`flex flex-wrap gap-2 transition-all duration-700 delay-100 ${
-                        isActive 
-                            ? 'opacity-100 translate-y-0' 
-                            : 'opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0'
-                    }`}>
+                </div>
+
+                {/* Estrutura Central: resumo revelado apenas no hover/ativo (texto preenchido posteriormente) */}
+                <div className={`absolute inset-0 flex items-center justify-center px-10 z-10 transition-opacity duration-500 ${
+                    isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                }`}>
+                    <p className="font-body text-sm text-zinc-100 text-center leading-relaxed">
+                        {project.summary}
+                    </p>
+                </div>
+
+                {/* Estrutura Inferior: tecnologias sempre fixas na base do card */}
+                <div className="absolute bottom-10 left-10 right-10 z-10">
+                    <div className="flex flex-wrap gap-2">
                         {project.technologies.map(tech => (
                             <span key={tech} className="px-3 py-1 bg-red-500/10 border border-red-500/20 text-[9px] uppercase tracking-widest text-red-200 font-medium">
                                 {tech}

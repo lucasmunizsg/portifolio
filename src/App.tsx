@@ -6,7 +6,9 @@ import ProjectsSection from './components/sections/ProjectsSection';
 import ExperienceTimeline from './components/sections/ExperienceTimeline';
 import EducationSection from './components/sections/EducationSection';
 import SkillsAndInterests from './components/sections/SkillsAndInterests';
+import PortfolioTechStack from './components/sections/PortfolioTechStack';
 import ResumeDownloads from './components/sections/ResumeDownloads';
+import HiringBanner from './components/sections/HiringBanner';
 import ContactSection from './components/sections/ContactSection';
 import WelcomeGate from './components/WelcomeGate';
 
@@ -46,9 +48,16 @@ function App() {
                 
                 <EducationSection studies={education} />
 
+                {/* Tecnologias usadas para construir este próprio portfólio, entre Formação e Documentação Técnica */}
+                <PortfolioTechStack />
+
                 {/* Seção Unificada de Contato & Recursos (Downloads) */}
                 <div id="contact" className="bg-[#0b0b0b] border-t border-white/5 relative overflow-hidden">
                     <ResumeDownloads versions={resume} />
+
+                    {/* Destaque de disponibilidade para contratação (CLT/PJ) e freelance */}
+                    <HiringBanner />
+
                     <ContactSection profile={profile} socials={socials} />
 
                     {/* Rodapé Absoluto de Direitos Autorais */}

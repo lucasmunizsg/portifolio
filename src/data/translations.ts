@@ -28,7 +28,6 @@ export const translations = {
       labels: {
         about: "Sobre",
         location: "Localização",
-        tech: "Tecnologias",
         locationValue: "Sediado no Brasil / Global"
       }
     },
@@ -72,15 +71,25 @@ export const translations = {
       }
     },
     skills: {
-      subtitle: "Especialidade & Foco",
-      title: ["HABILIDADES", "E", "INTERESSES"],
+      subtitle: "Aprendizado & Evolução",
+      title: ["HABILIDADES", "E", "PROGRESSO"],
       habilidades: "Habilidades",
       interesses: "Interesses",
-      expRecent: "Recentemente",
-      expYears: "anos de exp",
-      expYear: "ano de exp",
-      description: "Uma visão dinâmica das tecnologias que domino e dos meus focos atuais de pesquisa e desenvolvimento.",
-      footerTitle: ['ENGENHARIA', 'DE', 'ATMOSFERAS', 'DIGITAIS', 'COM', 'PRECISÃO.']
+      progresso: "Progresso",
+      footerTitle: ['RESOLVER', 'PROBLEMAS', 'REAIS', 'COM', 'SOFTWARES', 'QUE', 'REALMENTE', 'CAUSAM', 'IMPACTO', 'NA', 'JORNADA', 'DOS', 'USUÁRIOS']
+    },
+    // Nova seção: tecnologias utilizadas para construir este próprio portfólio
+    techStack: {
+      subtitle: "Como Foi Construído",
+      title: ["TECNOLOGIAS", "DO", "PORTFÓLIO"]
+    },
+    // Novo destaque de disponibilidade para contratação (CLT/PJ) e projetos freelance
+    hiring: {
+      badge: "Disponível para Contratação",
+      title: "Aberto a Novas Oportunidades",
+      description: "Disponível tanto para contratação empresarial (CLT/PJ) quanto para projetos pessoais e freelance.",
+      corporate: "CLT / PJ",
+      freelance: "Freelance / Projetos Pessoais"
     },
     common: {
       present: "Atual",
@@ -117,7 +126,6 @@ export const translations = {
       labels: {
         about: "About",
         location: "Location",
-        tech: "Technologies",
         locationValue: "Based in Brazil / Global"
       }
     },
@@ -161,15 +169,25 @@ export const translations = {
       }
     },
     skills: {
-      subtitle: "Expertise & Focus",
-      title: ["SKILLS", "AND", "INTERESTS"],
+      subtitle: "Learning & Growth",
+      title: ["SKILLS", "AND", "PROGRESS"],
       habilidades: "Skills",
       interesses: "Interests",
-      expRecent: "Recently",
-      expYears: "years of exp",
-      expYear: "year of exp",
-      description: "A dynamic view of the technologies I master and my current research and development focuses.",
-      footerTitle: ['ENGINEERING', 'DIGITAL', 'ATMOSPHERES', 'WITH', 'PRECISION.']
+      progresso: "Progress",
+      footerTitle: ['SOLVING', 'REAL', 'PROBLEMS', 'WITH', 'SOFTWARE', 'THAT', 'TRULY', 'IMPACTS', 'THE', 'USER', 'JOURNEY']
+    },
+    // Nova seção: tecnologias usadas para construir este próprio portfólio
+    techStack: {
+      subtitle: "How It Was Built",
+      title: ["PORTFOLIO", "TECH", "STACK"]
+    },
+    // Novo destaque de disponibilidade para contratação (CLT/PJ) e projetos freelance
+    hiring: {
+      badge: "Available for Hire",
+      title: "Open to New Opportunities",
+      description: "Available for both corporate hiring (full-time/contract) and personal or freelance projects.",
+      corporate: "Full-time / Contract",
+      freelance: "Freelance / Personal Projects"
     },
     common: {
       present: "Present",

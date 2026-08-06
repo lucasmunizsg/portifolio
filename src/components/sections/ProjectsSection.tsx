@@ -128,7 +128,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
                     alt={project.title} 
                 />
                 
-                {/* Overlay gradiente: escurece topo e base para legibilidade do título e das tecnologias fixas */}
+                {/* Overlay gradiente: escurece topo e base para legibilidade do título e das tecnologias */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/10 to-black/85 pointer-events-none"></div>
 
                 {/* Escurecimento extra ao centro no hover/ativo, para destacar o resumo do projeto */}
@@ -155,8 +155,10 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
                     </p>
                 </div>
 
-                {/* Estrutura Inferior: tecnologias sempre fixas na base do card */}
-                <div className="absolute bottom-10 left-10 right-10 z-10">
+                {/* Estrutura Inferior: tecnologias exibidas apenas no hover/estado ativo do card */}
+                <div className={`absolute bottom-10 left-10 right-10 z-10 transition-opacity duration-500 ${
+                    isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                }`}>
                     <div className="flex flex-wrap gap-2">
                         {project.technologies.map(tech => (
                             <span key={tech} className="px-3 py-1 bg-red-500/10 border border-red-500/20 text-[9px] uppercase tracking-widest text-red-200 font-medium">

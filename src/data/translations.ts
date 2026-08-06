@@ -38,13 +38,13 @@ export const translations = {
     },
     experience: {
       subtitle: "Histórico",
-      title: ["TRAJETÓRIA", "PROFISSIONAL"],
+      title: ["JORNADA", "PROFISSIONAL"],
       details: "Detalhes",
       close: "Fechar"
     },
     education: {
       subtitle: "Formação",
-      title: ["CAMINHO", "ACADÊMICO"],
+      title: ["JORNADA", "ACADÊMICA"],
       award: "Prêmio"
     },
     contact: {
@@ -74,7 +74,6 @@ export const translations = {
       subtitle: "Aprendizado & Evolução",
       title: ["HABILIDADES", "E", "PROGRESSO"],
       habilidades: "Habilidades",
-      interesses: "Interesses",
       progresso: "Progresso",
       footerTitle: ['RESOLVER', 'PROBLEMAS', 'REAIS', 'COM', 'SOFTWARES', 'QUE', 'REALMENTE', 'CAUSAM', 'IMPACTO', 'NA', 'JORNADA', 'DOS', 'USUÁRIOS']
     },
@@ -136,13 +135,13 @@ export const translations = {
     },
     experience: {
       subtitle: "History",
-      title: ["PROFESSIONAL", "TRAJECTORY"],
+      title: ["PROFESSIONAL", "JOURNEY"],
       details: "Details",
       close: "Close"
     },
     education: {
       subtitle: "Education",
-      title: ["ACADEMIC", "PATH"],
+      title: ["ACADEMIC", "JOURNEY"],
       award: "Award"
     },
     contact: {
@@ -172,7 +171,6 @@ export const translations = {
       subtitle: "Learning & Growth",
       title: ["SKILLS", "AND", "PROGRESS"],
       habilidades: "Skills",
-      interesses: "Interests",
       progresso: "Progress",
       footerTitle: ['SOLVING', 'REAL', 'PROBLEMS', 'WITH', 'SOFTWARE', 'THAT', 'TRULY', 'IMPACTS', 'THE', 'USER', 'JOURNEY']
     },

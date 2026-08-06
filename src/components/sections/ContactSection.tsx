@@ -3,10 +3,11 @@ import { motion, Variants } from 'framer-motion';
 import { Profile, SocialLink } from '../../types';
 import { useLanguage } from '../../context/LanguageContext';
 
-const wordVariantsSingleBlink: Variants = {
+// Cor da seção "Contato" atualizada de branco para índigo (75,0,130)
+const wordVariantsIndigoSingleBlink: Variants = {
     hidden: {
         opacity: 0,
-        textShadow: "0 0 0px rgba(255,255,255,0)"
+        textShadow: "0 0 0px rgba(75,0,130,0)"
     },
     visible: (index: number) => ({
         opacity: [
@@ -16,10 +17,10 @@ const wordVariantsSingleBlink: Variants = {
             1,     // Estabiliza totalmente aceso
         ],
         textShadow: [
-            "0 0 0px rgba(255,255,255,0)",
-            "0 0 15px rgba(255,255,255,0.6)",
-            "0 0 2px rgba(255,255,255,0.1)",
-            "0 0 12px rgba(255,255,255,0.4)"
+            "0 0 0px rgba(75,0,130,0)",
+            "0 0 15px rgba(75,0,130,0.6)",
+            "0 0 2px rgba(75,0,130,0.1)",
+            "0 0 12px rgba(75,0,130,0.4)"
         ],
         transition: {
             duration: 0.6,
@@ -59,9 +60,9 @@ const ContactSection: React.FC<ContactSectionProps> = ({ profile, socials }) => 
                             <div key={i} className="relative inline-block">
                                 <span className="text-outline opacity-20">{word}</span>
                                 <motion.span
-                                    variants={wordVariantsSingleBlink}
+                                    variants={wordVariantsIndigoSingleBlink}
                                     custom={i}
-                                    className="absolute inset-0 text-white pointer-events-none"
+                                    className="absolute inset-0 text-[#4B0082] pointer-events-none"
                                 >
                                     {word}
                                 </motion.span>
@@ -77,7 +78,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ profile, socials }) => 
                         {/* E-mail (com ícone) */}
                         <a
                             href={`mailto:${profile.email}`}
-                            className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center bg-white/[0.02] hover:bg-white/5 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.15)] text-zinc-400 hover:text-white transition-all duration-300"
+                            className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center bg-white/[0.02] hover:bg-[#4B0082]/10 hover:border-[#4B0082] hover:shadow-[0_0_15px_rgba(75,0,130,0.5)] text-zinc-400 hover:text-[#9d7fc7] transition-all duration-300"
                             aria-label="E-mail"
                             title={profile.email}
                         >
@@ -93,7 +94,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ profile, socials }) => 
                                 href={socials.find(s => s.platform.toLowerCase() === 'github')?.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center bg-white/[0.02] hover:bg-white/5 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.15)] text-zinc-400 hover:text-white transition-all duration-300"
+                                className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center bg-white/[0.02] hover:bg-[#4B0082]/10 hover:border-[#4B0082] hover:shadow-[0_0_15px_rgba(75,0,130,0.5)] text-zinc-400 hover:text-[#9d7fc7] transition-all duration-300"
                                 aria-label="GitHub"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -109,7 +110,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ profile, socials }) => 
                                 href={socials.find(s => s.platform.toLowerCase() === 'linkedin')?.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center bg-white/[0.02] hover:bg-white/5 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.15)] text-zinc-400 hover:text-white transition-all duration-300"
+                                className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center bg-white/[0.02] hover:bg-[#4B0082]/10 hover:border-[#4B0082] hover:shadow-[0_0_15px_rgba(75,0,130,0.5)] text-zinc-400 hover:text-[#9d7fc7] transition-all duration-300"
                                 aria-label="LinkedIn"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -126,7 +127,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ profile, socials }) => 
                                 href={`https://wa.me/${profile.phone.replace(/[^0-9]/g, '')}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center bg-white/[0.02] hover:bg-white/5 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.15)] text-zinc-400 hover:text-white transition-all duration-300"
+                                className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center bg-white/[0.02] hover:bg-[#4B0082]/10 hover:border-[#4B0082] hover:shadow-[0_0_15px_rgba(75,0,130,0.5)] text-zinc-400 hover:text-[#9d7fc7] transition-all duration-300"
                                 aria-label="WhatsApp"
                                 title={profile.phone}
                             >

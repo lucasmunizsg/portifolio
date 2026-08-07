@@ -54,10 +54,21 @@ const WelcomeGate: React.FC = () => {
     return (
         <section 
             id="welcome"
-            className="relative h-screen w-full flex flex-col items-center justify-center cursor-pointer overflow-hidden bg-black"
+            className="relative h-screen w-full flex flex-col items-center justify-center cursor-pointer overflow-hidden bg-[#171717]"
             onClick={startJounery}
         >
-            {/* 1. Moving Background Animated Orbs */}
+            {/* 1.a Prisma discreto irradiando toda a pagina, entre o fundo (#171717) e o blur de vidro fosco.
+                Usa o mesmo espectro de cores tematicas das secoes do site (vermelho, laranja, amarelo,
+                verde, azul, indigo, violeta), bem suave e desfocado. */}
+            <div
+                className="absolute inset-0 pointer-events-none z-[1] opacity-[0.14] mix-blend-screen"
+                style={{
+                    background: 'conic-gradient(from 0deg at 50% 50%, #ef4444, #ffa500, #ffff00, #008000, #0000ff, #4b0082, #7f00ff, #ef4444)',
+                    filter: 'blur(180px)'
+                }}
+            />
+
+            {/* 1.b Moving Background Animated Orbs */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
                 {/* Glowing Orb 1 (Elegant White) */}
                 <motion.div

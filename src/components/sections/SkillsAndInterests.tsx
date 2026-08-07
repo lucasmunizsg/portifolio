@@ -228,8 +228,8 @@ const SkillsAndInterests: React.FC<SkillsAndInterestsProps> = ({ skills }) => {
             </div>
 
             <div className="mt-40 text-center">
-                <motion.h2 
-                    className="font-display text-4xl md:text-6xl font-black uppercase tracking-tighter mb-12 max-w-5xl mx-auto leading-[0.95] flex flex-wrap justify-center gap-[0.3em]"
+                <motion.h2
+                    className="font-display text-2xl md:text-4xl font-black uppercase tracking-tighter mb-12 max-w-4xl mx-auto leading-[1.1] flex flex-wrap justify-center gap-[0.3em]"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-10%" }}

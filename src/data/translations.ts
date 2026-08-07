@@ -75,7 +75,7 @@ export const translations = {
       title: ["HABILIDADES", "E", "PROGRESSO"],
       habilidades: "Habilidades",
       progresso: "Progresso",
-      footerTitle: ['RESOLVER', 'PROBLEMAS', 'REAIS', 'COM', 'SOFTWARES', 'QUE', 'REALMENTE', 'CAUSAM', 'IMPACTO', 'NA', 'JORNADA', 'DOS', 'USUÁRIOS']
+      footerTitle: ['RESOLVENDO', 'PROBLEMAS', 'COM', 'SOFTWARES', 'QUE', 'CAUSAM', 'IMPACTO', 'NA', 'JORNADA', 'DOS', 'USUÁRIOS']
     },
     // Nova seção: tecnologias utilizadas para construir este próprio portfólio
     techStack: {
@@ -172,7 +172,7 @@ export const translations = {
       title: ["SKILLS", "AND", "PROGRESS"],
       habilidades: "Skills",
       progresso: "Progress",
-      footerTitle: ['SOLVING', 'REAL', 'PROBLEMS', 'WITH', 'SOFTWARE', 'THAT', 'TRULY', 'IMPACTS', 'THE', 'USER', 'JOURNEY']
+      footerTitle: ['SOLVING', 'PROBLEMS', 'WITH', 'SOFTWARE', 'THAT', 'IMPACTS', 'THE', 'USER', 'JOURNEY']
     },
     // Nova seção: tecnologias usadas para construir este próprio portfólio
     techStack: {

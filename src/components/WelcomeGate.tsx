@@ -57,15 +57,25 @@ const WelcomeGate: React.FC = () => {
             className="relative h-screen w-full flex flex-col items-center justify-center cursor-pointer overflow-hidden bg-[#171717]"
             onClick={startJounery}
         >
-            {/* 1.a Prisma discreto irradiando toda a pagina, entre o fundo (#171717) e o blur de vidro fosco.
-                Usa o mesmo espectro de cores tematicas das secoes do site (vermelho, laranja, amarelo,
-                verde, azul, indigo, violeta), bem suave e desfocado. */}
-            <div
-                className="absolute inset-0 pointer-events-none z-[1] opacity-[0.14] mix-blend-screen"
+            {/* 1.a Prisma discreto irradiando e fluindo continuamente pela pagina, entre o fundo (#171717)
+                e o blur de vidro fosco. Usa o mesmo espectro de cores tematicas das secoes do site
+                (vermelho, laranja, amarelo, verde, azul, indigo, violeta), bem suave e desfocado.
+                O disco e sobredimensionado (150vmax) e centralizado para que a rotacao continua nunca
+                revele os cantos do container. */}
+            <motion.div
+                className="absolute pointer-events-none z-[1] opacity-[0.14] mix-blend-screen"
                 style={{
+                    top: '50%',
+                    left: '50%',
+                    width: '150vmax',
+                    height: '150vmax',
+                    marginLeft: '-75vmax',
+                    marginTop: '-75vmax',
                     background: 'conic-gradient(from 0deg at 50% 50%, #ef4444, #ffa500, #ffff00, #008000, #0000ff, #4b0082, #7f00ff, #ef4444)',
                     filter: 'blur(180px)'
                 }}
+                animate={{ rotate: 360 }}
+                transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
             />
 
             {/* 1.b Moving Background Animated Orbs */}

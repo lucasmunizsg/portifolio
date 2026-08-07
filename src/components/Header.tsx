@@ -1,23 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 
-// Separa o rotulo "Experiência"/"Experience" em torno da sub-string "XP",
-// para colorir "XP" em amarelo e o restante das letras em verde
-const renderExperienceLabel = (label: string) => {
-    const idx = label.toLowerCase().indexOf('xp');
-    if (idx === -1) return <>{label}</>;
-    const before = label.slice(0, idx);
-    const xp = label.slice(idx, idx + 2);
-    const after = label.slice(idx + 2);
-    return (
-        <>
-            <span className="text-[#008000]">{before}</span>
-            <span className="text-[#ffff00]">{xp}</span>
-            <span className="text-[#008000]">{after}</span>
-        </>
-    );
-};
-
 const logoLetters = [
     { char: "J", roll: ["J", "M", "R", "Y", "J"] },
     { char: "O", roll: ["O", "S", "E", "N", "O"] },
@@ -112,12 +95,12 @@ const Header: React.FC = () => {
                 </a>
                 
                 <div className="flex items-center gap-2.5 sm:gap-6 md:gap-12 ml-auto md:ml-0 pl-2 sm:pl-0">
-                    {/* Stacks: cor fixa azul (0,0,255), com brilho indicando estado ativo/hover */}
+                    {/* Stacks: cor azul (0,0,255) somente enquanto a secao Habilidades estiver ativa */}
                     <a
-                        className={`font-label uppercase tracking-[0.1em] sm:tracking-[0.2em] text-[8px] sm:text-[9px] md:text-[10px] text-[#0000ff] transition-all duration-300 ${
+                        className={`font-label uppercase tracking-[0.1em] sm:tracking-[0.2em] text-[8px] sm:text-[9px] md:text-[10px] transition-all duration-300 ${
                             activeSection === 'process'
-                                ? 'font-bold drop-shadow-[0_0_8px_rgba(0,0,255,0.9)]'
-                                : 'opacity-70 hover:opacity-100 hover:drop-shadow-[0_0_8px_rgba(0,0,255,0.9)]'
+                                ? 'text-[#0000ff] font-bold drop-shadow-[0_0_8px_rgba(0,0,255,0.9)]'
+                                : 'text-zinc-500 hover:text-[#0000ff] hover:drop-shadow-[0_0_8px_rgba(0,0,255,0.9)]'
                         }`}
                         href="#process"
                     >
@@ -136,16 +119,16 @@ const Header: React.FC = () => {
                         {t('nav.projects')}
                     </a>
 
-                    {/* XP: "XP" em amarelo (255,255,0) e o restante das letras em verde (0,128,0) */}
+                    {/* Experiência: cor amarela (255,255,0) somente enquanto Jornada Profissional/Acadêmica estiver ativa */}
                     <a
                         className={`font-label uppercase tracking-[0.1em] sm:tracking-[0.2em] text-[8px] sm:text-[9px] md:text-[10px] transition-all duration-300 ${
                             activeSection === 'xp' || activeSection === 'education'
-                                ? 'font-bold drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]'
-                                : 'opacity-70 hover:opacity-100'
+                                ? 'text-[#ffff00] font-bold drop-shadow-[0_0_8px_rgba(255,255,0,0.9)]'
+                                : 'text-zinc-500 hover:text-[#ffff00] hover:drop-shadow-[0_0_8px_rgba(255,255,0,0.9)]'
                         }`}
                         href="#xp"
                     >
-                        {renderExperienceLabel(t('nav.experience') as string)}
+                        {t('nav.experience')}
                     </a>
 
                     {/* Contato */}

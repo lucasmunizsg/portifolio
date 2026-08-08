@@ -211,13 +211,13 @@ export const skillsDataEn: Skill[] = [
     { id: "11", name: "Git", category: "Language", yearLearned: 2020, usageTime: "2+ years of use" },
     { id: "12", name: "Python", category: "Language", yearLearned: 2022, usageTime: "2+ years of use" },
     // Movido para a categoria "Progress": habilidade ainda em evolução
-    { id: "13", name: "OOP (Basic)", category: "Progress", yearLearned: 2022, usageTime: "2+ years of use" },
-    { id: "14", name: "Testing (UnitTest, Cypress)", category: "Progress", yearLearned: 2023, usageTime: "2+ years of use" },
-    { id: "15", name: "Intro to Machine Learning", category: "Progress", yearLearned: 2023, usageTime: "2+ years of use" },
-    { id: "16", name: "Computer Science", category: "Progress", yearLearned: 2024, usageTime: "2+ years of use" },
-    { id: "17", name: "Agile Methodologies", category: "Progress", yearLearned: 2018, usageTime: "2+ years of use" },
-    { id: "18", name: "Power BI", category: "Progress", yearLearned: 2023, usageTime: "2+ years of use" },
-    { id: "19", name: "English (In progress)", category: "Progress", yearLearned: 2025, usageTime: "2+ years of use" }
+    { id: "13", name: "OOP", category: "Progress", yearLearned: 2022, usageTime: "2+ years of learning" },
+    { id: "14", name: "UnitTest, Cypress", category: "Progress", yearLearned: 2023, usageTime: "2+ years of learning" },
+    { id: "15", name: "Intro to Machine Learning", category: "Progress", yearLearned: 2023, usageTime: "2+ years of learning" },
+    { id: "16", name: "Computer Science", category: "Progress", yearLearned: 2024, usageTime: "2+ years of learning" },
+    { id: "17", name: "Agile Methodologies", category: "Progress", yearLearned: 2018, usageTime: "2+ years of learning" },
+    { id: "18", name: "Power BI", category: "Progress", yearLearned: 2023, usageTime: "2+ years of learning" },
+    { id: "19", name: "English", category: "Progress", yearLearned: 2025, usageTime: "2+ years of learning" }
 ];
 
 export const resumeDataEn: ResumeVersion[] = [

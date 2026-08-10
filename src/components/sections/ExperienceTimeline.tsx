@@ -4,10 +4,11 @@ import { Experience } from '../../types';
 import BeamLine from '../BeamLine';
 import { useLanguage } from '../../context/LanguageContext';
 
-const wordVariantsCyanSingleBlink: Variants = {
-    hidden: { 
+// Cor da seção "Jornada Profissional" atualizada de ciano para amarelo (255,255,0)
+const wordVariantsYellowSingleBlink: Variants = {
+    hidden: {
         opacity: 0,
-        textShadow: "0 0 0px rgba(34,211,238,0)"
+        textShadow: "0 0 0px rgba(255,255,0,0)"
     },
     visible: (index: number) => ({
         opacity: [
@@ -17,10 +18,10 @@ const wordVariantsCyanSingleBlink: Variants = {
             1,     // Estabiliza totalmente aceso
         ],
         textShadow: [
-            "0 0 0px rgba(34,211,238,0)",
-            "0 0 15px rgba(34,211,238,0.6)",
-            "0 0 2px rgba(34,211,238,0.1)",
-            "0 0 12px rgba(34,211,238,0.4)"
+            "0 0 0px rgba(255,255,0,0)",
+            "0 0 15px rgba(255,255,0,0.6)",
+            "0 0 2px rgba(255,255,0,0.1)",
+            "0 0 12px rgba(255,255,0,0.4)"
         ],
         transition: {
             duration: 0.6,
@@ -54,14 +55,14 @@ const ExperienceItem: React.FC<{
         >
             {/* Dot on Timeline with expand state glow */}
             <div className={`absolute left-4 md:left-1/2 top-0 w-3 h-3 rounded-full transform -translate-x-1/2 md:-translate-x-1/2 border-2 transition-all duration-500 z-30 ${
-                isInView ? 'bg-cyan-400 border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.8)] scale-125' : 'bg-[#0e0e0e] border-zinc-600'
+                isInView ? 'bg-[#ffff00] border-[#ffff00] shadow-[0_0_15px_rgba(255,255,0,0.8)] scale-125' : 'bg-[#0e0e0e] border-zinc-600'
             } ${
                 isExpanded ? 'scale-150' : 'group-hover:scale-150'
             }`}></div>
 
             {/* Connection Line from Timeline to Card (Desktop) */}
             <motion.div 
-                className={`hidden md:block absolute top-[5px] h-[2px] bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.8)] z-20 ${index % 2 === 0 ? 'origin-right' : 'origin-left'}`}
+                className={`hidden md:block absolute top-[5px] h-[2px] bg-[#ffff00] shadow-[0_0_10px_rgba(255,255,0,0.8)] z-20 ${index % 2 === 0 ? 'origin-right' : 'origin-left'}`}
                 style={{ 
                     left: index % 2 === 0 ? '40%' : '50%', 
                     width: '10%' 
@@ -73,7 +74,7 @@ const ExperienceItem: React.FC<{
 
             {/* Connection Line from Timeline to Card (Mobile) */}
             <motion.div 
-                className={`block md:hidden absolute top-[5px] left-4 h-[2px] bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.8)] z-20 origin-left`}
+                className={`block md:hidden absolute top-[5px] left-4 h-[2px] bg-[#ffff00] shadow-[0_0_10px_rgba(255,255,0,0.8)] z-20 origin-left`}
                 style={{ width: 'calc(2rem - 6px)' }} // from left-4 to pl-12 (which is left-4 + 2rem)
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: isExpanded ? 1 : 0 }}
@@ -86,9 +87,9 @@ const ExperienceItem: React.FC<{
                 className={`w-[calc(100%-2rem)] ml-8 md:ml-0 md:w-[40%] cursor-pointer p-8 bg-[#131313]/80 backdrop-blur-md border transition-all duration-700 relative overflow-hidden ${
                     index % 2 === 0 ? 'md:text-left' : 'md:text-left'
                 } ${
-                    isExpanded 
-                        ? 'border-cyan-400/50 shadow-[0_0_20px_rgba(34,211,238,0.2)] scale-[1.01]' 
-                        : 'border-white/5 hover:border-cyan-400/30'
+                    isExpanded
+                        ? 'border-[#ffff00]/50 shadow-[0_0_20px_rgba(255,255,0,0.2)] scale-[1.01]'
+                        : 'border-white/5 hover:border-[#ffff00]/30'
                 }`}
             >
                 {/* Decorative Index */}
@@ -99,11 +100,11 @@ const ExperienceItem: React.FC<{
                 <div className="flex flex-col gap-6 relative z-10">
                     <div className="flex flex-col gap-2">
                         <div className="flex items-center gap-3">
-                            <span className="font-label text-[10px] text-cyan-400 uppercase tracking-[0.2em] font-bold">
+                            <span className="font-label text-[10px] text-[#ffff00] uppercase tracking-[0.2em] font-bold">
                                 {exp.startDate} — {exp.endDate}
                             </span>
                         </div>
-                        <h3 className="font-display text-2xl md:text-3xl font-black text-white tracking-tighter uppercase leading-none group-hover:text-cyan-50 transition-all duration-500">
+                        <h3 className="font-display text-2xl md:text-3xl font-black text-white tracking-tighter uppercase leading-none group-hover:text-yellow-50 transition-all duration-500">
                             {exp.role}
                         </h3>
                         <h4 className="font-label text-xs font-bold text-zinc-500 uppercase tracking-[0.3em]">
@@ -122,7 +123,7 @@ const ExperienceItem: React.FC<{
                         <ul className="flex flex-col gap-4">
                             {exp.description.split('. ').filter(t => t.trim()).map((task, i) => (
                                 <li key={i} className="flex items-start gap-4 group/item">
-                                    <span className="w-1.5 h-[1px] bg-cyan-400 shadow-[0_0_5px_rgba(34,211,238,0.4)] mt-2.5 flex-shrink-0 group-hover/item:w-4 transition-all duration-300"></span>
+                                    <span className="w-1.5 h-[1px] bg-[#ffff00] shadow-[0_0_5px_rgba(255,255,0,0.4)] mt-2.5 flex-shrink-0 group-hover/item:w-4 transition-all duration-300"></span>
                                     <p className="font-sans text-zinc-400 text-sm md:text-base font-light leading-relaxed">
                                         {task.endsWith('.') ? task : `${task}.`}
                                     </p>
@@ -135,9 +136,9 @@ const ExperienceItem: React.FC<{
                     <div className="pt-6 border-t border-white/5 mt-4 flex items-center">
                         <span 
                             className={`font-label text-[10px] uppercase tracking-[0.3em] font-bold transition-all duration-500 cursor-pointer ${
-                                isExpanded 
-                                    ? 'text-cyan-400' 
-                                    : 'text-zinc-600 group-hover:text-cyan-300'
+                                isExpanded
+                                    ? 'text-[#ffff00]'
+                                    : 'text-zinc-600 group-hover:text-yellow-300'
                             }`}
                         >
                             {isExpanded ? t('experience.close') : t('experience.details')}
@@ -146,7 +147,7 @@ const ExperienceItem: React.FC<{
                 </div>
 
                 {/* Hover Border Accent */}
-                <div className="absolute left-0 top-0 w-[2px] h-0 bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.4)] group-hover:h-full transition-all duration-700"></div>
+                <div className="absolute left-0 top-0 w-[2px] h-0 bg-[#ffff00] shadow-[0_0_10px_rgba(255,255,0,0.4)] group-hover:h-full transition-all duration-700"></div>
             </div>
         </div>
     );
@@ -175,14 +176,14 @@ const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experiences }) 
         <section id="xp" className="py-24 md:py-40 px-6 md:px-12 bg-[#0e0e0e] overflow-hidden relative">
             <div className="flex flex-col items-start text-left gap-8 mb-32">
                 <div className="flex items-center gap-4">
-                    <span className="w-12 h-[1px] bg-cyan-400/30"></span>
+                    <span className="w-12 h-[1px] bg-[#ffff00]/30"></span>
                     <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">{t('experience.subtitle')}</span>
                 </div>
-                {/* 
-                  Animação de piscada única (single blink) na cor ciano (cyan-400),
+                {/*
+                  Animação de piscada única (single blink) na cor amarela (255,255,0),
                   ativada assim que a seção entra no campo de visão do usuário.
                 */}
-                <motion.h2 
+                <motion.h2
                     className="font-display text-4xl md:text-6xl font-black uppercase tracking-tighter flex flex-wrap gap-[0.3em] leading-none"
                     initial="hidden"
                     whileInView="visible"
@@ -192,9 +193,9 @@ const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experiences }) 
                         <div key={i} className="relative inline-block">
                             <span className="text-outline opacity-20">{word}</span>
                             <motion.span
-                                variants={wordVariantsCyanSingleBlink}
+                                variants={wordVariantsYellowSingleBlink}
                                 custom={i}
-                                className="absolute inset-0 text-cyan-400 pointer-events-none"
+                                className="absolute inset-0 text-[#ffff00] pointer-events-none"
                             >
                                 {word}
                             </motion.span>
@@ -204,7 +205,7 @@ const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experiences }) 
             </div>
 
             <div className="relative max-w-5xl mx-auto" ref={containerRef}>
-                <BeamLine containerRef={containerRef} color="bg-cyan-400" glowColor="rgba(34,211,238,0.8)" />
+                <BeamLine containerRef={containerRef} color="bg-[#ffff00]" glowColor="rgba(255,255,0,0.8)" />
 
                 {/* Timeline content wrapper with balanced gap */}
                 <div className="flex flex-col gap-16 relative">

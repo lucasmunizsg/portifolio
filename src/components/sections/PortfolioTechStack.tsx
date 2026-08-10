@@ -22,18 +22,19 @@ const PORTFOLIO_TECHNOLOGIES = [
     { name: 'Node.js', slug: 'nodedotjs' }
 ];
 
-const wordVariantsEmeraldSingleBlink: Variants = {
+// Cor da seção "Tecnologias do Portfólio" atualizada de esmeralda para violeta (127,0,255)
+const wordVariantsVioletSingleBlink: Variants = {
     hidden: {
         opacity: 0,
-        textShadow: "0 0 0px rgba(52,211,153,0)"
+        textShadow: "0 0 0px rgba(127,0,255,0)"
     },
     visible: (index: number) => ({
         opacity: [0, 0.9, 0.15, 1],
         textShadow: [
-            "0 0 0px rgba(52,211,153,0)",
-            "0 0 15px rgba(52,211,153,0.6)",
-            "0 0 2px rgba(52,211,153,0.1)",
-            "0 0 12px rgba(52,211,153,0.4)"
+            "0 0 0px rgba(127,0,255,0)",
+            "0 0 15px rgba(127,0,255,0.6)",
+            "0 0 2px rgba(127,0,255,0.1)",
+            "0 0 12px rgba(127,0,255,0.4)"
         ],
         transition: {
             duration: 0.6,
@@ -50,7 +51,7 @@ const PortfolioTechStack: React.FC = () => {
     const renderTechCard = (tech: { name: string; slug: string }, isDuplicate = false) => (
         <div
             key={isDuplicate ? `${tech.slug}-dup` : tech.slug}
-            className="shrink-0 w-[140px] mr-6 flex flex-col items-center justify-center gap-4 p-6 bg-[#131313] border border-white/5 hover:border-emerald-400/40 transition-all duration-500 group"
+            className="shrink-0 w-[140px] mr-6 flex flex-col items-center justify-center gap-4 p-6 bg-[#131313] border border-white/5 hover:border-[#7f00ff]/40 transition-all duration-500 group"
         >
             <img
                 src={`https://cdn.simpleicons.org/${tech.slug}/white`}
@@ -58,7 +59,7 @@ const PortfolioTechStack: React.FC = () => {
                 loading="lazy"
                 className="w-10 h-10 opacity-60 group-hover:opacity-100 transition-opacity duration-500"
             />
-            <span className="font-label text-[10px] text-zinc-500 group-hover:text-emerald-300 uppercase tracking-widest text-center transition-colors">
+            <span className="font-label text-[10px] text-zinc-500 group-hover:text-[#c084fc] uppercase tracking-widest text-center transition-colors">
                 {tech.name}
             </span>
         </div>
@@ -68,7 +69,7 @@ const PortfolioTechStack: React.FC = () => {
         <section id="portfolio-stack" className="relative px-6 md:px-12 py-24 md:py-32 max-w-[1920px] mx-auto bg-[#0e0e0e] overflow-hidden">
             <div className="flex flex-col gap-4 mb-16 relative z-10">
                 <div className="flex items-center gap-4">
-                    <span className="w-12 h-[1px] bg-emerald-400/30"></span>
+                    <span className="w-12 h-[1px] bg-[#7f00ff]/30"></span>
                     <span className="font-label uppercase tracking-[0.4em] text-[10px] text-zinc-500">{t('techStack.subtitle')}</span>
                 </div>
                 <motion.h2
@@ -81,9 +82,9 @@ const PortfolioTechStack: React.FC = () => {
                         <div key={i} className="relative inline-block">
                             <span className="text-outline opacity-20">{word}</span>
                             <motion.span
-                                variants={wordVariantsEmeraldSingleBlink}
+                                variants={wordVariantsVioletSingleBlink}
                                 custom={i}
-                                className="absolute inset-0 text-emerald-400 pointer-events-none"
+                                className="absolute inset-0 text-[#7f00ff] pointer-events-none"
                             >
                                 {word}
                             </motion.span>
@@ -94,8 +95,8 @@ const PortfolioTechStack: React.FC = () => {
 
             {/* Carrossel contínuo (marquee), no mesmo padrão usado na seção de Projetos */}
             <div className="overflow-hidden w-full relative">
-                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-emerald-400/20 to-transparent z-0"></div>
-                <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-emerald-400/20 to-transparent z-0"></div>
+                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#7f00ff]/20 to-transparent z-0"></div>
+                <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#7f00ff]/20 to-transparent z-0"></div>
 
                 <div className="flex animate-marquee w-max select-none py-4">
                     <div className="flex shrink-0">

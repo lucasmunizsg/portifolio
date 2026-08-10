@@ -213,13 +213,13 @@ export const skillsData: Skill[] = [
     { id: "11", name: "Git", category: "Linguagem", yearLearned: 2020, usageTime: "+ de 2 anos de uso" },
     { id: "12", name: "Python", category: "Linguagem", yearLearned: 2022, usageTime: "+ de 2 anos de uso" },
     // Movido para a categoria "Progresso": habilidade ainda em evolução
-    { id: "13", name: "POO (Inicial)", category: "Progresso", yearLearned: 2022, usageTime: "+ de 2 anos de uso" },
-    { id: "14", name: "Testes (UnitTest, Cypress)", category: "Interesse", yearLearned: 2023, usageTime: "+ de 2 anos de uso" },
-    { id: "15", name: "Introdução a Machine Learning", category: "Interesse", yearLearned: 2023, usageTime: "+ de 2 anos de uso" },
-    { id: "16", name: "Computer Science", category: "Interesse", yearLearned: 2024, usageTime: "+ de 2 anos de uso" },
-    { id: "17", name: "Metodologias Ágeis", category: "Interesse", yearLearned: 2018, usageTime: "+ de 2 anos de uso" },
-    { id: "18", name: "Power BI", category: "Interesse", yearLearned: 2023, usageTime: "+ de 2 anos de uso" },
-    { id: "19", name: "Inglês (Em andamento)", category: "Interesse", yearLearned: 2025, usageTime: "+ de 2 anos de uso" }
+    { id: "13", name: "POO", category: "Progresso", yearLearned: 2022, usageTime: "+ de 2 anos de aprendizado" },
+    { id: "14", name: "UnitTest, Cypress", category: "Progresso", yearLearned: 2023, usageTime: "+ de 2 anos de aprendizado" },
+    { id: "15", name: "Introdução a Machine Learning", category: "Progresso", yearLearned: 2023, usageTime: "+ de 2 anos de aprendizado" },
+    { id: "16", name: "Computer Science", category: "Progresso", yearLearned: 2024, usageTime: "+ de 2 anos de aprendizado" },
+    { id: "17", name: "Metodologias Ágeis", category: "Progresso", yearLearned: 2018, usageTime: "+ de 2 anos de aprendizado" },
+    { id: "18", name: "Power BI", category: "Progresso", yearLearned: 2023, usageTime: "+ de 2 anos de aprendizado" },
+    { id: "19", name: "Inglês", category: "Progresso", yearLearned: 2025, usageTime: "+ de 2 anos de aprendizado" }
 ];
 
 

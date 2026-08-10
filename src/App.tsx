@@ -45,18 +45,18 @@ function App() {
                 <ProjectsSection projects={projects} />
 
                 <ExperienceTimeline experiences={experiences} />
-                
-                <EducationSection studies={education} />
 
-                {/* Tecnologias usadas para construir este próprio portfólio, entre Formação e Documentação Técnica */}
+                {/* Tecnologias usadas para construir este próprio portfólio, entre Jornada Profissional e Jornada Acadêmica */}
                 <PortfolioTechStack />
+
+                {/* Destaque de disponibilidade para contratação (CLT/PJ) e freelance, logo abaixo de Tecnologias do Portfólio */}
+                <HiringBanner />
+
+                <EducationSection studies={education} />
 
                 {/* Seção Unificada de Contato & Recursos (Downloads) */}
                 <div id="contact" className="bg-[#0b0b0b] border-t border-white/5 relative overflow-hidden">
                     <ResumeDownloads versions={resume} />
-
-                    {/* Destaque de disponibilidade para contratação (CLT/PJ) e freelance */}
-                    <HiringBanner />
 
                     <ContactSection profile={profile} socials={socials} />
 

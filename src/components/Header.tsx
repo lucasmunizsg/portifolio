@@ -95,13 +95,13 @@ const Header: React.FC = () => {
                 </a>
                 
                 <div className="flex items-center gap-2.5 sm:gap-6 md:gap-12 ml-auto md:ml-0 pl-2 sm:pl-0">
-                    {/* Stacks */}
-                    <a 
+                    {/* Stacks: cor azul (0,0,255) somente enquanto a secao Habilidades estiver ativa */}
+                    <a
                         className={`font-label uppercase tracking-[0.1em] sm:tracking-[0.2em] text-[8px] sm:text-[9px] md:text-[10px] transition-all duration-300 ${
-                            activeSection === 'process' 
-                                ? 'text-white font-bold drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]' 
-                                : 'text-zinc-500 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]'
-                        }`} 
+                            activeSection === 'process'
+                                ? 'text-[#0000ff] font-bold drop-shadow-[0_0_8px_rgba(0,0,255,0.9)]'
+                                : 'text-zinc-500 hover:text-[#0000ff] hover:drop-shadow-[0_0_8px_rgba(0,0,255,0.9)]'
+                        }`}
                         href="#process"
                     >
                         {t('nav.skills')}
@@ -119,13 +119,13 @@ const Header: React.FC = () => {
                         {t('nav.projects')}
                     </a>
 
-                    {/* XP */}
-                    <a 
+                    {/* Experiência: cor amarela (255,255,0) somente enquanto Jornada Profissional/Acadêmica estiver ativa */}
+                    <a
                         className={`font-label uppercase tracking-[0.1em] sm:tracking-[0.2em] text-[8px] sm:text-[9px] md:text-[10px] transition-all duration-300 ${
                             activeSection === 'xp' || activeSection === 'education'
-                                ? 'text-cyan-400 font-bold drop-shadow-[0_0_8px_rgba(34,211,238,0.9)]' 
-                                : 'text-zinc-500 hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.9)]'
-                        }`} 
+                                ? 'text-[#ffff00] font-bold drop-shadow-[0_0_8px_rgba(255,255,0,0.9)]'
+                                : 'text-zinc-500 hover:text-[#ffff00] hover:drop-shadow-[0_0_8px_rgba(255,255,0,0.9)]'
+                        }`}
                         href="#xp"
                     >
                         {t('nav.experience')}

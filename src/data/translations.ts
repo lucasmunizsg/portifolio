@@ -4,7 +4,10 @@ export const translations = {
       line1: ["VAMOS", "INICIAR"],
       line2: ["A", "JORNADA"],
       cta: "EXPLORAR",
-      switchLanguage: "Switch to English"
+      switchLanguage: "Switch to English",
+      // Novos elementos importados do Claude Designer (Journey Glass)
+      tagline: "DESENVOLVIMENTO · DADOS · INFRAESTRUTURA",
+      scroll: "SCROLL"
     },
     nav: {
       home: "Início",
@@ -101,7 +104,10 @@ export const translations = {
       line1: ["LET'S", "START"],
       line2: ["THE", "JOURNEY"],
       cta: "EXPLORE",
-      switchLanguage: "Mudar para Português"
+      switchLanguage: "Mudar para Português",
+      // New elements imported from Claude Designer (Journey Glass)
+      tagline: "DEVELOPER · DATA · INFRASTRUCTURE",
+      scroll: "SCROLL"
     },
     nav: {
       home: "Home",

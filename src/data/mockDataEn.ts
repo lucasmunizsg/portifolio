@@ -18,32 +18,38 @@ export const projectsDataEn: Project[] = [
         technologies: ["TypeScript", "Tailwind", "PostgreSQL", "Firebase", "Claude", "Gemini API"],
         repoUrl: LINKS.github,
         liveUrl: "",
-        imageUrl: "/img1.png"
+        // Default cover (progress.jpg), since this project doesn't have its own image yet
+        imageUrl: "/progress.jpg"
     },
     {
         id: "2",
-        title: "Bidding",
+        // Renamed from "Bidding" to "Oportunidade Certa" (kept as-is, it's a brand name)
+        title: "Oportunidade Certa",
         description: "System for managing bidding processes between companies and public agencies, centralizing the information bidders need to track their active bids. (In production)",
         summary: "",
         technologies: ["TypeScript", "Tailwind", "PostgreSQL", "Firebase", "Gemini API"],
-        repoUrl: LINKS.github
+        repoUrl: LINKS.github,
+        imageUrl: "/Oportunidade Certa.png"
     },
     {
         id: "3",
-        title: "Walle",
+        // Renamed from "Walle" to "Dimax"
+        title: "Dimax",
         description: "Personal financial management with goals, an AI assistant, and workspaces, with general availability planned. (In production)",
         summary: "",
         technologies: ["TypeScript", "Tailwind", "PostgreSQL", "Firebase", "Claude", "Gemini API"],
         repoUrl: LINKS.github,
-        imageUrl: "/img2.png"
+        imageUrl: "/Dimax.png"
     },
     {
         id: "4",
-        title: "Agricultural Assistant",
+        // Renamed from "Agricultural Assistant" to "Agrogest"
+        title: "Agrogest",
         description: "Resource and proposal management for agricultural-sector companies, with an AI assistant and workflows. (In production)",
         summary: "",
         technologies: ["TypeScript", "Tailwind", "PostgreSQL", "Firebase", "Claude"],
-        repoUrl: LINKS.github
+        repoUrl: LINKS.github,
+        imageUrl: "/Agrogest.png"
     },
     {
         id: "5",
@@ -51,7 +57,8 @@ export const projectsDataEn: Project[] = [
         description: "Game to change the colors of a square.",
         summary: "",
         technologies: ["HTML", "CSS", "JavaScript"],
-        repoUrl: LINKS.github
+        repoUrl: LINKS.github,
+        imageUrl: "/progress.jpg"
     },
     {
         id: "6",
@@ -59,7 +66,8 @@ export const projectsDataEn: Project[] = [
         description: "Unit tests written for a pre-existing codebase.",
         summary: "",
         technologies: ["JavaScript"],
-        repoUrl: LINKS.github
+        repoUrl: LINKS.github,
+        imageUrl: "/progress.jpg"
     },
     {
         id: "7",
@@ -67,7 +75,8 @@ export const projectsDataEn: Project[] = [
         description: "E-commerce page with options to add and remove products from the cart, consuming the Mercado Livre API.",
         summary: "",
         technologies: ["JavaScript", "Mercado Livre API"],
-        repoUrl: LINKS.github
+        repoUrl: LINKS.github,
+        imageUrl: "/progress.jpg"
     },
     {
         id: "8",
@@ -75,7 +84,8 @@ export const projectsDataEn: Project[] = [
         description: "Dynamic dashboard for detailed analysis of a spreadsheet.",
         summary: "",
         technologies: ["Power BI"],
-        repoUrl: LINKS.github
+        repoUrl: LINKS.github,
+        imageUrl: "/progress.jpg"
     },
     {
         id: "9",
@@ -83,7 +93,8 @@ export const projectsDataEn: Project[] = [
         description: "Automation to create personalized investment prompts via OpenAI and Deep IA APIs.",
         summary: "",
         technologies: ["Python", "OpenAI", "Deep IA"],
-        repoUrl: LINKS.github
+        repoUrl: LINKS.github,
+        imageUrl: "/progress.jpg"
     },
     {
         id: "10",
@@ -91,6 +102,7 @@ export const projectsDataEn: Project[] = [
         description: "Buzzfeed clone built with Angular, exploring dynamic components.",
         summary: "",
         technologies: ["Angular"],
+        imageUrl: "/progress.jpg",
         repoUrl: LINKS.github
     }
 ];
@@ -102,14 +114,15 @@ export const experiencesDataEn: Experience[] = [
         role: "Network and Computer Infrastructure Analyst",
         startDate: "03/2025",
         endDate: "Present",
-        description: "Responsible for network and computer infrastructure (maintenance and upgrades) in Penedo-AL."
+        description: "Responsible for network and computer infrastructure (maintenance and upgrades) in Alagoas."
     },
     {
         id: "2",
         company: "Freelancer",
         role: "Software Developer",
         startDate: "05/2024",
-        endDate: "02/2025",
+        // Updated to "Present": freelance work continues in parallel with the ACRESC role
+        endDate: "Present",
         description: "Improvements to internal development systems, working remotely."
     },
     {
@@ -118,7 +131,7 @@ export const experiencesDataEn: Experience[] = [
         role: "Systems Support Analyst",
         startDate: "10/2020",
         endDate: "04/2022",
-        description: "Remote support for ERP and POS systems, computer maintenance and repair in Penedo-AL."
+        description: "Remote support for ERP and POS systems, computer maintenance and repair in Alagoas."
     },
     {
         id: "4",
@@ -126,7 +139,7 @@ export const experiencesDataEn: Experience[] = [
         role: "Commercial and Finance Sector",
         startDate: "04/2019",
         endDate: "08/2020",
-        description: "Commercial negotiations, account management, social media and organic sales marketing, finance and payments, customer service in Penedo-AL."
+        description: "Commercial negotiations, account management, social media and organic sales marketing, finance and payments, customer service in Alagoas."
     },
     {
         id: "5",

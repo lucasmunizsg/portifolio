@@ -165,8 +165,10 @@ const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experiences }) 
     const sortedExperiences = [...experiences].sort((a, b) => {
         const isPresentA = a.endDate === 'Atual' || a.endDate === 'Present';
         const isPresentB = b.endDate === 'Atual' || b.endDate === 'Present';
-        
-        if (isPresentA || isPresentB) {
+
+        // Só decide pelo status "Atual" quando apenas um dos dois é atual;
+        // quando ambos são (ou nenhum é), desempata pela data de início mais recente
+        if (isPresentA !== isPresentB) {
             return isPresentA ? -1 : 1;
         }
         return b.startDate.localeCompare(a.startDate);

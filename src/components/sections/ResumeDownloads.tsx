@@ -55,9 +55,21 @@ const ResumeDownloads: React.FC<ResumeDownloadsProps> = ({ versions }) => {
         setEmails(prev => ({ ...prev, [lang]: value }));
     };
 
+    // Regex simples para validar o formato do e-mail antes de disparar a notificação
+    const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     const handleDownload = (language: 'PT-BR' | 'EN', email?: string) => {
-        if (email && email.trim() !== '') {
-            console.log(`Lead captured (${language}): ${email}`);
+        const trimmedEmail = email?.trim();
+        if (trimmedEmail && EMAIL_REGEX.test(trimmedEmail)) {
+            // Envia um aviso por e-mail (via função serverless + Resend) sem bloquear o download
+            // em caso de falha na notificação
+            fetch('/api/notify-lead', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: trimmedEmail, language })
+            }).catch((error) => {
+                console.error('Falha ao notificar novo lead:', error);
+            });
         }
 
         const version = versions.find(v => v.language === language);

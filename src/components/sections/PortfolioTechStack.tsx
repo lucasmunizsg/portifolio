@@ -10,7 +10,6 @@ const PORTFOLIO_TECHNOLOGIES = [
     { name: 'Vite', slug: 'vite' },
     { name: 'Tailwind CSS', slug: 'tailwindcss' },
     { name: 'Framer Motion', slug: 'framer' },
-    { name: 'PostCSS', slug: 'postcss' },
     { name: 'ESLint', slug: 'eslint' },
     { name: 'Vitest', slug: 'vitest' },
     { name: 'JavaScript', slug: 'javascript' },
@@ -48,22 +47,27 @@ const wordVariantsVioletSingleBlink: Variants = {
 const PortfolioTechStack: React.FC = () => {
     const { t } = useLanguage();
 
-    const renderTechCard = (tech: { name: string; slug: string }, isDuplicate = false) => (
+    // keyPrefix evita colisao de "key" entre as duas linhas do carrossel (cada uma repete a mesma lista)
+    const renderTechCard = (tech: { name: string; slug: string }, isDuplicate: boolean, keyPrefix: string) => (
         <div
-            key={isDuplicate ? `${tech.slug}-dup` : tech.slug}
-            className="shrink-0 w-[140px] mr-6 flex flex-col items-center justify-center gap-4 p-6 bg-[#131313] border border-white/5 hover:border-[#7f00ff]/40 transition-all duration-500 group"
+            key={`${keyPrefix}-${tech.slug}${isDuplicate ? '-dup' : ''}`}
+            className="shrink-0 w-[108px] mr-4 flex flex-col items-center justify-center gap-2.5 p-4 bg-transparent transition-all duration-500 group"
         >
+            {/* Logo em branco (variante /white da Simple Icons), de volta ao tema escuro da secao */}
             <img
                 src={`https://cdn.simpleicons.org/${tech.slug}/white`}
                 alt={tech.name}
                 loading="lazy"
-                className="w-10 h-10 opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+                className="w-7 h-7 opacity-60 group-hover:opacity-100 transition-opacity duration-500"
             />
-            <span className="font-label text-[10px] text-zinc-500 group-hover:text-[#c084fc] uppercase tracking-widest text-center transition-colors">
+            <span className="font-label text-[9px] text-zinc-500 group-hover:text-[#c084fc] uppercase tracking-widest text-center transition-colors">
                 {tech.name}
             </span>
         </div>
     );
+
+    // Segunda linha em ordem invertida, para nao parecer um espelho exato da primeira
+    const reversedTechnologies = [...PORTFOLIO_TECHNOLOGIES].reverse();
 
     return (
         <section id="portfolio-stack" className="relative px-6 md:px-12 py-24 md:py-32 max-w-[1920px] mx-auto bg-[#0e0e0e] overflow-hidden">
@@ -93,17 +97,28 @@ const PortfolioTechStack: React.FC = () => {
                 </motion.h2>
             </div>
 
-            {/* Carrossel contínuo (marquee), no mesmo padrão usado na seção de Projetos */}
+            {/* Carrossel com duas linhas em sentidos opostos, fundo igual ao da secao (tema escuro) */}
             <div className="overflow-hidden w-full relative">
                 <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#7f00ff]/20 to-transparent z-0"></div>
                 <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#7f00ff]/20 to-transparent z-0"></div>
 
-                <div className="flex animate-marquee w-max select-none py-4">
+                {/* Linha 1: da esquerda para a direita */}
+                <div className="flex animate-marquee w-max select-none py-2">
                     <div className="flex shrink-0">
-                        {PORTFOLIO_TECHNOLOGIES.map((tech) => renderTechCard(tech, false))}
+                        {PORTFOLIO_TECHNOLOGIES.map((tech) => renderTechCard(tech, false, 'row1'))}
                     </div>
                     <div className="flex shrink-0" aria-hidden="true">
-                        {PORTFOLIO_TECHNOLOGIES.map((tech) => renderTechCard(tech, true))}
+                        {PORTFOLIO_TECHNOLOGIES.map((tech) => renderTechCard(tech, true, 'row1'))}
+                    </div>
+                </div>
+
+                {/* Linha 2: sentido invertido */}
+                <div className="flex animate-marquee-reverse w-max select-none py-2 mt-3">
+                    <div className="flex shrink-0">
+                        {reversedTechnologies.map((tech) => renderTechCard(tech, false, 'row2'))}
+                    </div>
+                    <div className="flex shrink-0" aria-hidden="true">
+                        {reversedTechnologies.map((tech) => renderTechCard(tech, true, 'row2'))}
                     </div>
                 </div>
             </div>

@@ -10,7 +10,6 @@ const PORTFOLIO_TECHNOLOGIES = [
     { name: 'Vite', slug: 'vite' },
     { name: 'Tailwind CSS', slug: 'tailwindcss' },
     { name: 'Framer Motion', slug: 'framer' },
-    { name: 'PostCSS', slug: 'postcss' },
     { name: 'ESLint', slug: 'eslint' },
     { name: 'Vitest', slug: 'vitest' },
     { name: 'JavaScript', slug: 'javascript' },
@@ -52,7 +51,7 @@ const PortfolioTechStack: React.FC = () => {
     const renderTechCard = (tech: { name: string; slug: string }, isDuplicate: boolean, keyPrefix: string) => (
         <div
             key={`${keyPrefix}-${tech.slug}${isDuplicate ? '-dup' : ''}`}
-            className="shrink-0 w-[108px] mr-4 flex flex-col items-center justify-center gap-2.5 p-4 bg-[#131313] border border-white/5 hover:border-[#7f00ff]/40 transition-all duration-500 group"
+            className="shrink-0 w-[108px] mr-4 flex flex-col items-center justify-center gap-2.5 p-4 bg-transparent transition-all duration-500 group"
         >
             {/* Logo em branco (variante /white da Simple Icons), de volta ao tema escuro da secao */}
             <img

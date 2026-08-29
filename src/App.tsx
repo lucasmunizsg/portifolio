@@ -1,15 +1,14 @@
 import { profileData, projectsData, experiencesData, educationData, skillsData, resumeData, socialData } from './data/mockData';
 import { profileDataEn, projectsDataEn, experiencesDataEn, educationDataEn, skillsDataEn, resumeDataEn, socialDataEn } from './data/mockDataEn';
 import Header from './components/Header';
+import IntroSection from './components/sections/IntroSection';
 import Hero from './components/sections/Hero';
 import ProjectsSection from './components/sections/ProjectsSection';
 import ExperienceTimeline from './components/sections/ExperienceTimeline';
 import EducationSection from './components/sections/EducationSection';
 import SkillsAndInterests from './components/sections/SkillsAndInterests';
 import PortfolioTechStack from './components/sections/PortfolioTechStack';
-import ResumeDownloads from './components/sections/ResumeDownloads';
 import HiringBanner from './components/sections/HiringBanner';
-import ContactSection from './components/sections/ContactSection';
 import WelcomeGate from './components/WelcomeGate';
 
 import { useEffect } from 'react';
@@ -54,11 +53,13 @@ function App() {
 
                 <EducationSection studies={education} />
 
-                {/* Seção Unificada de Contato & Recursos (Downloads) */}
-                <div id="contact" className="bg-[#0b0b0b] border-t border-white/5 relative overflow-hidden">
-                    <ResumeDownloads versions={resume} />
-
-                    <ContactSection profile={profile} socials={socials} />
+                {/*
+                  Seção unificada de perfil + Documentação Técnica + Contato (antigos
+                  ResumeDownloads/ContactSection), de volta à posição original: depois de
+                  Jornada Acadêmica, no rodapé da página.
+                */}
+                <div className="bg-[#0b0b0b] border-t border-white/5 relative overflow-hidden">
+                    <IntroSection profile={profile} socials={socials} versions={resume} />
 
                     {/* Rodapé Absoluto de Direitos Autorais */}
                     <footer className="w-full max-w-[1920px] mx-auto px-6 md:px-12 pb-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 z-10 relative">
@@ -66,7 +67,8 @@ function App() {
                             {profile.name.toUpperCase()}
                         </div>
                         <div className="text-[10px] font-body font-light tracking-[0.05em] uppercase text-zinc-600">
-                            © {new Date().getFullYear()} {profile.name.toUpperCase()}. {t('common.copyright')}.
+                            {/* Nome removido do texto de copyright a pedido do usuário */}
+                            © {new Date().getFullYear()}. {t('common.copyright')}.
                         </div>
                     </footer>
                 </div>
